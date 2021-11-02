@@ -10,10 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_02_191226) do
+ActiveRecord::Schema.define(version: 2021_11_02_200119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.datetime "date"
+    t.time "time"
+    t.bigint "consulting_room_id", null: false
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["consulting_room_id"], name: "index_bookings_on_consulting_room_id"
+    t.index ["pet_id"], name: "index_bookings_on_pet_id"
+  end
+
+  create_table "consulting_rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "description"
+    t.string "state"
+    t.string "municipality"
+    t.string "parish"
+    t.float "lat"
+    t.float "lon"
+    t.time "init_hour_day"
+    t.time "end_hour_day"
+    t.string "week_days"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_consulting_rooms_on_user_id"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.string "gender"
+    t.string "birthdate"
+    t.string "species"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.text "symptoms"
+    t.text "diagnostic"
+    t.text "treatment"
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_records_on_booking_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +73,18 @@ ActiveRecord::Schema.define(version: 2021_11_02_191226) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.date "birthdate"
+    t.boolean "is_vet", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "consulting_rooms"
+  add_foreign_key "bookings", "pets"
+  add_foreign_key "consulting_rooms", "users"
+  add_foreign_key "pets", "users"
+  add_foreign_key "records", "bookings"
 end
