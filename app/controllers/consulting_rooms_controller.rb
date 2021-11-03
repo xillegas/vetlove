@@ -1,6 +1,9 @@
 class ConsultingRoomsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
+    before_action :authorize_pundit, except: [:index]
+
   def index
+    skip_policy_scope
     @consulting_rooms = ConsultingRoom.all
   end
 
@@ -39,5 +42,10 @@ class ConsultingRoomsController < ApplicationController
 
   def params_consulting_rooms
     params.require(:consulting_room).permit(:name, :address, :description, :state, :municipality, :parish, :init_hour_day, :end_hour_day, :week_days, :user_id)
+  end
+
+  def authorize_pundit
+    @consulting = policy_scope(ConsultingRoom)
+    authorize @consulting
   end
 end
