@@ -1,9 +1,0 @@
-<div class="container">
-  <%= simple_form_for @pet do |f| %>
-    <%= f.input :name, label: "Nombre de tu mascota" %>
-    <%= f.input :gender, collection: GENDERS, label: "Genero de tu mascota" %>
-    <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, input_html: {class: "datepicker"} %>
-    <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
-    <%= f.button :submit, class: "btn btn-success" %>
-  <% end %>
-</div>
