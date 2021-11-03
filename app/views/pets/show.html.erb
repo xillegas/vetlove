@@ -9,7 +9,7 @@
   <p><%= @pet.gender %></p>
 
   <h3>Fecha de nacimiento:</h3>
-  <p><%= @pet.birthdate %></p>
+  <p><%= I18n.l(@pet.birthdate.to_date, format: '%A, %B %d, %Y') %></p>
 
   <h3>Especie:</h3>
   <p><%= @pet.species %></p>
