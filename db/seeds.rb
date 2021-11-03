@@ -58,7 +58,7 @@ User.all.each do |user|
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",
-                           user: user }])
+                           user: (user if user.is_vet) }])
 end
 
 puts ""
@@ -68,7 +68,7 @@ User.all.each do |user|
                 gender: Faker::Creature::Dog.gender,
                 birthdate: Faker::Date.between(from: "2010-09-23", to: "2021-09-25"),
                 species: ["Dog", "Cat", "Turtle", "Rabbit", "Hamster", "Bird", "Fish", "Ferret", "Snake", "Guinea pig" ].sample,
-                user: user }])
+                user: (user if !user.is_vet )}])
 end
 
 puts ""
@@ -77,9 +77,8 @@ puts "Insertando Bookings"
 User.all.each_with_index do |user, index|
   Booking.create([{ date: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :morning),
                     time: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :afternoon),
-                    consulting_room: ConsultingRoom.find_by(user: user),
-                    pet: Pet.find_by(user: user),
-                    consulting_room: ConsultingRoom.find_by(user: user) }])
+                    consulting_room: ConsultingRoom.find(rand(1..3)),
+                    pet: Pet.find_by(user: user) }])
 end
 
 puts ""
