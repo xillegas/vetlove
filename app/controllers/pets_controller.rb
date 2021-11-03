@@ -2,6 +2,7 @@ class PetsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:create, :edit, :update]
   before_action :set_pet, only: [ :show, :edit, :update, :destroy ]
+  before_action :authorize_pundit
 
   def index
     @pets = Pet.all
@@ -44,6 +45,11 @@ class PetsController < ApplicationController
   end
 
   private
+
+  def authorize_pundit
+    @pets = policy_scope(Pet)
+    authorize @pets
+  end
 
   def set_pet
      @pet = Pet.find(params[:id])
