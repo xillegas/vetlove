@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :booking_authorize
+
   def index
     @bookings = Booking.joins(:pet).where("pets.user" => current_user.id)
     # @user = current_user
@@ -19,7 +21,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @consulting_room = ConsultingRoom.find(params[:consulting_room_id])
-    @my_pets = Pet.joins(:user).where(id: current_user.id)
+    @my_pets = Pet.joins(:user).where("pets.user" => current_user.id)
   end
 
   def create
@@ -44,5 +46,10 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:date, :time, :pet_id)
+  end
+
+  def booking_authorize
+    @booking = policy_scope(Booking)
+    authorize @booking
   end
 end
