@@ -1,0 +1,12 @@
+<h1>Bookings#index</h1>
+<p>Find me in app/views/bookings/index.html.erb</p>
+
+<ul>
+  <% @bookings.each do |bookie| %>
+  <li><h4><%= bookie.pet.name %></h4></li>
+  <li>Pet name: <%= bookie.pet.name %></li>
+  <li>Owner <%= bookie.pet.user.first_name %></li>
+  <li>Consult day <%= bookie.date %></li>
+  <hr>
+  <% end %>
+</ul>
