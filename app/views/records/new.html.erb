@@ -1,0 +1,10 @@
+<h1>Records#new</h1>
+<p>Find me in app/views/records/new.html.erb</p>
+<div class="container">
+  <%= simple_form_for @record do |f| %>
+    <%= f.input :symptoms, label: "Sintomas" %>
+    <%= f.input :diagnostic, label: "Diagnostico" %>
+    <%= f.input :treatment, label: "Tratamiento" %>
+    <%= f.button :submit, class: "btn btn-success" %>
+  <% end %>
+</div>
