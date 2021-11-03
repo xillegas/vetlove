@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+  <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+    <i class="fa fa-bars"></i>
+  </button>
+    <% 
+=begin %>
+  <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <%= render "shared/search_field" %>    
+  </form>
+  <% 
+=end %>
+  <ul class="navbar-nav ml-auto">
+    <%= render "shared/search_dropdown" %>
+    <%= render "shared/notifications" %>
+
+    <div class="topbar-divider d-none d-sm-block"></div>
+
+    <%= render "shared/user_nav" %>
+  </ul>
+
+</nav>
