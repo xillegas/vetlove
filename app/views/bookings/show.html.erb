@@ -1,0 +1,15 @@
+<h1>Bookings#show</h1>
+<p>Find me in app/views/bookings/show.html.erb <br>
+
+Previsualización de la cita para el veterinario, falta añadir botón de insertar record.</p>
+
+<ul>
+  <li>Fecha <%= @booking.date %> </li>
+  <li>Hora <%= @booking.time %> </li>
+  <li>Nombre: <%= @booking.pet.name %> </li>
+  <li>Especie: <%= @booking.pet.species %> </li>
+  <li>Sexo: <%= @booking.pet.gender %> </li>
+  <li>Fecha de nac: <%= @booking.pet.birthdate %> </li>
+  <li>Dueño: <%= @booking.pet.user.first_name %> </li>
+  <li>Teléfono: <%= @booking.pet.user.phone_number %> </li>
+</ul>
