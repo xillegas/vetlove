@@ -1,9 +1,0 @@
-<div class="container">
-  <h2>Todas las mascotas</h2>
-  <ul>
-    <% @pets.each do |pet| %>
-      <li><%= link_to pet.name, pet_path(pet) %></li>
-    <% end %>
-  </ul>
-  <h4><%= link_to "Crear nueva mascota", new_pet_path, class:"btn btn-success" %></h4>
-</div>
