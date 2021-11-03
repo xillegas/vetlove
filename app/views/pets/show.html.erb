@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Dueño de la mascota</h2>
+  <strong><%= @pet.user.first_name %></strong>
+  <br>
+  <h3>Nombre de la mascota:</h3>
+  <p><%= @pet.name %></p>
+
+  <h3>Genero:</h3>
+  <p><%= @pet.gender %></p>
+
+  <h3>Fecha de nacimiento:</h3>
+  <p><%= @pet.birthdate %></p>
+
+  <h3>Especie:</h3>
+  <p><%= @pet.species %></p>
+
+
+  <%= link_to "Editar", edit_pet_path(@pet), class: "text-danger" %> |
+  <%= link_to "Eliminar",
+              @pet,
+              method: :delete,
+              remote: true,
+              data: { confirm: "Estas seguro que deseas eliminar?" },
+              class: "text-danger" %></p>
+
+
+  <%= link_to "Volver a lista principal de mascotas", pets_path %>
+</div>
