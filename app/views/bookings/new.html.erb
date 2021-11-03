@@ -1,0 +1,10 @@
+<h1>Bookings#new</h1>
+<p>Find me in app/views/bookings/new.html.erb</p>
+
+<%= simple_form_for [@consulting_room, @booking] do |f|   %>
+    <%= f.input :date %>
+    <%= f.input :time %>
+    <%= f.association :pet, collection: @my_pets %>
+    <%# f.association :consulting_room %>
+    <%= f.submit "Crear Booking", class: "btn btn-primary" %>
+  <% end %>
