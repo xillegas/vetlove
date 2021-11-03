@@ -67,7 +67,7 @@ User.all.each do |user|
   Pet.create([{ name: Faker::Creature::Dog.name,
                 gender: Faker::Creature::Dog.gender,
                 birthdate: Faker::Date.between(from: "2010-09-23", to: "2021-09-25"),
-                species: Faker::Creature::Animal.name,
+                species: ["Dog", "Cat", "Turtle", "Rabbit", "Hamster", "Bird", "Fish", "Ferret", "Snake", "Guinea pig" ].sample,
                 user: user }])
 end
 
