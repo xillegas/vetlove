@@ -4,6 +4,7 @@ class ConsultingRoomsController < ApplicationController
 
   def index
     skip_policy_scope
+    @user = current_user
     @consulting_rooms = ConsultingRoom.all
   end
 
