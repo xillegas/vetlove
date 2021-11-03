@@ -1,0 +1,15 @@
+<h2>Editar consultorio</h2>
+<%= simple_form_for [ @consulting_room ] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :address %>
+  <%= f.input :state %>
+  <%= f.input :municipality %>
+  <%= f.input :parish %>
+  <%= f.input :init_hour_day %>
+  <%= f.input :end_hour_day %>
+  <%= f.input :week_days %>
+  <%= f.submit "Editar Consultorio", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Volver", consulting_rooms_path %>
