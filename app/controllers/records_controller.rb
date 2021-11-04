@@ -7,8 +7,10 @@ class RecordsController < ApplicationController
   def index
     @records = Record.all
     @my_records = []
-    @records.each do |record|
-      @my_records << record
+    if current_user == @booking.consulting_room.user || current_user == @booking.pet.user
+      @records.each do |record|
+        @my_records << record
+    end
     end
   end
 

@@ -4,29 +4,27 @@
 <ul>
   <li><h4><%= @booking.pet.name %></h4></li>
   <li>Pet name: <%= @booking.pet.name %></li>
-  <li>Owner <%= @booking.pet.user.first_name %></li>
   <li>Consult day <%= @booking.date %></li>
   <hr>
 </ul>
 
 <ul>
   <% @my_records.each do |record| %>
-  <% if @booking.pet.name == record.booking.pet.name %>
-    <% if current_user == record.booking.consulting_room.user || current_user == record.booking.pet.user%>
-      <li><span>Vets Name: </span><strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
-      <br>
-      <li> <span> Owners Name </span><strong> <%= record.booking.pet.user.first_name %></strong></li>
-      <br>
-      <li>Pets Name <strong> <%= record.booking.pet.name %></strong></li>
-      <br>
-      <%= link_to "Detalles", record_path(record) %>
-      <br>
-      <br>
-      <br>
+    <% if @booking.pet.name == record.booking.pet.name %>
+      <% if current_user == record.booking.consulting_room.user || current_user == record.booking.pet.user%>
+        <li><span>Vets Name: </span><strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
+        <br>
+        <li> <span> Owners Name </span><strong> <%= record.booking.pet.user.first_name %></strong></li>
+        <br>
+        <li>Pets Name <strong> <%= record.booking.pet.name %></strong></li>
+        <br>
+        <%= link_to "Detalles", record_path(record) %>
+        <hr>
+      <% end %>
     <% end %>
   <% end %>
-  <% end %>
 </ul>
+<%= link_to "Back to Bookings", bookings_path %>
 
 
 

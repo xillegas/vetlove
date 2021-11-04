@@ -8,5 +8,6 @@
   <li>Owner <%= bookie.pet.user.first_name %></li>
   <li>Consult day <%= bookie.date %></li>
   <hr>
+  <%= link_to "History of pets", booking_records_path(bookie) %>
   <% end %>
 </ul>

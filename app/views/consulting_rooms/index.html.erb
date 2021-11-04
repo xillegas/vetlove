@@ -11,10 +11,10 @@
                             data: { confirm: "Estas seguro que deseas eliminar?" },
                             class: "text-danger" %></li>
             <%else%>
-                <%= link_to room.name, class: "text-secondary" %>
+                <%= link_to room.name, new_consulting_room_booking_path(room),  class: "text-secondary" %>
             <%end%>
         <%else%>
-                <%= link_to room.name, class: "text-secondary" %>
+                <%= link_to room.name, new_consulting_room_booking_path(room), class: "text-secondary" %>
         <%end%>
   <% end %>
 </ul>
