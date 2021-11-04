@@ -115,7 +115,7 @@
     }
 
     &.toggled {
-        width: 0 !important;
+        width: 0;
         overflow: hidden;
 
         #sidebarToggle::after {
@@ -173,13 +173,16 @@
         margin-bottom: 1rem;
         padding: 1rem;
         background-color: fade-out($black, 0.9);
+
         .sidebar-card-illustration {
             height: 3rem;
             display: block;
         }
+
         .sidebar-card-title {
             font-weight: bold;
         }
+
         p {
             font-size: 0.75rem;
             color: fade-out($white, 0.5);
@@ -189,7 +192,7 @@
 
 @include media-breakpoint-up(md) {
     .sidebar {
-        width: $sidebar-base-width !important;
+        width: $sidebar-base-width;
 
         .nav-item {
 
@@ -270,7 +273,7 @@
 
         &.toggled {
             overflow: visible;
-            width: $sidebar-collapsed-width !important;
+            width: $sidebar-collapsed-width;
 
             .nav-item {
 
