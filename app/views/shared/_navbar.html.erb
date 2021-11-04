@@ -21,10 +21,17 @@
         <li class="navbar-vetlove-classic-elemlist">
           <%= link_to "Consultorios", consulting_rooms_path %>
         </li>
+        <li class="navbar-vetlove-classic-elemlist">
+          <%= link_to "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}","#" %>
+        </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" style="padding-top: 0px; padding-bottom: 0px;" aria-labelledby="navbarDropdown">
-            <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
+            <% if current_user.is_vet %>
+              <%= link_to "Mis citas", calendar_path, class: "dropdown-item" %>
+            <% else %>
+              <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
+            <% end %>
             <%= link_to "Mis mascotas", pets_path, class: "dropdown-item" %>
             <%= link_to "Dashboard vet", pets_path, class: "dropdown-item" %>
             <%= link_to "Cuenta", dashboard_path, class: "dropdown-item" %>
