@@ -5,15 +5,14 @@ Rails.application.routes.draw do
   get 'calendar', to: 'bookings#calendar', as: "calendar"
   get '/calendar/:id', to: 'bookings#show_vet', as: 'calendar_date'
   get 'configuration', to: 'main#configuration', as: "configuration"
-  
+
   resources :consulting_rooms, except: [:show]
   resources :consulting_rooms, only: [:index, :new] do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:index, :show] do
-    resources :records, only: [:index, :new, :create]
+    resources :records, only: [:new, :create]
   end
-  resources :records, only: [:show]
+  resources :records, only: [:index, :show]
   resources :pets
-
 end
