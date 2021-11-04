@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   resources :consulting_rooms, only: [:index, :new] do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:index, :show]
+  resources :bookings, only: [:index, :show] do
+    resources :records, only: [:index, :new, :create]
+  end
   get 'calendar', to: 'bookings#calendar'
+  resources :records, only: [:show]
 
   devise_for :users
   root to: 'pages#home'
@@ -11,5 +14,5 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :consulting_rooms, except: [:show]
   resources :pets
-  resources :records
+
 end

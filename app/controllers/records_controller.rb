@@ -2,12 +2,24 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_record, only: [:show]
   before_action :authenticate_pundit
+  before_action :get_booking, except: [:show]
 
   def index
     @records = Record.all
+    @my_records = []
+    @records.each do |record|
+      @my_records << record
+    end
   end
 
   def show
+    @record = Record.find(params[:id])
+    if @record.booking.pet.user == current_user || @record.booking.consulting_room.user == current_user
+      return @record
+    else
+      flash[:notice] = "Your record was not found"
+      redirect_to booking_records_path(@record)
+    end
   end
 
   def new
@@ -16,9 +28,19 @@ class RecordsController < ApplicationController
 
   def create
     @record = Record.new(record_params)
+    @record.booking = @booking
+    if @record.save
+      redirect_to booking_records_path, notice: 'Record creado exitosamente.'
+    else
+      render :new, alert: 'Wrong parmeters'
+    end
   end
 
   private
+
+  def get_booking
+    @booking = Booking.find(params[:booking_id])
+  end
 
   def record_params
     params.require(:record).permit(:booking_id, :symptoms, :diagnostic, :treatment)

@@ -14,6 +14,6 @@ class RecordPolicy < ApplicationPolicy
   end
 
   def show?
-    !user.is_vet
+    user.is_vet || !user.is_vet
   end
 end
