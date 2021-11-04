@@ -33,6 +33,8 @@ gem 'devise'
 gem 'faker', '~> 2.19'
 gem "pundit"
 
+gem "simple_calendar", "~> 2.4"
+
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
