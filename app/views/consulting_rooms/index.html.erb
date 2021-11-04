@@ -1,7 +1,7 @@
 <h2>INDEX CONSULTORIOS</h2>
 <h4>Consultorios Veterinarios:</h4>
 <ul>
-  <% @consulting_rooms.each do |room| %>
+  <% @query_rooms.each do |room| %>
     <li><% if user_signed_in? %>
             <%if @user.is_vet%>
                 <%= link_to room.name, class: "text-secondary" %><span class="mx-3"><%= link_to "Edit", edit_consulting_room_path(room) %></span> <%= link_to "Eliminar",
@@ -14,7 +14,7 @@
                 <%= link_to room.name, class: "text-secondary" %>
             <%end%>
         <%else%>
-            <%= link_to room.name, class: "text-secondary" %>
+                <%= link_to room.name, class: "text-secondary" %>
         <%end%>
   <% end %>
 </ul>
