@@ -24,7 +24,7 @@
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" style="padding-top: 0px; padding-bottom: 0px;" aria-labelledby="navbarDropdown">
-            <%= link_to "Mis citas", calendar_path, class: "dropdown-item" %>
+            <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
             <%= link_to "Mis mascotas", pets_path, class: "dropdown-item" %>
             <%= link_to "Cuenta", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
