@@ -5,4 +5,8 @@ class MainController < ApplicationController
     skip_authorization
   end
 
+  def configuration
+    skip_authorization
+  end
+
 end

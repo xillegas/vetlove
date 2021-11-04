@@ -1,15 +1,12 @@
-<h1>Bookings#calendar</h1>
-<p>Find me in app/views/bookings/calendar.html.erb</p>
-
-<ul>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Calendario</h1>
+</div>
+<%= month_calendar do |date| %>
+  <%= date.to_formatted_s(:short) %>
   <% @bookings.each do |bookie| %>
-  <li><h4><%= bookie.consulting_room.name %></h4></li>
-  <li>Pet name: <%= bookie.pet.name %></li>
-  <li>Owner <%= bookie.pet.user.first_name %></li>
-  <li>Consult day <%= bookie.date %></li>
-  <br>
-  <%= link_to "Crear record", new_booking_record_path(bookie) %>
-  <hr>
+    <% if date == Date.parse(bookie.date.to_s)  %>
+      <p><strong>Consultorio:</strong> <%= bookie.consulting_room.name %> </p>
+      <p><strong>Paciente:</strong> <%= bookie.pet.name %></p>
+    <% end %>
   <% end %>
-  <%= link_to "History of pets", records_path, class:"btn btn-primary" %>
-</ul>
+<% end %>

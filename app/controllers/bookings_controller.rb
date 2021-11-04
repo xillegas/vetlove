@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
   before_action :booking_authorize
+  layout 'main', only: %i[calendar]
+
 
   def index
     @bookings = Booking.joins(:pet).where("pets.user" => current_user.id)

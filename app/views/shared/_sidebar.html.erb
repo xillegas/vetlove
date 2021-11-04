@@ -1,4 +1,4 @@
-<!-- Sidebar -->      
+<!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<%= root_path %>">
@@ -7,35 +7,35 @@
     </div>
     <div class="sidebar-brand-text mx-3">VetLove</div>
   </a>
-
   <!-- Divider -->
   <hr class="sidebar-divider my-0">
   <!-- Nav Item - Dashboard -->
   <li class="nav-item">
     <a class="nav-link" href="<%= dashboard_path %>">
-    <i class="fas fa-home"></i> 
+      <i class="fas fa-home"></i>
       <span>Dashboard</span></a>
   </li>
-
+    <% 
+=begin %>
   <li class="nav-item">
     <a class="nav-link" href="<%= dashboard_path %>">
       <i class="fas fa-stethoscope"></i>
       <span>Cita</span></a>
   </li>
-
+    <% 
+=end %>
   <li class="nav-item">
-    <a class="nav-link" href="<%= dashboard_path %>">
+    <%= link_to calendar_path, class: "nav-link" do %>
       <i class="far fa-calendar-alt"></i>
       <span>Calendario</span></a>
+    <% end %>
   </li>
-
-    <li class="nav-item">
-    <a class="nav-link" href="<%= dashboard_path %>">
+  <li class="nav-item">
+    <a class="nav-link" href="<%= configuration_path %>">
       <i class="fas fa-wrench"></i>
       <span>Configuración</span></a>
   </li>
-  
-    <!-- Nav Item - Utilities Collapse Menu -->
+  <!-- Nav Item - Utilities Collapse Menu -->
   <!-- Divider -->
   <!-- <hr class="sidebar-divider"> -->
   <!-- Inicio de comentario multiple -->
