@@ -2,14 +2,14 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_record, only: [:show]
   before_action :authenticate_pundit
-  before_action :get_booking, except: [:show]
+  before_action :get_booking, except: [:index, :show]
 
   def index
     @records = Record.all
-    @my_records = []
-    @records.each do |record|
-      @my_records << record
-    end
+    # @my_records = []
+    # @records.each do |record|
+    #   @my_records << record
+    # end
   end
 
   def show
@@ -30,7 +30,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.booking = @booking
     if @record.save
-      redirect_to booking_records_path, notice: 'Record creado exitosamente.'
+      redirect_to records_path, notice: 'Record creado exitosamente.'
     else
       render :new, alert: 'Wrong parmeters'
     end
