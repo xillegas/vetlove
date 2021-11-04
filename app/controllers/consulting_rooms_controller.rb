@@ -6,6 +6,21 @@ class ConsultingRoomsController < ApplicationController
     skip_policy_scope
     @user = current_user
     @consulting_rooms = ConsultingRoom.all
+    @query_rooms = []
+    if user_signed_in?
+      if @user.is_vet
+        @consulting_rooms.each do |room|
+          if room.user == @user
+          @query_rooms << room
+          end
+        end
+      else
+        @query_rooms = @consulting_rooms
+      end
+    else
+        @query_rooms = @consulting_rooms
+    end 
+    @query_rooms
   end
 
   def new
