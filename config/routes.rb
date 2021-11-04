@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   end
   resources :records, only: [:index, :show]
   resources :pets
-
 end
