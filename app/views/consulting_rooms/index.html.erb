@@ -1,25 +1,34 @@
-<h2>INDEX CONSULTORIOS</h2>
-<h4>Consultorios Veterinarios:</h4>
-<ul>
-  <% @query_rooms.each do |room| %>
-    <li><% if user_signed_in? %>
-            <%if @user.is_vet%>
-                <%= link_to room.name, class: "text-secondary" %><span class="mx-3"><%= link_to "Edit", edit_consulting_room_path(room) %></span> <%= link_to "Eliminar",
-                            room,
-                            method: :delete,
-                            remote: true,
-                            data: { confirm: "Estas seguro que deseas eliminar?" },
-                            class: "text-danger" %></li>
+<div class="container">
+  <h2>INDEX CONSULTORIOS</h2>
+  <h4>Consultorios Veterinarios:</h4>
+    <ul>
+      <% @query_rooms.each do |room| %>
+        <li><% if user_signed_in? %>
+                <%if @user.is_vet%>
+                    <%= link_to room.name, class: "text-secondary" %><span class="mx-3"><%= link_to "Edit", edit_consulting_room_path(room) %></span> <%= link_to "Eliminar",
+                                room,
+                                method: :delete,
+                                remote: true,
+                                data: { confirm: "Estas seguro que deseas eliminar?" },
+                                class: "text-danger" %></li>
+                <%else%>
+                    <%= link_to room.name, new_consulting_room_booking_path(room),  class: "text-secondary" %>
+                <%end%>
             <%else%>
-                <%= link_to room.name, new_consulting_room_booking_path(room),  class: "text-secondary" %>
+                    <%= link_to room.name, new_consulting_room_booking_path(room), class: "text-secondary" %>
             <%end%>
-        <%else%>
-                <%= link_to room.name, new_consulting_room_booking_path(room), class: "text-secondary" %>
+      <% end %>
+    </ul>
+
+    <%if user_signed_in?%>
+        <%if @user.is_vet%>
+            <p><%= link_to "Añadir Consultorio", new_consulting_room_path %></p>
         <%end%>
-  <% end %>
-</ul>
-<%if user_signed_in?%>
-    <%if @user.is_vet%>
-        <p><%= link_to "Añadir Consultorio", new_consulting_room_path %></p>
     <%end%>
-<%end%>
+
+  <div id="map"
+      style="width: 100%; height: 500px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
