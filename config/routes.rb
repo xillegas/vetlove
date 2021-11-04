@@ -3,10 +3,10 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:index, :show] do
-    resources :records, only: [:index, :new, :create]
+    resources :records, only: [:new, :create]
   end
   get 'calendar', to: 'bookings#calendar'
-  resources :records, only: [:show]
+  resources :records, only: [:index, :show]
 
   devise_for :users
   root to: 'pages#home'
