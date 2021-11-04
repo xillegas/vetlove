@@ -30,7 +30,8 @@
               <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
             <% end %>
             <%= link_to "Mis mascotas", pets_path, class: "dropdown-item" %>
-            <%= link_to "Cuenta", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Dashboard vet", pets_path, class: "dropdown-item" %>
+            <%= link_to "Cuenta", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
