@@ -2,13 +2,24 @@
 <h4>Consultorios Veterinarios:</h4>
 <ul>
   <% @consulting_rooms.each do |room| %>
-    <li><%= link_to room.name, class: "text-secondary" %><span class="mx-3"><%= link_to "Edit", edit_consulting_room_path(room) %></span> <%= link_to "Eliminar",
-                        room,
-                        method: :delete,
-                        remote: true,
-                        data: { confirm: "Estas seguro que deseas eliminar?" },
-                        class: "text-danger" %></li>
+    <li><% if user_signed_in? %>
+            <%if @user.is_vet%>
+                <%= link_to room.name, class: "text-secondary" %><span class="mx-3"><%= link_to "Edit", edit_consulting_room_path(room) %></span> <%= link_to "Eliminar",
+                            room,
+                            method: :delete,
+                            remote: true,
+                            data: { confirm: "Estas seguro que deseas eliminar?" },
+                            class: "text-danger" %></li>
+            <%else%>
+                <%= link_to room.name, class: "text-secondary" %>
+            <%end%>
+        <%else%>
+            <%= link_to room.name, class: "text-secondary" %>
+        <%end%>
   <% end %>
 </ul>
-
-<p><%= link_to "Añadir Consultorio", new_consulting_room_path %></p>
+<%if user_signed_in?%>
+    <%if @user.is_vet%>
+        <p><%= link_to "Añadir Consultorio", new_consulting_room_path %></p>
+    <%end%>
+<%end%>

@@ -4,7 +4,19 @@ class ConsultingRoomsController < ApplicationController
 
   def index
     skip_policy_scope
+    @user = current_user
     @consulting_rooms = ConsultingRoom.all
+    @user_rooms = []
+    if @user.is_vet
+      @consulting_rooms.each do |room|
+        if room.user == current_user
+          @user_rooms << room
+        end
+      end
+      @user_rooms
+    else
+      @consulting_rooms
+    end
   end
 
   def new
