@@ -19,8 +19,14 @@ class ConsultingRoomsController < ApplicationController
       end
     else
         @query_rooms = @consulting_rooms
-    end 
+    end
     @query_rooms
+    @markers = @consulting_rooms.geocoded.map do |consulting_room|
+      {
+        lat: consulting_room.latitude,
+        lng: consulting_room.longitude
+      }
+    end
   end
 
   def new
