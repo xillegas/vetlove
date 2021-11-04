@@ -1,7 +1,11 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-  <% end %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-vetlove-classic">
+    <!-- Sidebar - Brand -->
+  <a class="d-flex align-items-center justify-content-center navbar-vetlove-classic-logo" href="<%= root_path %>">
+    <div class="vetlove-brand-logo">
+      <i class="fas fa-paw fa-sm fa-fw"></i>
+    </div>
+    <div class="vetlove-brand mx-3">VetLove</div>
+  </a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,25 +13,26 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto navbar-vetlove-classic-ulist">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
+        <li class="navbar-vetlove-classic-elemlist">
+          <%= link_to "Home", root_path %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+        <li class="navbar-vetlove-classic-elemlist">
+          <%= link_to "Consultorios", consulting_rooms_path %>
         </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" style="padding-top: 0px; padding-bottom: 0px;" aria-labelledby="navbarDropdown">
+            <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
+            <%= link_to "Mis mascotas", pets_path, class: "dropdown-item" %>
+            <%= link_to "Cuenta", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <li class="navbar-vetlove-classic-elemlist">
+          <%= link_to "Iniciar sesión", new_user_session_path, style: "margin-right:-16px" %>
         </li>
       <% end %>
     </ul>
