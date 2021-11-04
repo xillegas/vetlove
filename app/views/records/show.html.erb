@@ -1,3 +1,8 @@
 <h1>Records#show</h1>
 <p>Find me in app/views/records/show.html.erb</p>
-<%= @record %>
+<ul>
+  <li>Sintomas: <%= @record.symptoms %> </li>
+  <li>Diagnostico: <%= @record.diagnostic %> </li>
+  <li>Tratamiento: <%= @record.treatment %> </li>
+  <%= link_to "Volver", records_path %>
+</ul>

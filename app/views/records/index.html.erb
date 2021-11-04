@@ -2,16 +2,34 @@
 <p>Find me in app/views/records/index.html.erb</p>
 
 <ul>
-  <%= @records.each do |record| %>
-    <li>Vets Name <strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
-    <li>Owners Name <strong> <%= record.booking.pet.user.first_name %></strong></li>
-    <li>Symptoms<%= record.symptoms %></li>
-    <li>Diagnostic<%= record.diagnostic %></li>
-    <li>Treatment<%= record.treatment %></li>
-    <br>
-    <br>
-    <br>
+  <% @records.each do |record| %>
+    <% if current_user.is_vet %>
+      <% if current_user == record.booking.consulting_room.user %>
+        <li><span>Vets Name: </span><strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
+        <br>
+        <li> <span> Owners Name </span><strong> <%= record.booking.pet.user.first_name %></strong></li>
+        <br>
+        <li>Pets Name <strong> <%= record.booking.pet.name %></strong></li>
+        <br>
+        <%= link_to "Detalles", record_path(record) %>
+        <hr>
+      <% end %>
+    <% else %>
+      <% if current_user == record.booking.pet.user %>
+        <li><span>Vets Name: </span><strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
+        <br>
+        <li> <span> Owners Name </span><strong> <%= record.booking.pet.user.first_name %></strong></li>
+        <br>
+        <li>Pets Name <strong> <%= record.booking.pet.name %></strong></li>
+        <br>
+        <%= link_to "Detalles", record_path(record) %>
+        <hr>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% if current_user.is_vet %>
+    <%= link_to "Back to Bookings", calendar_path, class:"btn btn-primary" %>
+  <% else %>
+    <%= link_to "Back to Bookings", bookings_path, class:"btn btn-primary" %>
   <% end %>
 </ul>
-
-<%= link_to "Crear Record", new_record_path %>
