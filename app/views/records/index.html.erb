@@ -1,0 +1,17 @@
+<h1>Records#index</h1>
+<p>Find me in app/views/records/index.html.erb</p>
+
+<ul>
+  <%= @records.each do |record| %>
+    <li>Vets Name <strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
+    <li>Owners Name <strong> <%= record.booking.pet.user.first_name %></strong></li>
+    <li>Symptoms<%= record.symptoms %></li>
+    <li>Diagnostic<%= record.diagnostic %></li>
+    <li>Treatment<%= record.treatment %></li>
+    <br>
+    <br>
+    <br>
+  <% end %>
+</ul>
+
+<%= link_to "Crear Record", new_record_path %>
