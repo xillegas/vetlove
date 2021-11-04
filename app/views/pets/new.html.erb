@@ -6,4 +6,6 @@
     <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
     <%= f.button :submit, class: "btn btn-success" %>
   <% end %>
+  <br>
+  <%= link_to "Volver a mis mascotas", pets_path, class: "btn btn-danger" %>
 </div>
