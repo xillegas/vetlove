@@ -1,4 +1,7 @@
-<h2>Introduzca los datos del consultorio</h2>
+<div class="d-sm-flex align-items-center justify-content-between mb-3">
+  <p class="h2 m-0 text-gray-800">Agregar Consultorio</p>  
+</div>
+<p class="text-secondary">Introduzca los datos del consultorio</p>
 <%= simple_form_for [ @consulting_room ] do |f| %>
   <%= f.input :name, label: "Nombre del consultorio" %>
   <%= f.input :description, label: "Descripcion del consultorio" %>
@@ -11,5 +14,7 @@
   <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
   <%= f.submit "Crear Consultorio", class: "btn btn-primary" %>
 <% end %>
-
-<%= link_to "Volver", consulting_rooms_path %>
+<%= link_to consulting_rooms_path do %>
+  <i class="fas fa-arrow-left mt-3 mb-3"></i>
+  <span>Volver</span></a>
+<% end %>

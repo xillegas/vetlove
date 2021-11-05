@@ -1,11 +1,12 @@
 class PetsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:create, :edit, :update]
-  before_action :set_pet, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_pet, only: [:show, :edit, :update, :destroy]
   before_action :authorize_pundit
+  layout "main", only: %i[index new edit]
 
   def index
-    @pets = Pet.all
+    @pets = Pet.all.where(user: current_user)
   end
 
   def show
@@ -19,9 +20,9 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user = @user
     if @pet.save
-      redirect_to pets_path, notice: 'Mascota creado exitosamente.'
+      redirect_to pets_path, notice: "Mascota creado exitosamente."
     else
-      redirect_to pet_path(@pet), alert: 'Wrong parmeters'
+      redirect_to pet_path(@pet), alert: "Wrong parmeters"
     end
   end
 
@@ -30,7 +31,7 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pet_params)
-      redirect_to @pet, notice: 'Pet was successfully updated.'
+      redirect_to @pet, notice: "Pet was successfully updated."
     else
       render :edit
     end
@@ -38,9 +39,9 @@ class PetsController < ApplicationController
 
   def destroy
     if @pet.destroy
-      redirect_to pets_path, notice: 'Pet was successfully destroyed.'
+      redirect_to pets_path, notice: "Pet was successfully destroyed."
     else
-      render 'pets'
+      render "pets"
     end
   end
 
@@ -52,7 +53,7 @@ class PetsController < ApplicationController
   end
 
   def set_pet
-     @pet = Pet.find(params[:id])
+    @pet = Pet.find(params[:id])
   end
 
   def pet_params

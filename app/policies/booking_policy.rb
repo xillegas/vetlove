@@ -6,18 +6,15 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def index?
-    !user.is_vet
+    true
   end
 
   def show?
-    user.is_vet
+    !user.is_vet
   end
 
   def create?
     !user.is_vet
   end
 
-  def calendar?
-    user.is_vet
-  end
 end

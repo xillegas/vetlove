@@ -1,15 +1,34 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb <br>
-
-Previsualización de la cita para el veterinario, falta añadir botón de insertar record.</p>
-
-<ul>
-  <li>Fecha <%= @booking.date %> </li>
-  <li>Hora <%= @booking.time %> </li>
-  <li>Nombre: <%= @booking.pet.name %> </li>
-  <li>Especie: <%= @booking.pet.species %> </li>
-  <li>Sexo: <%= @booking.pet.gender %> </li>
-  <li>Fecha de nac: <%= @booking.pet.birthdate %> </li>
-  <li>Dueño: <%= @booking.pet.user.first_name %> </li>
-  <li>Teléfono: <%= @booking.pet.user.phone_number %> </li>
-</ul>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <p class="h1 mb-0 text-gray-800">Reserva</p>
+</div>
+<div class="list-group my-4">
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h3><%= @booking.consulting_room.name %></h3>
+        <p class="booking-small"><%= @booking.consulting_room.address %></p>
+      </div>
+      <p class="booking-title">Fecha de Consulta:<br>
+        <%= DateTime.parse(@booking.date.to_s).strftime("%F") %> </p>
+      <p class="booking-title">Hora de Consulta:<br>
+        <%= DateTime.parse(@booking.time.to_s).strftime("%I:%M%p")  %></p>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-start mb-1">
+      <div>
+        <p class="booking-small"><strong>Nombre:</strong> <%= @booking.pet.name.capitalize %></p>
+        <p class="booking-small"><strong>Especie:</strong> <%= @booking.pet.species.capitalize %></p>
+        <p class="booking-small"><strong>Genero:</strong> <%= @booking.pet.gender.capitalize %></p>
+        <p class="booking-small"><strong>Fecha de Nacimiento:</strong> <%= @booking.pet.birthdate %></p>
+        <p class="booking-small"><strong>Dueño:</strong> <%= @booking.pet.user.first_name.capitalize %> <%= @booking.pet.user.last_name.capitalize %></p>
+        <p class="booking-small"><strong>Veterinario:</strong> <%= @booking.consulting_room.user.first_name.capitalize %> <%= @booking.pet.user.last_name.capitalize %></p>
+        <p class="booking-small"><strong>Teléfono: </strong><%= @booking.pet.user.phone_number %></p>
+      </div>
+    </div>
+    <p class="note-booking">Nota: Los datos proporcionados por este medio son para uso informativo</p>
+  </div>
+</div>
+<%= link_to bookings_path do %>
+  <i class="fas fa-arrow-left"></i>
+  <span>Volver</span></a>
+<% end %>

@@ -1,17 +1,14 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-vetlove-classic">
-    <!-- Sidebar - Brand -->
+  <!-- Sidebar - Brand -->
   <a class="d-flex align-items-center justify-content-center navbar-vetlove-classic-logo" href="<%= root_path %>">
     <div class="vetlove-brand-logo">
       <i class="fas fa-paw fa-sm fa-fw"></i>
     </div>
     <div class="vetlove-brand mx-3">VetLove</div>
   </a>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-<% @user = current_user %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto navbar-vetlove-classic-ulist">
       <% if user_signed_in? %>
@@ -34,7 +31,7 @@
             <%= link_to "Cuenta", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Perfil", edit_user_registration_path, class: "dropdown-item" %>
             <% if current_user.is_vet %>
-              <%= link_to "Mis citas", calendar_path, class: "dropdown-item" %>
+              <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
             <% else %>
               <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
               <%= link_to "Mis mascotas", pets_path, class: "dropdown-item" %>
