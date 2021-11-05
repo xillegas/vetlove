@@ -1,11 +1,31 @@
-<div class="container">
-  <h2>Todas las mascotas</h2>
-  <ul>
-    <% @pets.each do |pet| %>
-      <% if current_user == pet.user %>
-        <li><%= link_to pet.name, pet_path(pet) %></li>
+<div class="container my-3">
+  <h2>Todas tus mascotas</h2>
+    <div class="list-group my-4">
+      <% @pets.each do |pet| %>
+        <% if current_user == pet.user %>
+          <div class='list-group-item'>
+            <div class='d-flex justify-content-between align-items-center vetlove-pets'>
+              <h3><%= link_to pet.name, pet_path(pet) %></h3>
+              <span>
+                <strong>Especie</strong><br>
+                <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
+                <%= pet.species %>
+              </span>
+              <span>
+                <strong>Sexo</strong><br>
+                <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
+                <%= pet.gender %>
+              </span>
+              <span>
+                <strong>Fecha de nacimiento</strong><br>
+                <span class='vetlove-text-color'><i class="fas fa-birthday-cake"></i></span>
+                <%= pet.birthdate %>
+              </span>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </div>
+
   <h4><%= link_to "Crear nueva mascota", new_pet_path, class:"btn btn-success" %></h4>
 </div>

@@ -1,12 +1,30 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
-
-<%= simple_form_for [@consulting_room, @booking] do |f|   %>
-    <%= f.input :date %>
-    <%= f.input :time %>
-    <%= f.association :pet, collection: @my_pets %>
-    <%# f.association :consulting_room %>
-    <%= f.submit "Crear Booking", class: "btn btn-primary" %>
-  <% end %>
+<div class="container my-3">
+<h1>Datos de la cita</h1>
+<div class="card consult-room-card p-3 my-3">
+  <h3><%= @consulting_room.name %></h3>
+  <span class="consult-room-distance">a 5 km</span>
+  <h5><%= @consulting_room.address %></h5>
+  <h5><%= @consulting_room.user.phone_number %></h5>
+  <p><%= @consulting_room.description %></p>
+</div>
+  <h2>Selecciona el día y hora de la cita de tu mascota</h2>
+<div class='vetlove-booking-form'>
+  <%= simple_form_for [@consulting_room, @booking] do |f|   %>
+  <div class="row">
+    <div class="col">
+        <%= f.input :date, label: 'Fecha', input_html: {class: "datepicker"}  %>
+    </div>
+    <div class="col">
+        <%= f.input :time, label: 'Hora' %>
+    </div>
+    <div class="col">
+        <%= f.association :pet, collection: @my_pets, label: 'Mi mascota' %>
+        <%# f.association :consulting_room %>
+        <%= f.submit "Confirmar cita", class: "btn button-vetlove" %>
+    </div>
+  </div>
+    <% end %>
+</div>
 <hr>
 <%= link_to "Volver", consulting_rooms_path, class: "btn btn-danger" %>
+</div>
