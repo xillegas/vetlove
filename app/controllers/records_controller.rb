@@ -3,7 +3,7 @@ class RecordsController < ApplicationController
   before_action :set_record, only: [:show]
   before_action :authenticate_pundit
   before_action :get_booking, except: [:index, :show]
-  layout 'main', only: %i[new]
+  layout 'main', only: %i[index show new]
 
 
   def index

@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :booking_authorize
-  layout 'main', only: %i[index show calendar show_vet]
+  layout 'main', only: %i[index show]
 
 
   def index
