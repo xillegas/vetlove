@@ -8,7 +8,10 @@
   <%= f.input :gender, collection: GENDERS, label: "Genero de tu mascota" %>
   <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, input_html: {class: "datepicker"} %>
   <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
-  <%= f.button :submit, class: "btn btn-success" %>
+  <%= f.button :submit, 'Crear Mascota', class: "btn btn-primary" %>
 <% end %>
-<br>
-<%= link_to "Volver a mis mascotas", pets_path, class: "btn btn-danger" %>
+<%= link_to pets_path do %>
+  <i class="fas fa-arrow-left mb-3 mt-3"></i>
+  <span>Volver</span></a>
+<% end %>
+

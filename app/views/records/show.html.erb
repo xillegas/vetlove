@@ -2,9 +2,33 @@
   <p class="h2 mb-0 text-gray-800">Historial Show</p>
   <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
 </div>
-<ul>
-  <li>Sintomas: <%= @record.symptoms %> </li>
-  <li>Diagnostico: <%= @record.diagnostic %> </li>
-  <li>Tratamiento: <%= @record.treatment %> </li>
-  <%= link_to "Volver", records_path %>
-</ul>
+<div class="list-group my-4">
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <p class="h3 pet-title"><%= @record.booking.pet.name %></p>
+        <p class="pet-small"><%= @record.booking.pet.species %> | <%= @record.booking.pet.gender %></p>
+      </div>
+      <div>
+        <p class="h5 pet-title">Fecha de Consulta<br>
+          <%= DateTime.parse(@record.booking.to_s).strftime("%F") %> </p>
+      </div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between mb-1">
+      <div>
+        <p class="pet-small"><strong>Veterinario:</strong> <%= @record.booking.consulting_room.name %></p>
+        <p class="pet-small"><strong>Sintomas:</strong> <%= @record.symptoms %></p>
+        <p class="pet-small"><strong>Diagnostico:</strong> <%= @record.diagnostic %></p>
+        <p class="pet-small"><strong>Tratamiento:</strong> <%= @record.treatment %></p>
+      </div>
+    </div>
+    <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
+  </div>
+</div>
+<%= link_to records_path do %>
+  <i class="fas fa-arrow-left mb-3"></i>
+  <span>Volver</span></a>
+<% end %>
+
+

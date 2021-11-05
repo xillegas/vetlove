@@ -2,35 +2,58 @@
   <p class="h2 mb-0 text-gray-800">Historial</p>
   <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
 </div>
-<ul>
-  <% @records.each do |record| %>
-    <% if current_user.is_vet %>
-      <% if current_user == record.booking.consulting_room.user %>
-        <li><span>Vets Name: </span><strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
-        <br>
-        <li> <span> Owners Name </span><strong> <%= record.booking.pet.user.first_name %></strong></li>
-        <br>
-        <li>Pets Name <strong> <%= record.booking.pet.name %></strong></li>
-        <br>
-        <%= link_to "Detalles", record_path(record) %>
-        <hr>
-      <% end %>
-    <% else %>
-      <% if current_user == record.booking.pet.user %>
-        <li><span>Vets Name: </span><strong> <%= record.booking.consulting_room.user.first_name %></strong></li>
-        <br>
-        <li> <span> Owners Name </span><strong> <%= record.booking.pet.user.first_name %></strong></li>
-        <br>
-        <li>Pets Name <strong> <%= record.booking.pet.name %></strong></li>
-        <br>
-        <%= link_to "Detalles", record_path(record) %>
-        <hr>
-      <% end %>
+<% @records.each do |record| %>
+  <% if current_user.is_vet %>
+    <% if current_user == record.booking.consulting_room.user %>
+      <div class="list-group my-4">
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <p class="h3 pet-title"><%= record.booking.pet.name %></p>
+            </div>
+            <div>
+              <%= link_to "Detalle de Consulta", record_path(record), class:"text-primary" %>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between mb-1">
+            <div>
+              <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.to_s).strftime("%F") %></p>
+              <p class="pet-small"><strong>Dueño:</strong> <%= record.booking.pet.name %></p>
+              <p class="pet-small"><strong>Teléfono:</strong> <%= record.booking.pet.user.phone_number %></p>
+              <p class="pet-small"><strong>Tipo:</strong> <%= record.booking.pet.species %></p>
+              <p class="pet-small"><strong>Genero:</strong> <%= record.booking.pet.gender %></p>
+            </div>
+          </div>
+          <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <% if current_user == record.booking.pet.user %>
+      <div class="list-group my-4">
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <p class="h3 pet-title"><%= record.booking.pet.name %></p>
+            </div>
+            <div>
+              <%= link_to "Detalle de Consulta", record_path(record), class:"text-primary" %>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between mb-1">
+            <div>
+              <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.to_s).strftime("%F") %></p>
+              <p class="pet-small"><strong>Veterinario:</strong> <%= record.booking.consulting_room.name %></p>
+              <p class="pet-small"><strong>Teléfono:</strong> <%= record.booking.consulting_room.user.phone_number %></p>
+              <p class="pet-small"><strong>Tipo:</strong> <%= record.booking.pet.species %></p>
+              <p class="pet-small"><strong>Genero:</strong> <%= record.booking.pet.gender %></p>
+            </div>
+          </div>
+          <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
+        </div>
+      </div>
     <% end %>
   <% end %>
-  <% if current_user.is_vet %>
-    <%= link_to "Back to Bookings", bookings_path, class:"btn btn-primary" %>
-  <% else %>
-    <%= link_to "Back to Bookings", bookings_path, class:"btn btn-primary" %>
-  <% end %>
-</ul>
+<% end %>
