@@ -2,7 +2,8 @@ import flatpickr from "flatpickr";
 
 const initFlatpickr = () => {
   flatpickr(".datepicker", {
-    altInput: true
+    altInput: true,
+    enableTime: true
   });
 }
 
