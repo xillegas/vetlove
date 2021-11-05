@@ -28,7 +28,7 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update(pet_params)
-      redirect_to @pet, notice: "Pet was successfully updated."
+      redirect_to pets_path, notice: "Pet was successfully updated."
     else
       render :edit
     end
