@@ -1,14 +1,28 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
-
-<ul>
-  <% @bookings.each do |bookie| %>
-  <li><h4><%= bookie.pet.name %></h4></li>
-  <li>Pet name: <%= bookie.pet.name %></li>
-  <li>Owner <%= bookie.pet.user.first_name %></li>
-  <li>Consult day <%= bookie.date %></li>
-  <br>
-  <hr>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <p class="h1 mb-0 text-gray-800">Calendario</p>
+</div>
+<div class="mr-3 ml-3">
+  <%= month_calendar do |date| %>
+    <%= date.to_formatted_s(:short) %>
+    <% @bookings.each do |bookie| %>
+      <% if date == Date.parse(bookie.date.to_s)  %>
+        <br>
+        <small><strong>Lugar:</strong> <%= bookie.consulting_room.name %> </small>
+        <br>
+        <small><strong>Paciente:</strong> <%= bookie.pet.name %></small>
+        <br>
+        <small><strong>Hora:</strong> <%= DateTime.parse(bookie.time.to_s).strftime("%I:%M%p")  %></small>
+        <br>
+        <% if current_user.is_vet?  %>
+          <div class="d-flex justify-content-end">
+            <small><%= link_to "Ver cita", new_booking_record_path(bookie) %></small>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-end">
+            <small><%= link_to "Ver más", booking_path(bookie) %></small>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   <% end %>
-  <%= link_to "History of pets", records_path, class:"btn btn-primary" %>
-</ul>
+</div>

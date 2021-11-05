@@ -28,7 +28,7 @@
     <% end %>
   <% end %>
   <% if current_user.is_vet %>
-    <%= link_to "Back to Bookings", calendar_path, class:"btn btn-primary" %>
+    <%= link_to "Back to Bookings", bookings_path, class:"btn btn-primary" %>
   <% else %>
     <%= link_to "Back to Bookings", bookings_path, class:"btn btn-primary" %>
   <% end %>

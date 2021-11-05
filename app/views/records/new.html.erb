@@ -1,10 +1,24 @@
-<h1>Records#new</h1>
-<p>Find me in app/views/records/new.html.erb</p>
-<div class="container">
-  <%= simple_form_for [@booking, @record] do |f| %>
-    <%= f.input :symptoms, label: "Sintomas" %>
-    <%= f.input :diagnostic, label: "Diagnostico" %>
-    <%= f.input :treatment, label: "Tratamiento" %>
-    <%= f.button :submit, class: "btn btn-success" %>
-  <% end %>
+<div class="row">
+  <div class="col-md-12 col-lg-6">
+<div class="d-sm-flex align-items-center justify-content-between mb-3">
+  <p class="h1 mb-0 text-gray-800">Registro</p>
 </div>
+    <div class="mb-3">
+      <p class="record-label"><strong>Nombre:</strong> <%= @booking.pet.name.capitalize %></p>
+      <p class="record-label"><strong>Especie:</strong> <%= @booking.pet.species.capitalize %></p>
+      <p class="record-label"><strong>Genero:</strong> <%= @booking.pet.gender.capitalize %></p>
+      <p class="record-label"><strong>Fecha de Nacimiento:</strong> <%= @booking.pet.birthdate %></p>
+      <p class="record-label"><strong>Dueño:</strong> <%= @booking.pet.user.first_name.capitalize %> <%= @booking.pet.user.last_name.capitalize %></p>
+      <p class="record-label"><strong>Teléfono: </strong><%= @booking.pet.user.phone_number %></p>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-6">
+    <%= image_tag "https://www.laprensa.com.ec/wp-content/uploads/2021/09/almohadillas-perro-1.jpg", class:"img-profile-record rounded-circle" %>
+  </div>
+</div>
+<%= simple_form_for [@booking, @record] do |f| %>
+  <%= f.input :symptoms, label: "Sintomas" %>
+  <%= f.input :diagnostic, label: "Diagnostico" %>
+  <%= f.input :treatment, label: "Tratamiento" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

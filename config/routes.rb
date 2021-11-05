@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "dashboard", to: "main#dashboard", as: "dashboard"
-  get 'calendar', to: 'bookings#calendar', as: "calendar"
-  get '/calendar/:id', to: 'bookings#show_vet', as: 'calendar_date'
   get 'configuration', to: 'main#configuration', as: "configuration"
 
   resources :consulting_rooms, except: [:show]
