@@ -1,7 +1,14 @@
 <div class="banner-vetlove">
   <h1>Atencion de primera para los consentidos de casa</h1>
   <div class="searcher">
-    <input type="text" id="buscar" name="fname" placeholder="Buscar">
-      <a href="#" id="search-b"><i class="fas fa-search size-button-search"></i></a>
-  </div>
+<%= form_tag consulting_rooms_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    id: 'buscar',
+    placeholder: "Buscar veterinarios"
+  %>
+  <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-b" %>
+<% end %>
+</div>
 </div>
