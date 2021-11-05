@@ -1,5 +1,5 @@
-SPECIES = ["Dog", "Cat", "Turtle", "Rabbit", "Hamster", "Bird", "Fish", "Ferret", "Snake", "Guinea pig" ]
-GENDERS = %w[Male Female]
+SPECIES = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Pez", "Capibara", "Serpiente", "Cerdo", "Caballo"]
+GENDERS = ['Macho', 'Hembra']
 class Pet < ApplicationRecord
   belongs_to :user
   has_many :bookings
