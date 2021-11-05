@@ -9,9 +9,6 @@ class PetsController < ApplicationController
     @pets = Pet.all.where(user: current_user)
   end
 
-  def show
-  end
-
   def new
     @pet = Pet.new
   end

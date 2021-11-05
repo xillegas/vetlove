@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :records, only: [:new, :create]
   end
   resources :records, only: [:index, :show]
-  resources :pets
+  resources :pets, except: [:show]
 end

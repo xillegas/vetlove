@@ -4,7 +4,7 @@
   <h4><%= link_to "Agregar nueva mascota", new_pet_path, class:"btn btn-primary pt-1" %></h4>
 </div>
 <% if @pets.empty? %>
-<p class="text-muted">Aún no has agregado mascotas!</p>
+  <p class="text-muted">Aún no has agregado mascotas!</p>
 <% else %>
   <% @pets.each do |pet| %>
     <div class="list-group my-4">
@@ -15,7 +15,6 @@
             <p class="pet-small"><%= pet.species %></p>
           </div>
           <div>
-            <%= link_to "Ver", pet_path(pet), class:"text-primary" %> | 
             <%= link_to "Editar", edit_pet_path(pet), class:"text-warning" %> | 
             <%= link_to "Eliminar", pet, method: :delete,
               remote: true,
