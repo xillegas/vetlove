@@ -36,15 +36,16 @@
   background-color: #649DAD;
 }
 
-.button-vetlove {
+.button-vetlove-card-pos {
   position: absolute;
-  width: 126px;
-  height: 66px;
   right: 20px;
   bottom: 20px;
+}
+
+.button-vetlove {
   color: #FFF;
   background-color: #649DAD;
-  font-size: 21px;
+  font-size: 19px;
   text-align: center;
   text-decoration: none;
   border-radius: 5px;
@@ -53,5 +54,24 @@
     background-color: #66C6BA;
     color: white;
     text-decoration: none;
+  }
+}
+
+.vetlove-booking-form {
+  position: relative;
+  width: 800px;
+}
+
+.vetlove-text-color {
+  color: #649DAD;
+}
+
+.vetlove-pets {
+  h3 {
+    min-width:100px;
+  }
+  span{
+    text-align: center;
+    min-width:100px;
   }
 }
