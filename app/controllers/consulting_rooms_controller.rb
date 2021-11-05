@@ -1,6 +1,7 @@
 class ConsultingRoomsController < ApplicationController
-    before_action :authenticate_user!, except: [:index]
-    before_action :authorize_pundit, except: [:index]
+  before_action :authenticate_user!, except: [:index]
+  before_action :authorize_pundit, except: [:index]
+  layout "main", only: %i[new]
 
   def index
     skip_policy_scope
@@ -11,20 +12,20 @@ class ConsultingRoomsController < ApplicationController
       if @user.is_vet
         @consulting_rooms.each do |room|
           if room.user == @user
-          @query_rooms << room
+            @query_rooms << room
           end
         end
       else
         @query_rooms = @consulting_rooms
       end
     else
-        @query_rooms = @consulting_rooms
+      @query_rooms = @consulting_rooms
     end
     @query_rooms
     @markers = @consulting_rooms.geocoded.map do |consulting_room|
       {
         lat: consulting_room.latitude,
-        lng: consulting_room.longitude
+        lng: consulting_room.longitude,
       }
     end
   end
@@ -39,7 +40,7 @@ class ConsultingRoomsController < ApplicationController
     @user = current_user
     @consulting_room.user = @user
     @consulting_room.save
-    redirect_to consulting_rooms_path, notice: 'Consultorio creado exitosamente!'
+    redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
   end
 
   def edit
@@ -51,13 +52,13 @@ class ConsultingRoomsController < ApplicationController
     @consulting_room = ConsultingRoom.find(params[:id])
     @user = current_user
     @consulting_room.update(params_consulting_rooms)
-    redirect_to consulting_rooms_path, notice: 'Datos del consultorio actualizados exitosamente!'
+    redirect_to consulting_rooms_path, notice: "Datos del consultorio actualizados exitosamente!"
   end
 
   def destroy
     @consulting_room = ConsultingRoom.find(params[:id])
     @consulting_room.destroy
-    redirect_to consulting_rooms_path, notice: 'Consultorio eliminado exitosamente!'
+    redirect_to consulting_rooms_path, notice: "Consultorio eliminado exitosamente!"
   end
 
   private

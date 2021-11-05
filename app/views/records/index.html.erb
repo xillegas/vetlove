@@ -1,6 +1,7 @@
-<h1>Records#index</h1>
-<p>Find me in app/views/records/index.html.erb</p>
-
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <p class="h2 mb-0 text-gray-800">Historial</p>
+  <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
+</div>
 <ul>
   <% @records.each do |record| %>
     <% if current_user.is_vet %>
