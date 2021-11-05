@@ -10,7 +10,7 @@
       <%= simple_form_for @pet do |f| %>
         <%= f.input :name, label: "Nombre de tu mascota" %>
         <%= f.input :gender, collection: GENDERS, label: "Genero de tu mascota" %>
-        <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, autofocus: true, input_html: {id: "datePets"} %>
         <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
         <div class="text-center mt-4">
           <%= f.button :submit, class: "btn btn-success", value:"Añadir a mis mascotas" %>
