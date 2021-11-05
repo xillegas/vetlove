@@ -1,19 +1,14 @@
 class BookingsController < ApplicationController
   before_action :booking_authorize
-  layout 'main', only: %i[calendar]
+  layout 'main', only: %i[index show]
 
 
   def index
-    @bookings = Booking.joins(:pet).where("pets.user" => current_user.id)
-    # @user = current_user
-    # @bookings = Booking.all
-    # @user_bookings = []
-    # @bookings.each do |booking|
-    #   if booking.pet.user_id == @user.id
-    #     @user_bookings << booking
-    #   end
-    # end
-    # @user_bookings
+    if current_user.is_vet?
+      @bookings = Booking.joins(:consulting_room).where("consulting_room.user" => current_user.id)
+    else
+      @bookings = Booking.joins(:pet).where("pets.user" => current_user.id)
+    end
   end
 
   def show
@@ -38,10 +33,6 @@ class BookingsController < ApplicationController
     else
       redirect_to bookings_path, alert: 'Wrong parmeters'
     end
-  end
-
-  def calendar
-     @bookings = Booking.joins(:consulting_room).where("consulting_room.user" => current_user.id)
   end
 
   private
