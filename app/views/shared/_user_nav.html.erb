@@ -9,6 +9,12 @@
       <i class="fas fa-home fa-sm fa-fw mr-2"></i>
       Home
     <% end %>
+    <% unless current_user.is_vet? %>
+      <%= link_to consulting_rooms_path, class: "dropdown-item text-gray-700" do %>
+        <i class="fas fa-search-location fa-sm fa-fw mr-2"></i>
+        Consultorios
+      <% end %>
+    <% end %>
     <div class="dropdown-divider"></div>
     <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
       <i class="fas fa-home fa-sm fa-fw mr-2"></i>
