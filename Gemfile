@@ -39,6 +39,8 @@ gem "simple_calendar", "~> 2.4"
 
 gem 'geocoder'
 
+# Buscador
+gem 'pg_search', '~> 2.3.0'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'

@@ -16,10 +16,18 @@ class ConsultingRoomsController < ApplicationController
           end
         end
       else
-        @query_rooms = @consulting_rooms
+        if params[:query].present?
+          @query_rooms = ConsultingRoom.search_by_name(params[:query])
+        else
+          @query_rooms = ConsultingRoom.take(6)
+        end
       end
     else
-      @query_rooms = @consulting_rooms
+      if params[:query].present?
+        @query_rooms = ConsultingRoom.search_by_name(params[:query])
+      else
+        @query_rooms = ConsultingRoom.take(6)
+      end
     end
     @query_rooms
     @markers = @consulting_rooms.geocoded.map do |consulting_room|

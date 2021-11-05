@@ -1,10 +1,19 @@
 <div class="container">
-<h2>INDEX CONSULTORIOS</h2>
-<h4>Consultorios Veterinarios:</h4>
+<h2>Consultorios Veterinarios:</h2>
 <%# Semillas temporales %>
 <% especie_mascotas = ['perros', 'gatos', 'loros'] %>
 <% forma_pago = ['efectivo', 'punto de venta', 'zelle', 'paypal'] %>
-
+<div class="searcher">
+<%= form_tag consulting_rooms_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    id: 'buscar',
+    placeholder: "Buscar veterinarios"
+  %>
+  <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
+<% end %>
+</div>
   <% @query_rooms.each_with_index do |room, index| %>
     <% if user_signed_in? %>
       <%if @user.is_vet%>
