@@ -1,6 +1,6 @@
 .navbar-lewagon {
+  display: flex !important;
   justify-content: space-between;
-  background: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,77 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+@media (min-width: 576px) {
+  .navbar-expand-sm {
+    justify-content: space-between !important;
+  }
+}
+
+.colores {
+  color:red;
+}
+
+/* Navbar por modificar */
+.navbar-vetlove-classic {
+	background-color: #649DAD;
+	width: 100%;
+	margin: 0;
+	height: 67px;
+}
+
+.navbar-vetlove-classic .navbar-vetlove-classic-logo {
+  position: relative;
+	height: 40px;
+	padding-right: 15px;
+	padding-left: 68px;
+  color: white;
+	background-color: #649DAD;
+	text-decoration: none;
+  .vetlove-brand-logo {
+    font-size: 2rem;
+  }
+  a:hover {
+    color: #66C6BA;
+  }
+}
+
+.vetlove-brand {
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.navbar-vetlove-classic-ulist a {
+	color: white;
+	display: block;
+	padding: 22px 21px 21px;
+	background-color: #649DAD;
+	text-decoration: none;
+  &:hover {
+    background-color: #66C6BA;
+  }
+}
+
+.navbar-vetlove-classic .navbar-vetlove-classic-ulist {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-vetlove-classic .navbar-vetlove-classic-elemlist {
+	display: inline;
+	float: left;
+}
+
+.navbar-vetlove-classic .navbar-vetlove-classic-elemlist a:hover {
+  background-color: #66C6BA;
+}
+
+.navbar-vetlove-user {
+  margin: 0.5rem;
+  width: 50px;
 }

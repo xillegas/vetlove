@@ -1,13 +1,24 @@
+// fortawesome
+// $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+// @import '@fortawesome/fontawesome-free/scss/fontawesome';
+// @import '@fortawesome/fontawesome-free/scss/brands';
+// @import '@fortawesome/fontawesome-free/scss/solid';
+
 // Graphical variables
 @import "config/fonts";
-@import "config/colors";
+@import "variables";
 @import "config/bootstrap_variables";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "simple_calendar";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "flatpickr/dist/flatpickr";
+@import "./shared/sb-admin-2";
+
+// sb-admin
