@@ -12,7 +12,10 @@
   <%= simple_form_for [@consulting_room, @booking] do |f|   %>
   <div class="row">
     <div class="col">
-        <%= f.input :date, label: 'Fecha', input_html: {class: "datepicker"}  %>
+        <div class='row datetimerange'>
+        <%# f.input :date, as: :datetime_picker, wrapper: :ranged_datetime %>
+        </div>
+        <%= f.input :date, label: 'Fecha' %>
     </div>
     <div class="col">
         <%= f.input :time, label: 'Hora' %>
@@ -20,7 +23,8 @@
     <div class="col">
         <%= f.association :pet, collection: @my_pets, label: 'Mi mascota' %>
         <%# f.association :consulting_room %>
-        <%= f.submit "Confirmar cita", class: "btn button-vetlove" %>
+        <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
+
     </div>
   </div>
     <% end %>

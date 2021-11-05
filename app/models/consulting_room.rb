@@ -7,7 +7,7 @@ class ConsultingRoom < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name,
-    against: [:name],
+    against: [:name, :address, :description, :state, :municipality, :parish],
     using: {
               tsearch: { prefix: true } # <-- now `superman batm` will return something!
             }
