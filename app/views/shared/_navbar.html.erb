@@ -19,7 +19,7 @@
           <%= link_to "Consultorios", consulting_rooms_path %>
         </li>
         <li class="navbar-vetlove-classic-elemlist">
-          <%= link_to "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}","#" %>
+          <%= link_to "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}", edit_user_registration_path %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
