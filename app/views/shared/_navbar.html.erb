@@ -22,9 +22,14 @@
           <%= link_to "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}","#" %>
         </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg", class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" style="padding-top: 0px; padding-bottom: 0px;" aria-labelledby="navbarDropdown">
             <%= link_to "Cuenta", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Perfil", edit_user_registration_path, class: "dropdown-item" %>
             <% if current_user.is_vet %>
               <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
             <% else %>
