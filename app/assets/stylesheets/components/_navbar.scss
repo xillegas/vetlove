@@ -88,6 +88,7 @@
   position: fixed;
   width: 100%;
   padding: 0 30px;
+  transition: 0.5s;
 }
 
 .botones{
@@ -102,4 +103,10 @@
 
 .boton-inicio{
 
+}
+
+.change-color{
+  background-color: #FFFF;
+  transition: 0.5s;
+  color: #649DAD;
 }
