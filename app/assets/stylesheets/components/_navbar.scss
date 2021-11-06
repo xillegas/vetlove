@@ -37,12 +37,10 @@
   color: white;
 	background-color: #649DAD;
 	text-decoration: none;
-  .vetlove-brand-logo {
-    font-size: 2rem;
-  }
   a:hover {
     color: #66C6BA;
   }
+
 }
 
 .vetlove-brand {
@@ -51,13 +49,17 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
+  text-decoration: none;
 }
-
+.vetlove-brand-logo{
+  font-size: 30px;
+}
 .navbar-vetlove-classic-ulist a {
-	color: black;
+	color: #649DAD;
 	display: block;
 	padding: 22px 21px 21px;
 	text-decoration: none;
+
 }
 
 .navbar-vetlove-classic .navbar-vetlove-classic-ulist {
@@ -77,18 +79,27 @@
 
 .navbar-vetlove-user {
   margin: 0.5rem;
-  width: 50px;
+  width: 45px;
+  border: solid #649DAD;
 }
 
 .navbar-home {
-  background-color: rgba(255, 255, 255, 0.082);
+  background-color: rgba(255, 255, 255, 0);
   position: fixed;
   width: 100%;
-
+  padding: 0 30px;
 }
 
 .botones{
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #649DAD;
+  text-shadow: 1px 1px 2px black;
+  font-size: 17px;
+  padding: 0 10px;
+}
+
+.boton-inicio{
+
 }
