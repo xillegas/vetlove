@@ -45,8 +45,11 @@ class ConsultingRoomsController < ApplicationController
 
   def create
     @consulting_room = ConsultingRoom.new(params_consulting_rooms)
+    # Selected keywords es el nombre del formulario
+    selected_keywords = params[:selected_keywords]
     @user = current_user
     @consulting_room.user = @user
+    @consulting_room.animal = selected_keywords.join(" ")
     @consulting_room.save
     redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
   end

@@ -1,7 +1,6 @@
 <div class="container my-3">
   <h2>Consultorios Veterinarios:</h2>
   <%# Semillas temporales %>
-  <% especie_mascotas = ['perros', 'gatos', 'loros'] %>
   <% forma_pago = ['efectivo', 'punto de venta', 'zelle', 'paypal'] %>
 </div>
 <div class="container">
@@ -70,8 +69,9 @@
                     <div>
                       <div>
                         <h5>Atendemos:</h5>
+                          <% especie_mascotas = room.animal.split(" ") %>
                           <% especie_mascotas.each do |especie| %>
-                            <span class="badge badge-pill badge-vetlove"><%= especie %></span>
+                            <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
                           <% end %>
                         <h5>Aceptamos:</h5>
                           <% forma_pago.each do |pagos| %>

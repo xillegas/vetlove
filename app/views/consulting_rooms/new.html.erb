@@ -12,6 +12,18 @@
   <%= f.input :init_hour_day, label: "Hora de apertura" %>
   <%= f.input :end_hour_day, label: "Hora de cierre" %>
   <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
+  <p>Ofrece atención a</p>
+  <div class="container my-2">
+    <div class="d-flex flex-wrap">
+      <% species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"] %>
+      <% species.each do |sp| %>
+        <div class="w-25 my-2">
+        <input id="item_selected_keywords" name="selected_keywords[]"
+          type="checkbox" value="<%= sp %>" /><span><%= sp %>s</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
   <%= f.submit "Crear Consultorio", class: "btn btn-primary" %>
 <% end %>
 <%= link_to consulting_rooms_path do %>

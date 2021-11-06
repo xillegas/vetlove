@@ -45,13 +45,14 @@ User.create([{ email: "maria@gmail.com", first_name: "Maria", last_name: "Lopez"
 puts "Usuario: maria@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
 
+pet_species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"]
 
 puts ""
 puts "Insertando ConsultingRoom"
 User.all.each do |user|
   ConsultingRoom.create([{ address: Faker::Address.full_address,
                            name: "Consultorio Dr. #{user.first_name} #{user.last_name}",
-                           description: Faker::Lorem.paragraph(sentence_count: 6, supplemental: false, random_sentences_to_add: 4) ,
+                           description: Faker::Lorem.paragraph(sentence_count: 6, supplemental: false, random_sentences_to_add: 4) , #Mejorar
                            state: Faker::Address.state,
                            municipality: Faker::Address.city,
                            parish: Faker::Address.street_name,
@@ -60,6 +61,7 @@ User.all.each do |user|
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",
+                           animal: "Perro Gato #{pet_species[2..].sample(2).join(" ")}", #Esto es lo nuevo.
                            user: (user if user.is_vet) }])
 end
 
@@ -80,13 +82,13 @@ cons_adjetivo = ['Felices', 'Contentas', 'Sanas', 'Salud', 'Amorosas', 'Saludabl
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",
+                           animal: "Perro Gato #{pet_species[2..].sample(2).join(" ")}",
                            user: vet_genesis}])
 end
 
 puts ""
 puts "Insertando Pets"
 pet_gender = ['Macho', 'Hembra']
-pet_species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Pez", "Capibara", "Serpiente", "Cerdo", "Caballo"]
 User.all.each do |user|
   Pet.create([{ name: Faker::Creature::Dog.name,
                 gender: pet_gender.sample,
@@ -101,7 +103,7 @@ puts "Insertando Bookings"
 User.all.each_with_index do |user, index|
   Booking.create([{ date: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :morning),
                     time: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :afternoon),
-                    consulting_room: ConsultingRoom.find(rand(1..3)),
+                    consulting_room: ConsultingRoom.find(rand(1..3)), # Resolver este problema, todos los vets del seed deben tener booking.
                     attended: false,
                     pet: Pet.find_by(user: user) }])
 end
