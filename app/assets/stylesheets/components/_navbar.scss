@@ -84,11 +84,16 @@
   background-color: rgba(255, 255, 255, 0.082);
   position: fixed;
   width: 100%;
-
+  transition: 0.5s;
 }
 
 .botones{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.change-color{
+  background-color: #FFFF;
+  transition: 0.5s;
 }
