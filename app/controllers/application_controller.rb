@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+  # def remote_ip
+  #   if request.remote_ip == '127.0.0.1'
+  #     # Hard coded remote address
+  #     '123.45.67.89'
+  #   else
+  #     request.remote_ip
+  #   end
+  # end
 
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
