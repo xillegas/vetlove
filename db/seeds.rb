@@ -77,8 +77,6 @@ cons_adjetivo = ['Felices', 'Contentas', 'Sanas', 'Salud', 'Amorosas', 'Saludabl
                            state: Faker::Address.state,
                            municipality: Faker::Address.city,
                            parish: Faker::Address.street_name,
-                           latitude: (Faker::Address.latitude).to_f,
-                           longitude: (Faker::Address.longitude).to_f,
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",

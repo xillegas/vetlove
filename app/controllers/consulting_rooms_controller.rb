@@ -6,7 +6,7 @@ class ConsultingRoomsController < ApplicationController
   def index
     skip_policy_scope
     @user = current_user
-    @consulting_rooms = ConsultingRoom.all
+    @consulting_rooms = ConsultingRoom.geocoded
     @query_rooms = []
     if user_signed_in?
       if @user.is_vet
@@ -18,6 +18,7 @@ class ConsultingRoomsController < ApplicationController
       else
         if params[:query].present?
           @query_rooms = ConsultingRoom.search_by_name(params[:query])
+          search(@query_rooms)
         else
           @query_rooms = ConsultingRoom.take(6)
         end
@@ -25,18 +26,21 @@ class ConsultingRoomsController < ApplicationController
     else
       if params[:query].present?
         @query_rooms = ConsultingRoom.search_by_name(params[:query])
+        search(@query_rooms)
       else
         @query_rooms = ConsultingRoom.take(6)
       end
     end
     @query_rooms
     @markers = @consulting_rooms.geocoded.map do |consulting_room|
-      {
-        lat: consulting_room.latitude,
-        lng: consulting_room.longitude,
-      }
-    end
+            {
+              lat: consulting_room.latitude,
+              lng: consulting_room.longitude,
+              info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room })
+            }
+      end
   end
+
 
   def new
     @user = current_user
@@ -73,6 +77,16 @@ class ConsultingRoomsController < ApplicationController
   end
 
   private
+
+  def search(query_rooms)
+    @markers = query_rooms.geocoded.map do |query_room|
+          {
+            lat: query_room.latitude,
+            lng: query_room.longitude,
+            info_window: render_to_string(partial: "info_window", locals: { query_room: query_room })
+          }
+    end
+  end
 
   def params_consulting_rooms
     params.require(:consulting_room).permit(:name, :address, :description, :state, :municipality, :parish, :init_hour_day, :end_hour_day, :week_days, :user_id)
