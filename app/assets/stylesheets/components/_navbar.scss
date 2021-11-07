@@ -71,7 +71,6 @@
 .navbar-vetlove-classic-ulist a {
 	color: $primary-color;
 	display: block;
-  margin: 8px;
 	padding: 7px 11px 7px;
 	text-decoration: none;
 
@@ -128,6 +127,7 @@
 .boton-inicio{
   border: 2px solid $primary-color;
   border-radius: 15px;
+  margin: 8px;
 }
 .change-color-devise{
   background-color: #FFFF;

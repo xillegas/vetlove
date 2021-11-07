@@ -18,13 +18,14 @@ ActiveStorage.start()
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
 // WRITE YOUR OWN JS STARTING FROM HERE 👇
 // ----------------------------------------------------
-
+$('#exampleModal').modal('show')
 // External imports
 import "bootstrap";
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import "../plugins/navbar";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
