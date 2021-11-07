@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "dashboard", to: "main#dashboard", as: "dashboard"
-  get 'configuration', to: 'main#configuration', as: "configuration"
+  get "configuration", to: "main#configuration", as: "configuration"
+  get "consulting_rooms/index_vet", to: "consulting_rooms#index_vet"
+  get "consulting_rooms/index_user", to: "consulting_rooms#index_user"
 
   resources :consulting_rooms, except: [:show]
   resources :consulting_rooms, only: [:index, :new] do

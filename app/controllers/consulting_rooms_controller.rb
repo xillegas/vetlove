@@ -3,23 +3,39 @@ class ConsultingRoomsController < ApplicationController
   before_action :authorize_pundit, except: [:index]
   layout "main", only: %i[new]
 
-  def index
+  def index_vet
     skip_policy_scope
     @user = current_user
     @consulting_rooms = ConsultingRoom.all
     @query_rooms = []
+    @consulting_rooms.each do |room|
+      @query_rooms << room if room.user == @user
+    end
+  end
+
+  def index_user
+    skip_policy_scope
+    @user = current_user
+    @consulting_rooms = ConsultingRoom.all
+    @query_rooms = []
+    if params[:query].present?
+      @query_rooms = ConsultingRoom.search_by_name(params[:query])
+      search(@query_rooms)
+    else
+      @query_rooms = ConsultingRoom.take(6)
+    end
+  end
+
+  def index
+    skip_policy_scope
+    @consulting_rooms = ConsultingRoom.all
+    @user = current_user
+    @query_rooms = []
     if user_signed_in?
       if @user.is_vet
-        @consulting_rooms.each do |room|
-          @query_rooms << room if room.user == @user
-        end
+        redirect_to consulting_rooms_index_vet_path, notice: "Vets Index"
       else
-        if params[:query].present?
-          @query_rooms = ConsultingRoom.search_by_name(params[:query])
-          search(@query_rooms)
-        else
-          @query_rooms = ConsultingRoom.take(6)
-        end
+        redirect_to consulting_rooms_index_user_path, notice: "Users Index"
       end
     else
       if params[:query].present?
@@ -28,14 +44,13 @@ class ConsultingRoomsController < ApplicationController
       else
         @query_rooms = ConsultingRoom.take(6)
       end
-    end
-    @query_rooms
-    @markers = @consulting_rooms.geocoded.map do |consulting_room|
-      {
-            lat: consulting_room.latitude,
-            lng: consulting_room.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
-          }
+      @markers = @consulting_rooms.geocoded.map do |consulting_room|
+        {
+          lat: consulting_room.latitude,
+          lng: consulting_room.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
+        }
+      end
     end
   end
 
@@ -78,10 +93,10 @@ class ConsultingRoomsController < ApplicationController
   def search(query_rooms)
     @markers = query_rooms.geocoded.map do |consulting_room|
       {
-            lat: consulting_room.latitude,
-            lng: consulting_room.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
-          }
+        lat: consulting_room.latitude,
+        lng: consulting_room.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
+      }
     end
   end
 

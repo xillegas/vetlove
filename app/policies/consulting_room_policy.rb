@@ -4,7 +4,7 @@ class ConsultingRoomPolicy < ApplicationPolicy
       scope.all
     end
   end
-  
+
   def create?
     user.is_vet
   end
@@ -15,5 +15,13 @@ class ConsultingRoomPolicy < ApplicationPolicy
 
   def destroy?
     user.is_vet
+  end
+
+  def index_vet?
+    user.is_vet
+  end
+
+  def index_user?
+    !user.is_vet
   end
 end
