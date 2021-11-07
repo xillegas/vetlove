@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "dashboard", to: "main#dashboard", as: "dashboard"
   get 'configuration', to: 'main#configuration', as: "configuration"
   get "page_404", to: "pages#page_404", as: "page_404"
-  get "configuration", to: "main#configuration", as: "configuration"
   get "consulting_rooms/index_vet", to: "consulting_rooms#index_vet"
   get "consulting_rooms/index_user", to: "consulting_rooms#index_user"
 
