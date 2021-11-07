@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get "consulting_rooms/index_vet", to: "consulting_rooms#index_vet"
   get "consulting_rooms/index_user", to: "consulting_rooms#index_user"
 
-
   resources :consulting_rooms, except: [:show]
   resources :consulting_rooms, only: [:index, :new] do
     resources :bookings, only: [:new, :create]
