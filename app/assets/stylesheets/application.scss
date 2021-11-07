@@ -14,12 +14,14 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "simple_calendar";
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "flatpickr/dist/flatpickr";
 @import "./shared/sb-admin-2";
-@import "pages/consulting"
+@import "pages/consulting";
 
 // sb-admin
+@import "startbootstrap-sb-admin-2/scss/error";

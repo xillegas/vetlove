@@ -1,6 +1,6 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-home change-color">
+<div id="mynav" class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-home change-color-devise">
   <!-- Sidebar - Brand -->
-  <a class="d-flex align-items-center justify-content-center navbar-vetlove-classic-logo" href="<%= root_path %>">
+  <a class="d-flex align-items-center justify-content-center navbar-vetlove-classic-logo decoracion" href="<%= root_path %>">
     <div class="vetlove-brand-logo">
       <i class="fas fa-paw fa-sm fa-fw"></i>
     </div>
@@ -40,7 +40,7 @@
         </li>
       <% else %>
         <li>
-          <%= link_to "Iniciar sesión", new_user_session_path, style: "margin-right:-16px" %>
+          <%= link_to "Iniciar sesión", new_user_session_path, class: "boton-inicio" %>
         </li>
       <% end %>
     </ul>

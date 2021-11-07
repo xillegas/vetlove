@@ -6,4 +6,7 @@ window.onscroll = function () {
   } else {
     myNav.classList.remove("change-color");
   };
+  if (myNav.classList.contains("change-color-devise")) {
+    void(0)
+  }
 };

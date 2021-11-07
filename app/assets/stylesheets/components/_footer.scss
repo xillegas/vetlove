@@ -1,5 +1,6 @@
-footer {
-  background-color: #649DAD;
+footer{
+    background-color:$primary-color;
+    width: 100%;
 }
 
 .text-footer {
@@ -15,8 +16,8 @@ footer {
   color: white;
 }
 
-.link-social:hover {
-  color: #66edff71;
+.link-social:hover{
+    color: #f082ff;
 }
 
 .division {

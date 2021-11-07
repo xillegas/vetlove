@@ -13,7 +13,7 @@
   padding: 200px 10px;
   min-width: 580px;
   color: white;
-  height: 575px;
+  height: 580px;
 }
 
 .banner-vetlove h1 {
@@ -32,16 +32,16 @@
 #buscar::placeholder {
   text-align: center;
   font-size: 20px;
-  color: black;
+  color: rgba(114, 114, 114, 0.61);
 }
 
 #search-b {
     position: relative;
     left: 156px;
     bottom: 42px;
-    color: #649DAD;
+    color: $primary-color;
     border-radius: 30px;
-    background-color: #A4E5D9;
+    background-color: #b181dfc9;
     padding: 11px;
     border: none;
 }
@@ -50,9 +50,9 @@
     position: relative;
     left: 308px;
     bottom: 42px;
-    color: #649DAD;
+    color: $primary-color;
     border-radius: 30px;
-    background-color: #A4E5D9;
+    background-color: #b181dfc9;
     padding: 11px;
     border: none;
 }
@@ -75,4 +75,9 @@
 .leyenda{
   font-size: 18px;
   font-style: italic;
+}
+
+.fa-stack{
+  text-shadow: 8px 8px 8px #00000023;
+  color: #57429D;
 }

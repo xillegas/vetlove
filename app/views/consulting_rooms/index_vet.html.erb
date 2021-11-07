@@ -1,0 +1,30 @@
+<%= render 'shared/navbar_devise' %>
+<div></div>
+<div class="container" style="padding-top: 100px;">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="row">
+        <h2>Consultorios Veterinarios Usuarios no registrados:</h2>
+      </div>
+      <div id="global" class="row">
+        <% @query_rooms.each do |room| %>
+          <li>
+            <%= link_to room.name, class: "text-secondary" %><span class="mx-3">
+              <%= link_to edit_consulting_room_path(room) do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+              <%= link_to room, method: :delete, remote: true, data: { confirm: "Estas seguro que deseas eliminar?" }, style:"color:red" do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </li>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      <div id="map" class="col-lg-5 col-md-5 col-sm-12 map-custom"
+      style="width: 100%; height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>

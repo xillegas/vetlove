@@ -23,7 +23,9 @@ ActiveStorage.start()
 import "bootstrap";
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initMapbox } from '../plugins/init_mapbox';
-import { myNav } from "../plugins/navbar";
+import { initAutocomplete } from "../plugins/init_autocomplete";
+import "../plugins/navbar";
+
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
@@ -32,5 +34,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initFlatpickr();
   initMapbox();
-  myNav;
+  initAutocomplete();
 });
