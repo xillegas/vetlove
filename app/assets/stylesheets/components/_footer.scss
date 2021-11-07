@@ -11,12 +11,12 @@ footer{
 }
 
 .link-social{
-    font-size: 25px;
+    font-size: 20px;
     color: white;
 }
 
 .link-social:hover{
-    color: #000000;
+    color: #66edff71;
 }
 
 .division-cen{
@@ -29,4 +29,7 @@ footer{
 .division-der{
   text-align: right;
   padding: 0 45px;
+}
+.division-der a:hover{
+  color: white;
 }
