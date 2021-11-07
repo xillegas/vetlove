@@ -6,7 +6,7 @@ class ConsultingRoomsController < ApplicationController
   def index
     skip_policy_scope
     @user = current_user
-    @consulting_rooms = ConsultingRoom.geocoded
+    @consulting_rooms = ConsultingRoom.all
     @query_rooms = []
     if user_signed_in?
       if @user.is_vet
@@ -33,12 +33,12 @@ class ConsultingRoomsController < ApplicationController
     end
     @query_rooms
     @markers = @consulting_rooms.geocoded.map do |consulting_room|
-            {
-              lat: consulting_room.latitude,
-              lng: consulting_room.longitude,
-              info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room })
-            }
-      end
+          {
+            lat: consulting_room.latitude,
+            lng: consulting_room.longitude,
+            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room })
+          }
+    end
   end
 
 
@@ -79,11 +79,11 @@ class ConsultingRoomsController < ApplicationController
   private
 
   def search(query_rooms)
-    @markers = query_rooms.geocoded.map do |query_room|
+    @markers = query_rooms.geocoded.map do |consulting_room|
           {
-            lat: query_room.latitude,
-            lng: query_room.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { query_room: query_room })
+            lat: consulting_room.latitude,
+            lng: consulting_room.longitude,
+            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room })
           }
     end
   end
