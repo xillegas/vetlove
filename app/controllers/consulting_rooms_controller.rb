@@ -11,9 +11,7 @@ class ConsultingRoomsController < ApplicationController
     if user_signed_in?
       if @user.is_vet
         @consulting_rooms.each do |room|
-          if room.user == @user
-            @query_rooms << room
-          end
+          @query_rooms << room if room.user == @user
         end
       else
         if params[:query].present?
@@ -33,14 +31,13 @@ class ConsultingRoomsController < ApplicationController
     end
     @query_rooms
     @markers = @consulting_rooms.geocoded.map do |consulting_room|
-          {
+      {
             lat: consulting_room.latitude,
             lng: consulting_room.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room })
+            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
           }
     end
   end
-
 
   def new
     @user = current_user
@@ -80,10 +77,10 @@ class ConsultingRoomsController < ApplicationController
 
   def search(query_rooms)
     @markers = query_rooms.geocoded.map do |consulting_room|
-          {
+      {
             lat: consulting_room.latitude,
             lng: consulting_room.longitude,
-            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room })
+            info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
           }
     end
   end
