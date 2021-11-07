@@ -26,7 +26,7 @@
 
 /* Navbar por modificar */
 .navbar-vetlove-classic {
-	background-color: #649DAD;
+	background-color: #57429D;
 	width: 100%;
 	margin: 0;
 	height: 67px;
@@ -38,9 +38,10 @@
 	padding-right: 15px;
 	padding-left: 68px;
   color: white;
-	background-color: #649DAD;
+
+	background-color: $primary-color;
   a:hover {
-    color: #66C6BA;
+    color: #c0a3db;
   }
 
 }
@@ -55,12 +56,14 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
+  color: $primary-color;
 }
 .vetlove-brand-logo{
   font-size: 30px;
+  color: $primary-color;
 }
 .navbar-vetlove-classic-ulist a {
-	color: #649DAD;
+	color: $primary-color;
 	display: block;
 	padding: 22px 21px 21px;
 	text-decoration: none;
@@ -79,13 +82,13 @@
 }
 
 .navbar-vetlove-classic .navbar-vetlove-classic-elemlist a:hover {
-  background-color: #66C6BA;
+  background-color: $secondary-color;
 }
 
 .navbar-vetlove-user {
   margin: 0.5rem;
   width: 45px;
-  border: 2px solid #649DAD;
+  border: 2px solid $primary-color;
 }
 
 .navbar-home {
@@ -100,7 +103,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #649DAD;
+  color: $primary-color;
   text-shadow: 1px 1px 2px rgba(46, 46, 46, 0.24);
   font-size: 17px;
   padding: 0 10px;
@@ -110,7 +113,7 @@
 .change-color{
   background-color: #FFFF;
   transition: 0.5s;
-  color: #649DAD;
+  color: $primary-color;
   box-shadow: 8px 8px 8px #91919123;
   z-index: 10;
 }
