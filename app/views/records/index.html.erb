@@ -22,7 +22,7 @@
             <hr>
             <div class="d-flex justify-content-between mb-1">
               <div>
-                <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.to_s).strftime("%F") %></p>
+                <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.date.to_s).strftime("%F") %></p>
                 <p class="pet-small"><strong>Dueño:</strong> <%= record.booking.pet.name %></p>
                 <p class="pet-small"><strong>Teléfono:</strong> <%= record.booking.pet.user.phone_number %></p>
                 <p class="pet-small"><strong>Tipo:</strong> <%= record.booking.pet.species %></p>
@@ -48,7 +48,7 @@
             <hr>
             <div class="d-flex justify-content-between mb-1">
               <div>
-                <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.to_s).strftime("%F") %></p>
+                <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.date.to_s).strftime("%F") %></p>
                 <p class="pet-small"><strong>Veterinario:</strong> <%= record.booking.consulting_room.name %></p>
                 <p class="pet-small"><strong>Teléfono:</strong> <%= record.booking.consulting_room.user.phone_number %></p>
                 <p class="pet-small"><strong>Tipo:</strong> <%= record.booking.pet.species %></p>

@@ -4,11 +4,11 @@ class MainController < ApplicationController
   def dashboard
     skip_authorization
     if current_user.is_vet?
-      @bookings = Booking.joins(:consulting_room).where("consulting_room.user" => current_user.id)
+      @bookings = Booking.joins(:consulting_room).where("consulting_room.user" => current_user.id).order('bookings.date ASC')
       @next_consult = @bookings.find { |booking| !booking.attended? }      
       @consults_to_attend = @bookings.count { |booking| !booking.attended? }
     else
-      @bookings = Booking.joins(:pet).where("pets.user" => current_user.id)
+      @bookings = Booking.joins(:pet).where("pets.user" => current_user.id).order('bookings.date ASC')
       @next_consult = @bookings.find { |booking| !booking.attended? }
       @consults_to_attend = @bookings.count { |booking| !booking.attended? }
     end
