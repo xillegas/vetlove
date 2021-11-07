@@ -26,7 +26,7 @@
           <% else %>
             <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg", class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
-          <div class="dropdown-menu dropdown-menu-right" style="padding-top: 0px; padding-bottom: 0px;" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Cuenta", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Perfil", edit_user_registration_path, class: "dropdown-item" %>
             <% if current_user.is_vet %>
@@ -40,7 +40,7 @@
         </li>
       <% else %>
         <li>
-          <%= link_to "Iniciar sesión", new_user_session_path, style: "margin-right:-16px" %>
+          <%= link_to "Iniciar sesión", new_user_session_path, class: "boton-inicio" %>
         </li>
       <% end %>
     </ul>
