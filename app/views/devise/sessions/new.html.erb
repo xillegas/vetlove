@@ -1,27 +1,31 @@
+<%= render 'shared/navbar_devise' %>
 <div class="container">
-  <div class="col-lg-12 col-md-12 col-sm-12">
-    <div class="card mt-5 mb-auto ml-auto mr-auto pt-5 pb-5 pl-5 pr-5", style="border-radius: 10px">
+</div>
+  <div class="container" style="padding-top: 100px;">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="card mb-3 ml-auto mr-auto pt-5 pb-5 pl-5 pr-5", style="border-radius: 10px">
 
-      <h2>Inicia sesión</h2>
+        <h2>Inicia sesión</h2>
 
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :email,
-                      required: false,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" } %>
-          <%= f.input :password,
-                      required: false,
-                      input_html: { autocomplete: "current-password" },
-                      label: "Contraseña" %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-        </div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: false,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" } %>
+            <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "current-password" },
+                        label: "Contraseña" %>
+            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          </div>
 
-        <div class="form-actions text-center mb-3">
-          <%= f.button :submit, "Iniciar sesión", class: "btn btn-primary "%>
-        </div>
-      <% end %>
-      <%= render "devise/shared/links" %>
+          <div class="form-actions text-center mb-3">
+            <%= f.button :submit, "Iniciar sesión", class: "btn btn-primary "%>
+          </div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
