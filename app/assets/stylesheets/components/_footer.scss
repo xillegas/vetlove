@@ -19,6 +19,14 @@ footer{
     color: #000000;
 }
 
-.division{
-text-align: center;
+.division-cen{
+  text-align: center;
+}
+.division-izq{
+  text-align: left;
+  padding: 0 45px;
+}
+.division-der{
+  text-align: right;
+  padding: 0 45px;
 }

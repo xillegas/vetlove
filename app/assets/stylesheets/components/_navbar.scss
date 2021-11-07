@@ -36,11 +36,14 @@
 	padding-left: 68px;
   color: white;
 	background-color: #649DAD;
-	text-decoration: none;
   a:hover {
     color: #66C6BA;
   }
 
+}
+
+.decoracion {
+  text-decoration: none !important;
 }
 
 .vetlove-brand {
@@ -49,7 +52,6 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
-  text-decoration: none;
 }
 .vetlove-brand-logo{
   font-size: 30px;
@@ -80,7 +82,7 @@
 .navbar-vetlove-user {
   margin: 0.5rem;
   width: 45px;
-  border: solid #649DAD;
+  border: 2px solid #649DAD;
 }
 
 .navbar-home {
@@ -96,12 +98,11 @@
   align-items: center;
   justify-content: center;
   color: #649DAD;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 1px 1px 2px rgba(46, 46, 46, 0.24);
   font-size: 17px;
   padding: 0 10px;
+  font-weight: bold;
 }
-
-
 
 .change-color{
   background-color: #FFFF;
