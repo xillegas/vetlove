@@ -26,7 +26,7 @@
 
 /* Navbar por modificar */
 .navbar-vetlove-classic {
-	background-color: #57429D;
+	background-color: $primary-color;
 	width: 100%;
 	margin: 0;
 	height: 67px;
@@ -41,7 +41,7 @@
 
 	background-color: $primary-color;
   a:hover {
-    color: #c0a3db;
+    color: $third-color;
   }
 
 }
@@ -57,15 +57,22 @@
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   color: $primary-color;
+  &.vetlove-brand-logo:hover{
+    color: $third-color;
+  }
 }
 .vetlove-brand-logo{
   font-size: 30px;
   color: $primary-color;
+  &.vetlove-brand-logo:hover{
+    color: $third-color;
+  }
 }
 .navbar-vetlove-classic-ulist a {
 	color: $primary-color;
 	display: block;
-	padding: 22px 21px 21px;
+  margin: 8px;
+	padding: 7px 11px 7px;
 	text-decoration: none;
 
 }
@@ -116,4 +123,9 @@
   color: $primary-color;
   box-shadow: 8px 8px 8px #91919123;
   z-index: 10;
+}
+
+.boton-inicio{
+  border: 2px solid $primary-color;
+  border-radius: 15px;
 }

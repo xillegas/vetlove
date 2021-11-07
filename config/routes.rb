@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "dashboard", to: "main#dashboard", as: "dashboard"
   get 'configuration', to: 'main#configuration', as: "configuration"
+  get "page_404", to: "pages#page_404", as: "page_404"
 
   resources :consulting_rooms, except: [:show]
   resources :consulting_rooms, only: [:index, :new] do
