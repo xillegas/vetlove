@@ -129,3 +129,10 @@
   border: 2px solid $primary-color;
   border-radius: 15px;
 }
+.change-color-devise{
+  background-color: #FFFF;
+  transition: 0.5s;
+  color: #649DAD;
+  z-index: 10;
+  box-shadow: 2px 2px 2px #00000033;
+}
