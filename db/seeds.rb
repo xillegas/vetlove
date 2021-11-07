@@ -50,7 +50,7 @@ pet_species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara
 puts ""
 puts "Insertando ConsultingRoom"
 User.all.each do |user|
-  ConsultingRoom.create([{ address: Faker::Address.full_address,
+  ConsultingRoom.create([{ address: Faker::Address.street_address,
                            name: "Consultorio Dr. #{user.first_name} #{user.last_name}",
                            description: Faker::Lorem.paragraph(sentence_count: 6, supplemental: false, random_sentences_to_add: 4) , #Mejorar
                            state: Faker::Address.state,
@@ -109,12 +109,12 @@ end
 puts ""
 puts "Insertando Records"
 
-Booking.all.each do |booking|
-  Record.create([{ symptoms: Faker::Lorem.paragraph_by_chars,
-                   diagnostic: Faker::Lorem.paragraph_by_chars,
-                   treatment: Faker::Lorem.paragraph_by_chars,
-                   booking: booking }])
-end
+# Booking.all.each do |booking|
+#   Record.create([{ symptoms: Faker::Lorem.paragraph_by_chars,
+#                    diagnostic: Faker::Lorem.paragraph_by_chars,
+#                    treatment: Faker::Lorem.paragraph_by_chars,
+#                    booking: booking }])
+# end
 
 puts ""
 puts "Seed Completado"
