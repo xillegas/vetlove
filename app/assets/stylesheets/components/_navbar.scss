@@ -16,6 +16,9 @@
     justify-content: space-between !important;
   }
 }
+.navbar-light .navbar-toggler {
+    background-color: #5a5a5a4a!important;
+}
 
 .colores {
   color:red;
@@ -101,12 +104,9 @@
   padding: 0 10px;
 }
 
-.boton-inicio{
-
-}
-
 .change-color{
   background-color: #FFFF;
   transition: 0.5s;
   color: #649DAD;
+  z-index: 10;
 }
