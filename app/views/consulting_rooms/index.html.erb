@@ -1,4 +1,7 @@
-<div class="container my-3">
+<%= render 'shared/navbar_devise' %>
+<div class="container">
+</div>
+  <div class="container mb-3" style="padding-top: 100px;">
   <h2>Consultorios Veterinarios:</h2>
 
   <%# Semillas temporales %>
@@ -91,7 +94,7 @@
           <%# Es lo mismo de arriba %>
             <div class="accordion" id="accordionExample">
               <div class="card">
-                <div class="card-header consult-room-card" id="heading<%= index %>">
+                <div class="card-header consult-room-card" id="heading<%= index %>" onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>)">
                   <h2 class="mb-0">
                     <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
                       <h3><%= room.name %></h3>
@@ -108,8 +111,9 @@
                       <div>
                         <div>
                           <h5>Atendemos:</h5>
+                           <% especie_mascotas = room.animal.split(" ") %>
                             <% especie_mascotas.each do |especie| %>
-                              <span class="badge badge-pill badge-vetlove"><%= especie %></span>
+                              <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
                             <% end %>
                           <h5>Aceptamos:</h5>
                             <% forma_pago.each do |pagos| %>
