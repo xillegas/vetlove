@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-12 col-lg-6">
-<div class="d-sm-flex align-items-center justify-content-between mb-3">
-  <p class="h1 mb-0 text-gray-800">Registro</p>
-</div>
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+      <p class="h1 mb-0 text-gray-800">Registro</p>
+    </div>
     <div class="mb-3">
       <p class="record-label"><strong>Nombre:</strong> <%= @booking.pet.name.capitalize %></p>
       <p class="record-label"><strong>Especie:</strong> <%= @booking.pet.species.capitalize %></p>
@@ -17,8 +17,8 @@
   </div>
 </div>
 <%= simple_form_for [@booking, @record] do |f| %>
-  <%= f.input :symptoms, label: "Sintomas" %>
-  <%= f.input :diagnostic, label: "Diagnostico" %>
-  <%= f.input :treatment, label: "Tratamiento" %>
+  <%= f.input :symptoms, label: "Sintomas", required: true, autofocus: true %>
+  <%= f.input :diagnostic, label: "Diagnostico", required: true, autofocus: true  %>
+  <%= f.input :treatment, label: "Tratamiento", required: true, autofocus: true  %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

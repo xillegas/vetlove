@@ -1,5 +1,5 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <p class="h2 mb-0 text-gray-800">Historial Show</p>
+  <p class="h2 mb-0 text-gray-800">Historial</p>
   <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
 </div>
 <div class="list-group my-4">
@@ -11,7 +11,7 @@
       </div>
       <div>
         <p class="h5 pet-title">Fecha de Consulta<br>
-          <%= DateTime.parse(@record.booking.to_s).strftime("%F") %> </p>
+          <%= DateTime.parse(@record.booking.date.to_s).strftime("%F") %> </p>
       </div>
     </div>
     <hr>
