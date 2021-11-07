@@ -2,26 +2,93 @@
 <div class="banner-vetlove">
   <h1>Atencion de primera para los consentidos de casa</h1>
   <div class="searcher">
-<%= form_tag consulting_rooms_path, method: :get do %>
-  <%= text_field_tag :query,
+    <%= form_tag consulting_rooms_path, method: :get do %>
+      <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     id: 'buscar',
     placeholder: "Buscar veterinarios"
   %>
-  <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-b" %>
-<% end %>
+      <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-b" %>
+    <% end %>
+  </div>
 </div>
-</div>
-<%# Services %>
-<br>
-<br>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  Ver modal
-</button>
-<br>
-<br>
-<br>
+
+<%# ------------Services Section------------------- %>
+<section class="page-section" id="services">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase service-text">Servicios</h2>
+      <h3 class="section-subheading text-muted leyenda my-4">En VetLove te ofrecemos los mejores servicios para tus mascotas.</h3>
+    </div>
+    <div class="row text-center my-5 ">
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x text-primary"></i>
+          <i class="fas fa-search-location fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4 class="my-3">Busqueda</h4>
+        <p class="text-muted">Busca veterinarios cercanos a tu localidad.</p>
+      </div>
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x text-primary"></i>
+          <i class="far fa-calendar-alt fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4 class="my-3">Agendar cita</h4>
+        <p class="text-muted">Puedes solicitar cita con el veterinario que mejor se adapte a tus necesidades.</p>
+      </div>
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x text-primary"></i>
+          <i class="fas fa-notes-medical fa-stack-1x fa-inverse"></i><%# <i class="fas fa-lock fa-stack-1x fa-inverse"></i> %>
+        </span>
+        <h4 class="my-3">Historial Medico</h4>
+        <p class="text-muted">Puedes visualizar el historial medico de tu mascota luego de asistir a la cita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<%# ------------Services Section------------------- %>
+<section class="page-section" style="background-color:#649DAD" id="services">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase service-text">Servicios</h2>
+      <h3 class="section-subheading text-muted leyenda my-4">En VetLove te ofrecemos los mejores servicios para tus mascotas.</h3>
+    </div>
+    <div class="row text-center my-5 ">
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x text-primary"></i>
+          <i class="fas fa-search-location fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4 class="my-3">Busqueda</h4>
+        <p class="text-muted">Busca veterinarios cercanos a tu localidad.</p>
+      </div>
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x text-primary"></i>
+          <i class="far fa-calendar-alt fa-stack-1x fa-inverse"></i>
+        </span>
+        <h4 class="my-3">Agendar cita</h4>
+        <p class="text-muted">Puedes solicitar cita con el veterinario que mejor se adapte a tus necesidades.</p>
+      </div>
+      <div class="col-md-4">
+        <span class="fa-stack fa-4x">
+          <i class="fas fa-circle fa-stack-2x text-primary"></i>
+          <i class="fas fa-notes-medical fa-stack-1x fa-inverse"></i><%# <i class="fas fa-lock fa-stack-1x fa-inverse"></i> %>
+        </span>
+        <h4 class="my-3">Historial Medico</h4>
+        <p class="text-muted">Puedes visualizar el historial medico de tu mascota luego de asistir a la cita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<%# ------------Services Section------------------- %>
 <section class="page-section" id="services">
   <div class="container">
     <div class="text-center">

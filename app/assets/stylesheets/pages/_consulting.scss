@@ -1,9 +1,26 @@
 .card-consulting{
   width:100%!important;
 }
+
 #global {
 	height: 600px;
 	width: 100%;
+	border: 1px solid #ddd;
+	background: #f1f1f1;
+	overflow-y: scroll;
+}
+
+#global_vet {
+	height: 75vh;
+	width: 70vh;
+	border: 1px solid #ddd;
+	background: #f1f1f1;
+	overflow-y: scroll;
+}
+
+#global_user{
+  height: 63vh;
+	width: 70vh;
 	border: 1px solid #ddd;
 	background: #f1f1f1;
 	overflow-y: scroll;
@@ -19,6 +36,21 @@
   border: 3px solid rgb(86, 86, 160);
 }
 
-.map-custom {
+.map-custom_vet {
   border-radius: 12px;
+  width: 80vh;
+  height: 75vh;
+}
+.map-custom_user{
+  border-radius: 12px;
+  width: 80vh;
+  height: 75vh;
+}
+
+.map-custom_vet {
+  border-radius: 12px;
+}
+
+.searcher_user{
+  // margin: 30px;
 }

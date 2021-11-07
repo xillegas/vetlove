@@ -1,7 +1,7 @@
 class ConsultingRoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :authorize_pundit, except: [:index]
-  layout "main", only: %i[new]
+  layout "main", only: %i[new index_vet index_user]
 
   def index_vet
     skip_policy_scope
@@ -33,9 +33,9 @@ class ConsultingRoomsController < ApplicationController
     @query_rooms = []
     if user_signed_in?
       if @user.is_vet
-        redirect_to consulting_rooms_index_vet_path, notice: "Vets Index"
+        redirect_to consulting_rooms_vet_path, notice: "Vets Index"
       else
-        redirect_to consulting_rooms_index_user_path, notice: "Users Index"
+        redirect_to consulting_rooms_user_path, notice: "Users Index"
       end
     else
       if params[:query].present?
