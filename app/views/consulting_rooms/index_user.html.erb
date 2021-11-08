@@ -6,25 +6,13 @@
     <div class="d-flex justify-content-center">
       <div>
         <% if user_signed_in? %>
-          <% if !current_user.is_vet %>
-            <%= form_tag consulting_rooms_path, method: :get do %>
-              <%= text_field_tag :query,
+          <%= form_tag consulting_rooms_user_path, method: :get do %>
+            <%= text_field_tag :query,
                       params[:query],
                       class: "form-control",
-                      id: 'buscar',
+                      id: 'buscar_vet',
                       placeholder: "Buscar veterinarios"
                     %>
-              <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
-            <% end %>
-          <% end %>
-        <% else %>
-          <%= form_tag consulting_rooms_path, method: :get do %>
-            <%= text_field_tag :query,
-                    params[:query],
-                    class: "form-control",
-                    id: 'buscar',
-                    placeholder: "Buscar veterinarios"
-                  %>
             <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
           <% end %>
         <% end %>
