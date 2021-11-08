@@ -56,24 +56,26 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
-  color: $primary-color;
-  &.vetlove-brand-logo:hover{
+  color: white;//$primary-color;
+  &.vetlove-brand:hover{
     color: $third-color;
   }
 }
 .vetlove-brand-logo{
   font-size: 30px;
-  color: $primary-color;
+  color: white;//$primary-color;
   &.vetlove-brand-logo:hover{
     color: $third-color;
   }
 }
 .navbar-vetlove-classic-ulist a {
-	color: $primary-color;
+	color: white;//$primary-color;
 	display: block;
 	padding: 7px 11px 7px;
 	text-decoration: none;
-
+  &.navbar-vetlove-classic-ulist a:hover{
+    color: $third-color;
+  }
 }
 
 .navbar-vetlove-classic .navbar-vetlove-classic-ulist {
@@ -94,7 +96,10 @@
 .navbar-vetlove-user {
   margin: 0.5rem;
   width: 45px;
-  border: 2px solid $primary-color;
+  border: 2px solid white; //$primary-color;
+  &.navbar-vetlove-user:hover{
+    border: 2px solid $third-color;
+  }
 }
 
 .navbar-home {
@@ -120,19 +125,65 @@
   background-color: #FFFF;
   transition: 0.5s;
   color: $primary-color;
-  box-shadow: 8px 8px 8px #91919123;
+  box-shadow: 8px 10px 8px #91919123;
   z-index: 101;
+  .navbar-vetlove-classic-ulist a {
+    color: $primary-color;
+  }
+  .vetlove-brand-logo{
+    color: $primary-color;
+  }
+  .boton-inicio{
+    border: 3px solid $primary-color;
+  }
+  .vetlove-brand {
+    color: $primary-color;
+  }
+  .nombre{
+    color: $primary-color;
+  }
+  .navbar-vetlove-user {
+    border: 2px solid $primary-color;
+  }
 }
 
 .boton-inicio{
-  border: 2px solid $primary-color;
+  border: 3px solid white;//$primary-color;
   border-radius: 15px;
   margin: 8px;
+  font-weight: bold;
+  &.boton-inicio:hover{
+    color: $third-color;
+    border: 3px solid $third-color
+  }
 }
+
+.nombre{
+  color: white;
+}
+
 .change-color-devise{
   background-color: #FFFF;
   transition: 0.5s;
   color: $primary-color;
   z-index: 100;
-  box-shadow: 8px 8px 8px #91919123;
+  box-shadow: 8px 10px 8px #91919123;
+  .navbar-vetlove-classic-ulist a {
+    color: $primary-color;
+  }
+  .vetlove-brand-logo{
+    color: $primary-color;
+  }
+  .boton-inicio{
+    border: 3px solid $primary-color;
+  }
+  .vetlove-brand {
+    color: $primary-color;
+  }
+  .nombre{
+    color: $primary-color;
+  }
+  .navbar-vetlove-user {
+    border: 2px solid $primary-color;
+  }
 }
