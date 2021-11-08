@@ -117,7 +117,7 @@ ConsultingRoom.create([{ address: "Av. Nueva Granada, C.C. Multiplaza Caracas 10
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",
                            animal: "Perro Gato #{pet_species[2..].sample(2).join(" ")}", #Esto es lo nuevo.
-                           user: vet_fernando }])
+                           user: vet_alfredo }])
 
 # Necesito más consultorios para probar la busqueda
 # Entonces Genesis atiende en varios consultorios con nombres aleatorios
