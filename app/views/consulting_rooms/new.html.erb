@@ -18,8 +18,8 @@
       <% species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"] %>
       <% species.each do |sp| %>
         <div class="w-25 my-2">
-        <input id="item_selected_keywords" name="selected_keywords[]"
-          type="checkbox" value="<%= sp %>" /><span><%= sp %>s</span>
+        <input class="tag-selector" id="item_selected_keywords_<%= sp %>" name="selected_keywords[]"
+          type="checkbox" value="<%= sp %>" /><label for="item_selected_keywords_<%= sp %>"><%= sp %>s</label>
         </div>
       <% end %>
     </div>

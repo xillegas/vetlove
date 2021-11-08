@@ -21,7 +21,7 @@ class ConsultingRoomsController < ApplicationController
       @query_rooms = ConsultingRoom.search_by_name(params[:query])
       search(@query_rooms)
     else
-      @query_rooms = ConsultingRoom.take(6)
+      @query_rooms = ConsultingRoom.take(7)
     end
     @markers = @consulting_rooms.geocoded.map do |consulting_room|
       {

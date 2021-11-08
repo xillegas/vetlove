@@ -1,56 +1,123 @@
-.card-consulting{
-  width:100%!important;
+.card-consulting {
+  width: 100% !important;
 }
 
 #global {
-	height: 600px;
-	width: 100%;
-	border: 1px solid #ddd;
-	background: #f1f1f1;
-	overflow-y: scroll;
+  height: 59vh;
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  overflow-y: scroll;
+  border-radius: 20px 0 0 20px;
 }
 
 #global_vet {
-	height: 75vh;
-	width: 70vh;
-	border: 1px solid #ddd;
-	background: #f1f1f1;
-	overflow-y: scroll;
-}
-
-#global_user{
-  height: 63vh;
-	width: 70vh;
-	border: 1px solid #ddd;
-	background: #f1f1f1;
-	overflow-y: scroll;
-}
-
-.titulo{
-  color: rgb(129, 129, 129);
-  align-self: center;
-}
-
-.mapboxgl-ctrl-geocoder {
-  border-radius: 22px;
-  border: 3px solid rgb(86, 86, 160);
-}
-
-.map-custom_vet {
-  border-radius: 12px;
-  width: 80vh;
   height: 75vh;
+  width: 100%;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  overflow-y: scroll;
+  // border-radius: 20px;
 }
-.map-custom_user{
-  border-radius: 12px;
+
+#global_user {
+  height: calc(100vh - 60px - 100px -85px -85px);
   width: 80vh;
-  height: 75vh;
+  border: 1px solid #ddd;
+  background: #f1f1f1;
+  overflow-y: scroll;
 }
 
-.map-custom_vet {
-  border-radius: 12px;
+// Tags
+.tag-item {
+  display: inline-block;
 }
 
-.searcher_user{
-  // margin: 30px;
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector+label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.7rem;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: #ECEAFF;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked+label {
+  background-color: $primary-color;
+  color: white;
+}
+
+// Cards de consultingRoom
+.consult-room-card {
+  background: linear-gradient(0deg, #e9e9e9, transparent);
+
+  .title-consulting {
+    color: $gray-800;
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0;
+
+  }
+
+  .direction-consulting {
+    font-size: 14px;
+    margin: 0;
+    color: $gray-600;
+  }
+
+  .consult-room-distance {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: $map-distance;
+  }
+}
+
+.consult-room-info {
+  h5 {
+    font-size: 14px;
+    font-weight: 700;
+    color: $gray-700;
+    margin: 0;
+  }
+}
+
+.card-description {
+  font-size: 12px;
+  color: $gray-800;
+}
+
+.badge-vetlove {
+  color: $white;
+  background-color: $secondary-color;
+}
+
+.button-vetlove {
+  color: #FFF;
+  background-color: $primary-color;
+  font-size: 19px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 5px 8px;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.form-size-search {
+  height: 50px;
 }
