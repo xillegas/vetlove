@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
   #     request.remote_ip
   #   end
   # end
+  def remote_ip
+    if Rails.env.production?
+      request.remote_ip
+    else
+     Net::HTTP.get(URI.parse('http://checkip.amazonaws.com/')).squish
+    end
+  end
 
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized

@@ -24,7 +24,7 @@ import { initFlatpickr } from "../plugins/flatpickr";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import "../plugins/navbar";
-import { modals } from "./modal";s
+import { modals } from "./modal";
 
 
 // Internal imports, e.g:
