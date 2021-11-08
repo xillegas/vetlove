@@ -1,51 +1,46 @@
 <%= render 'shared/navbar_devise' %>
-
-<div class="container" style="padding-top: 100px;">
+<div class="container container-consulting">
   <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
+    <div class="col-md-6 col-sm-12">
       <div class="row">
-        <h2 class="titulo">Consultorios Veterinarios</h2>
+        <p class="h2 m-0 text-gray-600 w-100 text-center">Consultorios Veterinarios</p>
       </div>
-      <div class="row">
+      <div class="d-flex justify-content-center">
         <div>
           <% if user_signed_in? %>
             <% if !current_user.is_vet %>
-              <div class="searcher">
-                <%= form_tag consulting_rooms_path, method: :get do %>
-                  <%= text_field_tag :query,
+              <%= form_tag consulting_rooms_path, method: :get do %>
+                <%= text_field_tag :query,
                       params[:query],
                       class: "form-control",
                       id: 'buscar',
                       placeholder: "Buscar veterinarios"
                     %>
-                  <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
-                <% end %>
-              </div>
+                <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
+              <% end %>
             <% end %>
           <% else %>
-            <div class="searcher">
-              <%= form_tag consulting_rooms_path, method: :get do %>
-                <%= text_field_tag :query,
+            <%= form_tag consulting_rooms_path, method: :get do %>
+              <%= text_field_tag :query,
                     params[:query],
                     class: "form-control",
                     id: 'buscar',
                     placeholder: "Buscar veterinarios"
                   %>
-                <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
-              <% end %>
-            </div>
+              <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
+            <% end %>
           <% end %>
         </div>
       </div>
-      <div id="global" class="row">
-      <%# Lista de consultorios %>
+      <div id="global" class="row ">
+        <%# Lista de consultorios %>
         <%= render 'shared/consulting_list' %>
       </div>
     </div>
-    <div id="map" class="col-lg-5 col-md-5 col-sm-12 map-custom"
-      style="width: 100%; height: 600px;"
-      data-markers="<%= @markers.to_json %>"
+    <div class="col-md-6 col-sm-12">
+      <div id="map" class="map-custom" data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
     </div>
   </div>
 </div>
