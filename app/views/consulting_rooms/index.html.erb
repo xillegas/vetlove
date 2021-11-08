@@ -43,15 +43,17 @@
         <% @query_rooms.each_with_index do |room, index| %>
           <div class="accordion card-consulting" id="accordionExample">
             <div class="card">
-              <div class="card-header consult-room-card" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>)">
-                <h2 class="mb-0">
-                  <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
-                    <h3><%= room.name %></h3>
-                    <span class="consult-room-distance">a 5 km</span>
-                    <h5><%= room.address %></h5>
-                  </a>
-                </h2>
-              </div>
+              <% @user_marker.each do |user_marker| %>
+                <div class="card-header consult-room-card" id="heading <%= index %>" onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>, <%= user_marker.latitude %>, <%= user_marker.longitude %>, <%= @info_window_user.to_json %>)" >
+                  <h2 class="mb-0">
+                    <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
+                      <h3><%= room.name %></h3>
+                      <span class="consult-room-distance"><%= "#{room.distance_to(@client_ip).to_i} km" %></span>
+                      <h5><%= room.address %></h5>
+                    </a>
+                  </h2>
+                </div>
+              <% end %>
               <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
                 <div class="card-body">
                   <% 5.times do %>

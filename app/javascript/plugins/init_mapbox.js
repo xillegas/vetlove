@@ -17,10 +17,24 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
 
-    window.fitToCard = function (event, latitude, longitude) {
+    window.fitToCard = function (event, latitude, longitude, user_latitude, user_longitude, info_window_user) {
       event.preventDefault();
-      const x = [{lat: latitude, lng: longitude}];
-      fitMapToMarkers(map, x);
+      if (event.isTrusted) {
+        const marker_consultory = {lat: latitude, lng: longitude};
+        const marker_user = { lat: user_latitude, lng: user_longitude};
+        const markers_for_user_consultory = [marker_consultory,marker_user];
+        const popup = new mapboxgl.Popup().setHTML(info_window_user.info_window);
+        new mapboxgl.Marker()
+          .setLngLat(marker_user)
+          .setPopup(popup)
+          .addTo(map);
+        fitMapToMarkers(map, markers_for_user_consultory);
+      }
+      else {
+        const marker_consultory = { lat: latitude, lng: longitude };
+        const markers_for_user_consultory = [marker_consultory, marker_user];
+        fitMapToMarkers(map, markers_for_user_consultory);
+      };
     };
 
     map.addControl(new MapboxGeocoder({
@@ -35,7 +49,6 @@ const initMapbox = () => {
         .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
         .addTo(map);
-
     });
     fitMapToMarkers(map, markers);
   }
