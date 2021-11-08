@@ -13,7 +13,11 @@
     </div>
   </div>
   <div class="col-md-12 col-lg-6">
-    <%= image_tag "https://www.laprensa.com.ec/wp-content/uploads/2021/09/almohadillas-perro-1.jpg", class:"img-profile-record rounded-circle" %>
+    <% if @booking.pet.photo.attached? %>
+      <%= cl_image_tag @booking.pet.photo.key, height: 200, width: 200, class:"rounded-circle object-fit-cover"  %>
+    <% else %>
+      <%= image_tag "https://www.laprensa.com.ec/wp-content/uploads/2021/09/almohadillas-perro-1.jpg",  height: 200, width: 200, class:"rounded-circle object-fit-cover"  %>
+    <% end %>
   </div>
 </div>
 <%= simple_form_for [@booking, @record] do |f| %>
