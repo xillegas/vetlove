@@ -24,5 +24,11 @@
   <%= f.input :symptoms, label: "Sintomas", required: true, autofocus: true %>
   <%= f.input :diagnostic, label: "Diagnostico", required: true, autofocus: true  %>
   <%= f.input :treatment, label: "Tratamiento", required: true, autofocus: true  %>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.button :submit, "Crear registro", class: "btn btn-primary my-3" %>
 <% end %>
+<div class="my-2">
+<%= link_to booking_path(@booking) do %>
+  <i class="fas fa-arrow-left"></i>
+  <span>Volver</span></a>
+<% end %>
+</div>
