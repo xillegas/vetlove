@@ -121,7 +121,7 @@
   transition: 0.5s;
   color: $primary-color;
   box-shadow: 8px 8px 8px #91919123;
-  z-index: 10;
+  z-index: 100;
 }
 
 .boton-inicio{
@@ -132,7 +132,7 @@
 .change-color-devise{
   background-color: #FFFF;
   transition: 0.5s;
-  color: #649DAD;
-  z-index: 10;
-  box-shadow: 2px 2px 2px #00000033;
+  color: $primary-color;
+  z-index: 100;
+  box-shadow: 8px 8px 8px #91919123;
 }
