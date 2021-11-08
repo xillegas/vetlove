@@ -1,5 +1,4 @@
-  <%
-=begin %>
+
 <div class="container my-3">
   <h2>Todas tus mascotas</h2>
     <div class="list-group my-4">
@@ -31,8 +30,6 @@
 
   <h4><%= link_to "Crear nueva mascota", new_pet_path, class:"btn btn-success" %></h4>
 
-  <%
-=end %>
 
 
 
@@ -50,7 +47,10 @@
         <div class="d-flex justify-content-between align-items-center">
           <div>
             <p class="h3 pet-title"><%= pet.name %></p>
-            <p class="pet-small"><%= pet.species %></p>
+            <span>
+                <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
+                <%= pet.species %>
+              </span>
           </div>
           <div>
             <%= link_to "Editar", edit_pet_path(pet), class:"text-primary" %> |
@@ -62,8 +62,16 @@
         <hr>
         <div class="d-flex justify-content-between mb-1">
           <div>
-            <p class="pet-small"><strong>Genero:</strong> <%= pet.gender.capitalize %></p>
-            <p class="pet-small"><strong>Fecha de Nacimiento:</strong> <%= pet.birthdate %></p>
+
+              <span>
+                <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
+                <%= pet.gender %>
+              </span>
+              <span>
+                <br><strong>Fecha de nacimiento</strong><br>
+                <span class='vetlove-text-color'><i class="fas fa-birthday-cake"></i></span>
+                <%= pet.birthdate %>
+              </span>
           </div>
         </div>
         <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
