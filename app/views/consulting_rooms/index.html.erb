@@ -1,5 +1,5 @@
 <%= render 'shared/navbar_devise' %>
-<div></div>
+
 <div class="container" style="padding-top: 100px;">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12 mb-2">
@@ -7,9 +7,7 @@
         <h2 class="titulo">Consultorios Veterinarios</h2>
       </div>
       <div class="row">
-        <%# Semillas temporales %>
         <div>
-          <% forma_pago = ['efectivo', 'punto de venta', 'zelle', 'paypal'] %>
           <% if user_signed_in? %>
             <% if !current_user.is_vet %>
               <div class="searcher">
@@ -40,44 +38,8 @@
         </div>
       </div>
       <div id="global" class="row">
-        <% @query_rooms.each_with_index do |room, index| %>
-          <div class="accordion card-consulting" id="accordionExample">
-            <div class="card">
-              <div class="card-header consult-room-card" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>)">
-                <h2 class="mb-0">
-                  <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="true" aria-controls="collapse<%= index %>">
-                    <h3><%= room.name %></h3>
-                    <span class="consult-room-distance">a 5 km</span>
-                    <h5><%= room.address %></h5>
-                  </a>
-                </h2>
-              </div>
-              <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
-                <div class="card-body">
-                  <% 5.times do %>
-                    <%= room.description %>
-                  <% end %>
-                  <div>
-                    <div>
-                      <h5>Atendemos:</h5>
-                      <% especie_mascotas = room.animal.split(" ") %>
-                      <% especie_mascotas.each do |especie| %>
-                        <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
-                      <% end %>
-                      <h5>Aceptamos:</h5>
-                      <% forma_pago.each do |pagos| %>
-                        <span class="badge badge-pill badge-vetlove"><%= pagos %></span>
-                      <% end %>
-                    </div>
-                    <div>
-                      <%= link_to "Solicitar cita", new_consulting_room_booking_path(room), class: 'button-vetlove button-vetlove-card-pos' %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <%# Lista de consultorios %>
+        <%= render 'shared/consulting_list' %>
       </div>
     </div>
     <div id="map" class="col-lg-5 col-md-5 col-sm-12 map-custom"

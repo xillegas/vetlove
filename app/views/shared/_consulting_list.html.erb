@@ -1,0 +1,38 @@
+<% forma_pago = ['efectivo', 'punto de venta', 'zelle', 'paypal'] %>
+          <div class="accordion card-consulting" id="accordionExample">
+<% @query_rooms.each_with_index do |room, index| %>
+            <div class="card">
+              <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>)">
+                <h2 class="mb-0">
+                  <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
+                    <h3><%= room.name %></h3>
+                    <span class="consult-room-distance">a 5 km</span>
+                    <h5><%= room.address %></h5>
+                  </a>
+                </h2>
+              </div>
+              <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
+                <div class="card-body pt-2">
+                    <span class="card-description"><%= room.description %>
+                    </span>
+
+                    <div class='consult-room-info'>
+                      <h5>Atendemos:</h5>
+                      <% especie_mascotas = room.animal.split(" ") %>
+                      <% especie_mascotas.each do |especie| %>
+                        <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
+                      <% end %>
+                      <h5>Aceptamos:</h5>
+                      <% forma_pago.each do |pagos| %>
+                        <span class="badge badge-pill badge-vetlove"><%= pagos %></span>
+                      <% end %>
+                    </div>
+                    <div>
+                      <%= link_to "Solicitar cita", new_consulting_room_booking_path(room), class: 'btn btn-primary button-vetlove-card-pos' %>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+        <% end %>
+          </div>
