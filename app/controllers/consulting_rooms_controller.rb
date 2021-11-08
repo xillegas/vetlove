@@ -1,10 +1,9 @@
 class ConsultingRoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :authorize_pundit, except: [:index]
-  layout "main", only: %i[new index_vet index_user]
+  layout "main", only: %i[new index_vet index_user edit]
 
   def index_vet
-    skip_policy_scope
     @user = current_user
     @consulting_rooms = ConsultingRoom.all
     @query_rooms = []
@@ -14,15 +13,28 @@ class ConsultingRoomsController < ApplicationController
   end
 
   def index_user
-    skip_policy_scope
     @user = current_user
     @consulting_rooms = ConsultingRoom.all
     @query_rooms = []
+    @client_ip = remote_ip()
     if params[:query].present?
       @query_rooms = ConsultingRoom.search_by_name(params[:query])
       search(@query_rooms)
     else
       @query_rooms = ConsultingRoom.take(7)
+    end
+    @markers = @consulting_rooms.geocoded.map do |consulting_room|
+      {
+        lat: consulting_room.latitude,
+        lng: consulting_room.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
+      }
+    end
+    @user_marker = Geocoder::search(@client_ip)
+    @user_marker.each do |marker|
+      @info_window_user = {lat: marker.latitude,
+                          lng: marker.longitude,
+                          :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker })}
     end
   end
 
@@ -31,6 +43,7 @@ class ConsultingRoomsController < ApplicationController
     @consulting_rooms = ConsultingRoom.all
     @user = current_user
     @query_rooms = []
+    @client_ip = remote_ip()
     if user_signed_in?
       if @user.is_vet
         redirect_to consulting_rooms_vet_path, notice: "Vets Index"
@@ -50,6 +63,12 @@ class ConsultingRoomsController < ApplicationController
           lng: consulting_room.longitude,
           info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }),
         }
+      end
+      @user_marker = Geocoder::search(@client_ip)
+      @user_marker.each do |marker|
+        @info_window_user = {lat: marker.latitude,
+                            lng: marker.longitude,
+                            :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker })}
       end
     end
   end

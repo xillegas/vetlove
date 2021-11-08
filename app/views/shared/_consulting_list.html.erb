@@ -1,38 +1,47 @@
 <% forma_pago = ['efectivo', 'punto de venta', 'zelle', 'paypal'] %>
-          <div class="accordion card-consulting" id="accordionExample">
-<% @query_rooms.each_with_index do |room, index| %>
-            <div class="card">
-              <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>)">
-                <h2 class="mb-0">
-                  <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
-                    <h3><%= room.name %></h3>
-                    <span class="consult-room-distance">a 5 km</span>
-                    <h5><%= room.address %></h5>
-                  </a>
-                </h2>
-              </div>
-              <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
-                <div class="card-body pt-2">
-                    <span class="card-description"><%= room.description %>
-                    </span>
-
-                    <div class='consult-room-info'>
-                      <h5>Atendemos:</h5>
-                      <% especie_mascotas = room.animal.split(" ") %>
-                      <% especie_mascotas.each do |especie| %>
-                        <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
-                      <% end %>
-                      <h5>Aceptamos:</h5>
-                      <% forma_pago.each do |pagos| %>
-                        <span class="badge badge-pill badge-vetlove"><%= pagos %></span>
-                      <% end %>
-                    </div>
-                    <div>
-                      <%= link_to "Solicitar cita", new_consulting_room_booking_path(room), class: 'btn btn-primary button-vetlove-card-pos' %>
-                    </div>
-
+<div class="accordion w-100" id="accordionExample">
+  <% @query_rooms.each_with_index do |room, index| %>
+    <div class="card card-consulting">
+      <% @user_marker.each do |user_marker| %>
+        <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>, <%= user_marker.latitude %>, <%= user_marker.longitude %>, <%= @info_window_user.to_json %>)">
+          <h2 class="mb-0">
+            <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
+              <div class="d-flex justify-content-between ">
+                <div class="col-10">
+                  <p class="title-consulting"><%= room.name %></p>
+                  <p class="direction-consulting"><%= room.address %></p>
+                </div>
+                <div class="col-2 align-items-start">
+                  <span class="consult-room-distance"><%= "#{room.distance_to(@client_ip).to_i} km" %></span>
                 </div>
               </div>
+            </a>
+          </h2>
+        </div>
+      <% end %>
+      <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
+        <div class="card-body pt-2">
+          <p class="card-description"><%= room.description %></p>
+          <div class="row">
+            <div class="col-sm-12 col-md-7 consult-room-info">
+              <h5>Atendemos:</h5>
+              <% especie_mascotas = room.animal.split(" ") %>
+              <% especie_mascotas.each do |especie| %>
+                <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
+              <% end %>
+              <h5>Aceptamos:</h5>
+              <% forma_pago.each do |pagos| %>
+                <span class="badge badge-pill badge-vetlove"><%= pagos %></span>
+              <% end %>
             </div>
-        <% end %>
+            <div class="col-sm-12 col-md-5 align-self-end mt-3">
+              <div class="d-flex justify-content-end">
+                <%= link_to "Solicitar cita", new_consulting_room_booking_path(room), class: 'btn btn-primary' %>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

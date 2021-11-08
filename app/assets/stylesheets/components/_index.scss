@@ -4,6 +4,8 @@
 @import "navbar";
 @import "footer";
 @import "container";
+@import "card";
+
 
 
 .vetlove-booking-form {
@@ -22,5 +24,8 @@
   span{
     text-align: center;
     min-width:100px;
+  }
+  p {
+    min-width: 100px;
   }
 }

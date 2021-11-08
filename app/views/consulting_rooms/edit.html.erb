@@ -11,4 +11,7 @@
   <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
   <%= f.submit "Editar Consultorio", class: "btn btn-primary" %>
 <% end %>
-<%= link_to "Volver", consulting_rooms_path %>
+<%= link_to consulting_rooms_path do %>
+  <i class="fas fa-arrow-left py-3"></i>
+  <span>Volver</span></a>
+<% end %>
