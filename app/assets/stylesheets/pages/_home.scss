@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(10deg, #000000 0%, rgba(48, 48, 48, 0.11) 63.79%), url("background.jpg"), #000000;
+  background: linear-gradient(5deg, #000000 0%, rgba(131, 125, 125, 0.096) 63.79%), url("background.jpg");
   background-size: cover;
 	background-position: center;
   padding: 200px 10px;
@@ -97,7 +97,27 @@
   color: #57429D;
 }
 
+// textos
+
+.textos {
+  color: $third-color;
+}
+
+.textos2 {
+  color: $secondary-color;
+}
+
 // ABOUT SECTION
+.about-seccion {
+  background-color: white;
+  padding: 40px 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.subheading{
+  color: $third-color;
+  font-weight: bold;
+}
 
 .timeline {
   position: relative;
@@ -109,10 +129,10 @@
   top: 0;
   bottom: 0;
   left: 40px;
-  width: 2px;
+  width: 3px;
   margin-left: -1.5px;
   content: "";
-  background-color: #e9ecef;
+  background-color: #b1afafce;
 }
 .timeline > li {
   position: relative;
@@ -154,7 +174,7 @@
   margin-left: 0;
   text-align: center;
   color: white;
-  border: 7px solid #e9ecef;
+  border: 7px solid #bbbcbd;
   border-radius: 100%;
   background-color: $primary-color;
 }
@@ -189,6 +209,7 @@
 }
 .timeline .timeline-heading h4.subheading, .timeline .timeline-heading .subheading.h4 {
   text-transform: none;
+  color: #1DB9C3;
 }
 .timeline .timeline-body > ul,
 .timeline .timeline-body > p {
@@ -265,4 +286,55 @@
   .timeline > li.timeline-inverted > .timeline-panel {
     padding: 0 100px 20px 20px;
   }
+}
+// SERVICES
+.carousel-item{
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  padding-top: 65px;
+}
+
+.services-seccion{
+  background-image:url('https://images.unsplash.com/photo-1607925013290-d8bc763adbf7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');//#3dc2cc96;
+  margin: 0;
+  padding: 40px 0;
+}
+
+.services-circle{
+  color: #1db8c3ef;
+}
+
+.iconos{
+  color: white;
+}
+
+.textos-services{
+  text-shadow: 2px 2px 2px rgb(27, 27, 27);
+}
+
+// TEAM VETS
+.team-seccion{
+  background-color: white;
+  padding: 40px 0;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.team-member {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.team-member img {
+  width: 14rem;
+  height: 14rem;
+  border: 0.5rem solid rgba(73, 73, 73, 0.26);
+}
+.team-member h4, .team-member .h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+.img-brand {
+  height: 2.75rem;
 }
