@@ -20,28 +20,46 @@ ActiveRecord::Base.connection.reset_pk_sequence!("consulting_rooms")
 ActiveRecord::Base.connection.reset_pk_sequence!("users")
 puts ""
 
+# Mi propio faker seed
+tlf_area = ['212','414','412','416','424','426']
+
 puts "Empezará a insertar datos"
 puts "Insertando Usuarios"
 puts ""
-User.create([{ email: "fernando@gmail.com", first_name: "Fernando", last_name: "Lopez", password: "123456", password_confirmation: "123456", phone_number: Faker::PhoneNumber.cell_phone, birthdate: Faker::Date.between(from: "1990-09-23", to: "2014-09-25"), is_vet: true }])
+User.create([{ email: "fernando@gmail.com",
+  first_name: "Fernando", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+  phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
+  birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: true }])
 puts "Usuario: fernando@gmail.com, Contraseña: 123456, Tipo: Veterinario"
 
-User.create([{ email: "alfredo@gmail.com", first_name: "Alfredo", last_name: "Peña", password: "123456", password_confirmation: "123456", phone_number: Faker::PhoneNumber.cell_phone, birthdate: Faker::Date.between(from: "1990-09-23", to: "2014-09-25"), is_vet: true }])
+User.create([{ email: "alfredo@gmail.com", first_name: "Alfredo", last_name: "Peña", password: "123456", password_confirmation: "123456",
+  phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
+  birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: true }])
 puts "Usuario: alfredo@gmail.com, Contraseña: 123456, Tipo: Veterinario"
 
-User.create([{ email: "genesis@gmail.com", first_name: "Genesis", last_name: "Perez", password: "123456", password_confirmation: "123456", phone_number: Faker::PhoneNumber.cell_phone, birthdate: Faker::Date.between(from: "1990-09-23", to: "2014-09-25"), is_vet: true }])
+User.create([{ email: "genesis@gmail.com", first_name: "Genesis", last_name: "Perez", password: "123456", password_confirmation: "123456",
+  phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
+  birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: true }])
 puts "Usuario: genesis@gmail.com, Contraseña: 123456, Tipo: Veterinario"
 
-User.create([{ email: "jesus@gmail.com", first_name: "Jesus", last_name: "Lopez", password: "123456", password_confirmation: "123456", phone_number: Faker::PhoneNumber.cell_phone, birthdate: Faker::Date.between(from: "1990-09-23", to: "2014-09-25"), is_vet: false }])
+User.create([{ email: "jesus@gmail.com", first_name: "Jesus", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+  phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
+  birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: jesus@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
-User.create([{ email: "javier@gmail.com", first_name: "Javier", last_name: "Lopez", password: "123456", password_confirmation: "123456", phone_number: Faker::PhoneNumber.cell_phone, birthdate: Faker::Date.between(from: "1990-09-23", to: "2014-09-25"), is_vet: false }])
+User.create([{ email: "javier@gmail.com", first_name: "Javier", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+  phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
+  birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: javier@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
-User.create([{ email: "juan@gmail.com", first_name: "Juan", last_name: "Lopez", password: "123456", password_confirmation: "123456", phone_number: Faker::PhoneNumber.cell_phone, birthdate: Faker::Date.between(from: "1990-09-23", to: "2014-09-25"), is_vet: false }])
+User.create([{ email: "juan@gmail.com", first_name: "Juan", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+  phone_number:   phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
+  birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: juan@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
-User.create([{ email: "maria@gmail.com", first_name: "Maria", last_name: "Lopez", password: "123456", password_confirmation: "123456", phone_number: Faker::PhoneNumber.cell_phone, birthdate: Faker::Date.between(from: "1990-09-23", to: "2014-09-25"), is_vet: false }])
+User.create([{ email: "maria@gmail.com", first_name: "Maria", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+  phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
+  birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: maria@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
 
