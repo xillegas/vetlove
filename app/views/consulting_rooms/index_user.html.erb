@@ -5,16 +5,14 @@
     </div>
     <div class="d-flex justify-content-center">
       <div>
-        <% if user_signed_in? %>
-          <%= form_tag consulting_rooms_user_path, method: :get do %>
-            <%= text_field_tag :query,
+        <%= form_tag consulting_rooms_user_path, method: :get do %>
+          <%= text_field_tag :query,
                       params[:query],
                       class: "form-control",
-                      id: 'buscar_vet',
+                      id: 'buscar',
                       placeholder: "Buscar veterinarios"
                     %>
-            <%= submit_tag "", class: "fas fa-search size-button-search", id: "search-f" %>
-          <% end %>
+          <%= submit_tag "", class: "fas fa-search search-f-user" %>
         <% end %>
       </div>
     </div>

@@ -1,7 +1,7 @@
 class ConsultingRoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :authorize_pundit, except: [:index]
-  layout "main", only: %i[new index_vet index_user]
+  layout "main", only: %i[new index_vet index_user edit]
 
   def index_vet
     @user = current_user
