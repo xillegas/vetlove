@@ -1,7 +1,7 @@
 <% forma_pago = ['efectivo', 'punto de venta', 'zelle', 'paypal'] %>
-<div class="accordion card-consulting " id="accordionExample">
+<div class="accordion w-100" id="accordionExample">
   <% @query_rooms.each_with_index do |room, index| %>
-    <div class="card card-consulting">
+    <div class="card card-border">
       <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>)">
         <h2 class="mb-0">
           <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">

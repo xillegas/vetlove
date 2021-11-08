@@ -1,7 +1,9 @@
-.card, .card-body, .card-header{
+.card,
+.card-body,
+.card-header {
     border: $gene-color;
 }
 
-.card-consulting{
+.card-border, .card-border-container {
     border-radius: 20px 0 0 20px;
 }
