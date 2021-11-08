@@ -168,7 +168,7 @@ puts "Insertando Bookings"
 User.all.each_with_index do |user, index|
   Booking.create([{ date: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :morning),
                     time: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :afternoon),
-                    consulting_room: ConsultingRoom.find(rand(1..3)), # Resolver este problema, todos los vets del seed deben tener booking.
+                    consulting_room: ConsultingRoom.find(rand(1..3)),
                     attended: false,
                     pet: Pet.find_by(user: user) }])
 end
