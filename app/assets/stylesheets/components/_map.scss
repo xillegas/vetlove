@@ -30,6 +30,12 @@
   border-radius: 12px;
 }
 
+.a-vet {
+  text-decoration: none;
+  .a-vet::hover{
+    text-decoration: none;
+  }
+}
 
 .coordinates {
   background: rgba(0, 0, 0, 0.5);
