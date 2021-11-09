@@ -117,3 +117,21 @@
 .form-size-search {
   height: 50px;
 }
+
+// CREAR CONSULTORIO
+
+.card-consulting {
+  border-radius: 18px;
+  box-shadow: 5px 8px 5px rgba(46, 46, 46, 0.24);
+}
+
+.btn{
+  border-radius: 10px; 
+}
+
+.volver-btn{
+  color: $primary-color;
+  &.volver-btn:hover{
+    color: $third-color;
+  }
+}

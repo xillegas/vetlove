@@ -8,7 +8,7 @@ class Pet < ApplicationRecord
   validates :birthdate, presence: true
   validates :name, presence: true
   validate :birthdate_lower_than_actual_date
-
+  has_one_attached :photo
   def birthdate_lower_than_actual_date
     return if self.birthdate.blank?
     if self.birthdate >= Date.current.to_s

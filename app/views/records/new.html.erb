@@ -13,12 +13,22 @@
     </div>
   </div>
   <div class="col-md-12 col-lg-6">
-    <%= image_tag "https://www.laprensa.com.ec/wp-content/uploads/2021/09/almohadillas-perro-1.jpg", class:"img-profile-record rounded-circle" %>
+    <% if @booking.pet.photo.attached? %>
+      <%= cl_image_tag @booking.pet.photo.key, height: 200, width: 200, class:"rounded-circle object-fit-cover"  %>
+    <% else %>
+      <%= image_tag "https://www.laprensa.com.ec/wp-content/uploads/2021/09/almohadillas-perro-1.jpg",  height: 200, width: 200, class:"rounded-circle object-fit-cover"  %>
+    <% end %>
   </div>
 </div>
 <%= simple_form_for [@booking, @record] do |f| %>
   <%= f.input :symptoms, label: "Sintomas", required: true, autofocus: true %>
   <%= f.input :diagnostic, label: "Diagnostico", required: true, autofocus: true  %>
   <%= f.input :treatment, label: "Tratamiento", required: true, autofocus: true  %>
-  <%= f.button :submit, class: "btn btn-primary" %>
+  <%= f.button :submit, "Crear registro", class: "btn btn-primary my-3" %>
 <% end %>
+<div class="my-2">
+<%= link_to booking_path(@booking) do %>
+  <i class="fas fa-arrow-left"></i>
+  <span>Volver</span></a>
+<% end %>
+</div>

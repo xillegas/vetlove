@@ -1,14 +1,24 @@
-<h2>Editar consultorio</h2>
-<%= simple_form_for [ @consulting_room ] do |f| %>
-  <%= f.input :name, label: "Nombre del consultorio" %>
-  <%= f.input :description, label: "Descripcion del consultorio" %>
-  <%= f.input :address, label: "Direccion del consultorio" %>
-  <%= f.input :init_hour_day, label: "Hora de apertura" %>
-  <%= f.input :end_hour_day, label: "Hora de cierre" %>
-  <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
-  <%= f.submit "Editar Consultorio", class: "btn btn-primary" %>
-<% end %>
-<%= link_to consulting_rooms_path do %>
-  <i class="fas fa-arrow-left py-3"></i>
-  <span>Volver</span></a>
-<% end %>
+<div class="row my-5 mx-2">
+  <div class="card card-consulting p-5 col-md-6 col-sm-12">
+    <div class="my-2">
+      <h2 class="h2 m-0 text-gray-800">Editar consultorio</h2>
+    </div>
+    <%= simple_form_for [ @consulting_room ] do |f| %>
+      <%= f.input :name, label: "Nombre del consultorio" %>
+      <%= f.input :description, label: "Descripcion del consultorio" %>
+      <%= f.input :address, label: "Direccion del consultorio" %>
+      <%= f.input :init_hour_day, label: "Hora de apertura" %>
+      <%= f.input :end_hour_day, label: "Hora de cierre" %>
+      <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
+      <%= f.submit "Editar Consultorio", class: "btn btn-primary" %>
+    <% end %>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 mx-2 volver-btn">
+        <%= link_to consulting_rooms_path, class: "volver-btn" do %>
+          <i class="fas fa-arrow-left py-3"></i>
+          <span>Volver</span></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
