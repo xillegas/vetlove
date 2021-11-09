@@ -1,0 +1,22 @@
+// Primeros colores
+// danger-color #F4607C;
+// alert-color #FF8E64;
+
+.texto-danger {
+  color: $danger-color;
+  &:hover {
+    color: #C14793;
+  }
+}
+
+.texto-alert {
+  color: $alert-color;
+}
+
+.texto-primario {
+  color: $primary-color;
+}
+
+.texto-terciario {
+  color: $third-color;
+}

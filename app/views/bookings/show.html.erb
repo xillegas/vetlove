@@ -48,8 +48,8 @@
         </div>
         <div class="ml-3">
         <p class="booking-small"><strong>Veterinario:</strong> <%= @booking.consulting_room.user.first_name.capitalize %> <%= @booking.pet.user.last_name.capitalize %></p>
-        <p class="booking-small"><strong>Teléfono: </strong><%= @booking.pet.user.phone_number %></p>
-        <p class="booking-small"><strong>Email: </strong><%= @booking.pet.user.email %></p>
+        <p class="booking-small"><strong>Teléfono: </strong><%= @booking.consulting_room.user.phone_number %></p>
+        <p class="booking-small"><strong>Email: </strong><%= @booking.consulting_room.user.email %></p>
         </div>
       </div>
     </div>
