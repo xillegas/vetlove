@@ -2,7 +2,7 @@ SPECIES = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "
 GENDERS = ['Macho', 'Hembra']
 class Pet < ApplicationRecord
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   validates :gender, inclusion: GENDERS, presence: true
   validates :species, inclusion: SPECIES, presence: true
   validates :birthdate, presence: true

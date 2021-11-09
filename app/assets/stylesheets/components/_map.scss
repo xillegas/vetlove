@@ -13,41 +13,34 @@
   border: 3px solid rgb(86, 86, 160);
 }
 
-.map-custom {
-  width: 100%;
-  height: 75vh;
-}
-
-.map-custom_vet,
-.map-custom_user {
-  width: 100%;
-  height: 85vh;
-}
-
 .map-custom,
 .map-custom_vet,
 .map-custom_user {
+  width: 100%;
+  height: 75vh;
   border-radius: 12px;
 }
 
 
-.coordinates {
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  position: absolute;
-  bottom: 40px;
-  left: 10px;
-  padding: 5px 10px;
-  margin: 0;
-  font-size: 11px;
-  line-height: 18px;
-  border-radius: 3px;
-  display: none;
+.a-vet {
+  text-decoration: none;
+  .a-vet::hover{
+    text-decoration: none;
+  }
 }
 
-#draggableMap {
-  // position: absolute;
-  // top: 0;
-  // bottom: 0;
+
+.map_draggableMap_edit,
+.map_draggableMap_add {
   width: 100%;
+  height: 100vh;
 }
+
+.map-custom,
+.map-custom_vet,
+.map-custom_user,
+.map_draggableMap_add,
+.map_draggableMap_edit {
+  border-radius: 12px;
+}
+

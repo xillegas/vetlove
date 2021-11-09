@@ -6,45 +6,51 @@
     <p class="text-secondary">Introduzca los datos del consultorio</p>
     <%= simple_form_for [ @consulting_room ] do |f| %>
       <div class="row">
-        <div class="col-md-6 col-sm-12">
-          <%= f.input :name, label: "Nombre del consultorio" %>
+        <div class="col-md-12">
+          <%= f.input :name, label: "Nombre del consultorio", required: true %>
         </div>
-        <div class="col-md-6 col-sm-12">
-          <%= f.input :description, label: "Descripcion del consultorio" %>
+        <div class="col-md-12">
+          <%= f.input :description, label: "Descripcion del consultorio", :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: false %>
         </div>
-        <%# <div class="col-md-12 col-sm-12"> %>
-          <%# <%= f.input :address, label: "Direccion del consultorio", :input_html => { :id => "flat_address" }%>
-        <%# </div> %>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-12">
+          <p class="mb-2">Dirección del Consultorio <small class="text-info">(Arrastre el marcador del mapa)</small>  </p>
+          <%= f.input :specific_address, label: false, :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: true %>
+        </div>
+          <%= f.input :address, label: false, :as => :hidden %>
           <%= f.input :longitude, :as => :hidden, input_html: { id: 'longitud_vet' } %>
-        </div>
-        <div class="col-md-6 col-sm-12">
           <%= f.input :latitude, :as => :hidden, input_html: { id: 'latitud_vet' } %>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :init_hour_day, label: "Hora de apertura", required: true %>
         </div>
         <div class="col-md-6 col-sm-12">
-          <%= f.input :init_hour_day, label: "Hora de apertura" %>
+          <%= f.input :end_hour_day, label: "Hora de cierre", required: true %>
         </div>
-        <div class="col-md-6 col-sm-12">
-          <%= f.input :end_hour_day, label: "Hora de cierre" %>
+        <div class="col-12">
+          <p class="my-2">Dias de la semana que trabaja</p>
+          <div class="d-flex flex-wrap">
+            <% week_days = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabados", "Domingos"] %>
+            <% week_days.each do |day| %>
+              <div class="col-lg-1 col-md-2 col-sm-3 col-xsm-4 mr-5">
+                <input class="tag-selector" id="item_selected_days_<%= day %>" name="selected_days[]" type="checkbox" value="<%= day %>">
+                <label for="item_selected_days_<%= day %>"><%= day %></label>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <div class="col-md-12 col-sm-12">
-          <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
-        </div>
-        <div class="col-md-12 col-sm-12">
-          <p>Ofrece atencion a</p>
-        </div>
-        <div class="container my-2">
-          <div class="d-flex flex-wrap col-md-12 col-sm-6">
+
+        <div class="container">
+          <p class="my-2">Ofrece atencion a:</p>
+          <div class="d-flex flex-wrap">
             <% species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"] %>
             <% species.each do |sp| %>
-              <div class="w-25 my-2 col-md-4 col-sm-6">
+              <div class="col-lg-1 col-md-2 col-sm-3 col-xsm-4 mr-5">
                 <input class="tag-selector" id="item_selected_keywords_<%= sp %>" name="selected_keywords[]" type="checkbox" value="<%= sp %>">
                 <label for="item_selected_keywords_<%= sp %>"><%= sp %>s</label>
               </div>
             <% end %>
           </div>
         </div>
-        <div class="col-md-12 col-sm-12 text-center">
+        <div class="col-md-12 col-sm-12 text-center  pt-3">
           <%= f.submit "Crear Consultorio", class: "btn btn-primary my-3" %>
         </div>
       </div>
@@ -59,9 +65,8 @@
     </div>
   </div>
   <div class="col-md-6 col-sm-12">
-    <div id="draggableMap" class="map-custom_user" data-markers="<%= @markers.to_json %>"
+    <div id="draggableMap" class="map_draggableMap_add" data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <pre id="coordinates" class="coordinates"></pre>
   </div>
 </div>
