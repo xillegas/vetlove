@@ -13,12 +13,10 @@
                 </div>
                 <div class="col-2 align-items-start">
 
-                <% if room.distance_to(@client_ip).to_f.nan? %>
-
+                <% if room.distance_to(@client_ip).nan? %>
                   <span class="consult-room-distance">0 KM</span>
-                  <% else %>
-                  <span class="consult-room-distance"><%= "a #{room.distance_to(@client_ip).nan? ? '0' : room.distance_to(@client_ip).to_f.floor} KM" %></span>
-
+                <% else %>
+                  <span class="consult-room-distance"><%= "a #{room.distance_to(@client_ip).to_f.floor} KM" %></span>
                 <% end %>
 
                 </div>
@@ -72,15 +70,12 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for [ConsultingRoom.first, Booking.new] do |f|   %>
-              <%= pets = current_user.pets %>
+              <% pets = current_user.pets %>
               <div class="row">
                 <div class="col">
                   <div class='row datetimerange'>
-                    <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+                    <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Fecha de atención" %>
                   </div>
-                </div>
-                <div class="col">
-                  <%= f.input :time, label: 'Hora' %>
                 </div>
                 <div class="col">
                   <%= f.association :pet, collection: pets, label: 'Mi mascota' %>
