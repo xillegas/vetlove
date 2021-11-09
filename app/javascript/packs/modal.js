@@ -1,6 +1,6 @@
 
 function modals() {
-    console.log(document.querySelectorAll(".modal-btn"));
+    // console.log(document.querySelectorAll(".modal-btn"));
     document.querySelectorAll(".modal-btn").forEach(modal_btn => {
         modal_btn.addEventListener('click', (element) => {
             let modalForm = document.querySelector(".new_booking")
@@ -11,4 +11,3 @@ function modals() {
 }
 
 export { modals };
-

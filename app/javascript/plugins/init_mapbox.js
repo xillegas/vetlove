@@ -74,6 +74,8 @@ const initMapbox = () => {
         .addTo(map);
     });
     fitMapToMarkers(map, markers);
+  } else {
+    void(0);
   }
 };
 

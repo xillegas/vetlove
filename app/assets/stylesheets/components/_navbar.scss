@@ -71,6 +71,7 @@
 .navbar-vetlove-classic-ulist a {
 	color: white;//$primary-color;
 	display: block;
+  transition: 0.2s;
 	padding: 7px 11px 7px;
 	text-decoration: none;
   &.navbar-vetlove-classic-ulist a:hover{
@@ -119,6 +120,11 @@
   font-size: 17px;
   padding: 0 10px;
   font-weight: bold;
+}
+
+.color-text-nav{
+  background-color: #ffffff0f;
+  transition: 0.2s;
 }
 
 .change-color{
