@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
   belongs_to :consulting_room
   belongs_to :pet
-  has_one :record
+  has_one :record, dependent: :destroy
   #Edicion de Alfredo
   has_one :user, through: :pet
   validate :validate_date_current

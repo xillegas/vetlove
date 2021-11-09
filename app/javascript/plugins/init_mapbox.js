@@ -59,7 +59,7 @@ const initMapbox = () => {
       }
       else {
         // console.log('estoy en else')
-        void(0);
+        void (0);
       };
     };
 
@@ -113,8 +113,11 @@ const initMapbox = () => {
           .addTo(map);
       });
       fitMapToMarkers(map, markers);
+      map.on('load', (event) => {
+        map.resize();
+      });
     } else {
-      void(0);
+      void (0);
     }
     // map.on('click', addMarker);
   } else {
@@ -124,9 +127,9 @@ const initMapbox = () => {
 
   if (draggableMapElement) {
     mapboxgl.accessToken = draggableMapElement.dataset.mapboxApiKey;
-    const  coordinates = document.getElementById('coordinates');
-    const  longitude = document.getElementById('longitud_vet');
-    const  latitude = document.getElementById('latitud_vet');
+    // const coordinates = document.getElementById('coordinates');
+    const longitude = document.getElementById('longitud_vet');
+    const latitude = document.getElementById('latitud_vet');
 
     const map = new mapboxgl.Map({
       container: 'draggableMap',
@@ -147,11 +150,8 @@ const initMapbox = () => {
       const lngLat = marker.getLngLat();
       longitude.value = lngLat.lng
       latitude.value = lngLat.lat
-      // longitude.style.display = 'none';
-      // latitude.style.display = 'none';
-
-      coordinates.style.display = 'block';
-      coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+      // coordinates.style.display = 'block';
+      // coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
     }
 
     marker.on('dragend', onDragEnd);

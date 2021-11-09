@@ -2,6 +2,9 @@ class ConsultingRoomsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :authorize_pundit, except: [:index]
   layout "main", only: %i[new index_vet index_user edit]
+  DEFAULT_DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]
+  DEFAULT_LON_LAT = ["-66.8762112", "10.4923136"]
+  DEFAULT_ANIMAL = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"]
 
   def index_vet
     @user = current_user
@@ -32,9 +35,9 @@ class ConsultingRoomsController < ApplicationController
     end
     @user_marker = Geocoder::search(@client_ip)
     @user_marker.each do |marker|
-      @info_window_user = {lat: marker.latitude,
-                          lng: marker.longitude,
-                          :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker })}
+      @info_window_user = { lat: marker.latitude,
+                            lng: marker.longitude,
+                            :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker }) }
     end
   end
 
@@ -66,9 +69,9 @@ class ConsultingRoomsController < ApplicationController
       end
       @user_marker = Geocoder::search(@client_ip)
       @user_marker.each do |marker|
-        @info_window_user = {lat: marker.latitude,
-                            lng: marker.longitude,
-                            :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker })}
+        @info_window_user = { lat: marker.latitude,
+                              lng: marker.longitude,
+                              :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker }) }
       end
     end
   end
@@ -82,9 +85,19 @@ class ConsultingRoomsController < ApplicationController
     @consulting_room = ConsultingRoom.new(params_consulting_rooms)
     # Selected keywords es el nombre del formulario
     selected_keywords = params[:selected_keywords]
+    selected_days = params[:selected_days]
+    selected_keywords = selected_keywords.nil? ? DEFAULT_ANIMAL : selected_keywords
+    selected_days = selected_days.nil? ? DEFAULT_DAYS : selected_days
     @user = current_user
     @consulting_room.user = @user
-    @consulting_room.animal = selected_keywords.join(" ")
+    if params_consulting_rooms["latitude"] == ""
+      params_consulting_rooms["latitude"] = DEFAULT_LON_LAT[1]
+    end
+    if params_consulting_rooms["longitude"] == ""
+      params_consulting_rooms["longitude"] = DEFAULT_LON_LAT[0]
+    end
+    @consulting_room.animal = selected_keywords.join(", ")
+    @consulting_room.week_days = selected_days.join(", ")
     @consulting_room.save
     redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
   end
@@ -93,11 +106,24 @@ class ConsultingRoomsController < ApplicationController
     @user = current_user
     @consulting_room = ConsultingRoom.find(params[:id])
   end
-  
+
   def update
     @consulting_room = ConsultingRoom.find(params[:id])
     @user = current_user
     selected_days = params[:selected_days]
+    selected_keywords = params[:selected_keywords]
+    selected_keywords = selected_keywords.nil? ? DEFAULT_ANIMAL : selected_keywords
+    selected_days = selected_days.nil? ? DEFAULT_DAYS : selected_days
+    p params_consulting_rooms["latitude"]
+    if params_consulting_rooms["latitude"] == ""
+      params_consulting_rooms["latitude"] = DEFAULT_LON_LAT[1]
+    end
+    if params_consulting_rooms["longitude"] == ""
+      params_consulting_rooms["longitude"] = DEFAULT_LON_LAT[0]
+    end
+    p "1"
+    p params_consulting_rooms["latitude"]
+    @consulting_room.animal = selected_keywords.join(", ")
     @consulting_room.week_days = selected_days.join(", ")
     @consulting_room.update(params_consulting_rooms)
     redirect_to consulting_rooms_path, notice: "Datos del consultorio actualizados exitosamente!"
