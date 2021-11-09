@@ -93,10 +93,12 @@ class ConsultingRoomsController < ApplicationController
     @user = current_user
     @consulting_room = ConsultingRoom.find(params[:id])
   end
-
+  
   def update
     @consulting_room = ConsultingRoom.find(params[:id])
     @user = current_user
+    selected_days = params[:selected_days]
+    @consulting_room.week_days = selected_days.join(", ")
     @consulting_room.update(params_consulting_rooms)
     redirect_to consulting_rooms_path, notice: "Datos del consultorio actualizados exitosamente!"
   end

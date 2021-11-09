@@ -4,13 +4,45 @@
       <h2 class="h2 m-0 text-gray-800">Editar consultorio</h2>
     </div>
     <%= simple_form_for [ @consulting_room ] do |f| %>
-      <%= f.input :name, label: "Nombre del consultorio" %>
-      <%= f.input :description, label: "Descripcion del consultorio" %>
-      <%= f.input :address, label: "Direccion del consultorio" %>
-      <%= f.input :init_hour_day, label: "Hora de apertura" %>
-      <%= f.input :end_hour_day, label: "Hora de cierre" %>
-      <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
-      <%= f.submit "Editar Consultorio", class: "btn btn-primary" %>
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :name, label: "Nombre del consultorio" %>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :description, label: "Descripcion del consultorio" %>
+        <div>
+        <div class="col-md-12 col-sm-12 px-0">
+          <%= f.input :address, label: "Direccion del consultorio" %>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <%= f.input :init_hour_day, label: "Hora de apertura" %>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <%= f.input :end_hour_day, label: "Hora de cierre" %>
+          </div>
+        </div>
+        <%# <div class="col-md-12 col-sm-12 px-0">
+          <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
+        <%# </div> %>
+        <div class="col-md-12 col-sm-12">
+          <p>Dias de la semana que trabaja</p>
+        </div>
+        <div class="container my-2">
+          <div class="d-flex flex-wrap col-md-12 col-sm-12">
+            <% week_days = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabados", "Domingos"] %>
+            <% week_days.each do |day| %>
+              <div class="w-25 my-2 px-4 col-md-3 col-sm-4 col-xsm-6">
+                <input class="tag-selector" id="item_selected_days_<%= day %>" name="selected_days[]" type="checkbox" value="<%= day %>">
+                <label for="item_selected_days_<%= day %>"><%= day %></label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 text-center">
+          <%= f.submit "Editar Consultorio", class: "btn btn-primary my-3" %>
+        </div>
+      </div>
     <% end %>
     <div class="row">
       <div class="col-md-12 col-sm-12 mx-2 volver-btn">
