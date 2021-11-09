@@ -12,15 +12,15 @@
                   <p class="direction-consulting"><%= room.address %></p>
                 </div>
                 <div class="col-2 align-items-start">
-                
+
                 <% if room.distance_to(@client_ip).to_f.nan? %>
-                  
+
                   <span class="consult-room-distance">0 KM</span>
                   <% else %>
-                  <span class="consult-room-distance"><%= "#{room.distance_to(@client_ip).to_i} km" %></span>
-                  
+                  <span class="consult-room-distance"><%= "a #{room.distance_to(@client_ip).nan? ? '0' : room.distance_to(@client_ip).to_f.floor} KM" %></span>
+
                 <% end %>
-                
+
                 </div>
               </div>
             </a>
