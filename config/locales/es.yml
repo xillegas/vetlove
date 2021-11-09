@@ -1,0 +1,6 @@
+es:
+  simple_calendar:
+    previous: "Anterior"
+    next: "Siguiente"
+    week: Semana
+    month: mes
