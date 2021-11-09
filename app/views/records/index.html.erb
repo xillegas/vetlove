@@ -4,59 +4,99 @@
 </div>
 
 <% if @records.empty? %>
-  <h2>No tienes historial para tu mascota</h2>
+  <h2 class="text-gray-700">No tienes todavía historial médico de mascotas</h2>
 <% else %>
   <% @records.each do |record| %>
     <% if current_user.is_vet %>
+      <%# Vista del Usuario veterinario: %>
       <% if current_user == record.booking.consulting_room.user %>
         <div class="list-group my-5 records-cards">
-          <div class="list-group-item list-group-item-action">
+          <div class="list-group-item">
             <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="h3 pet-title"><%= record.booking.pet.name %></p>
-              </div>
-              <div>
-                <%= link_to "Detalle de Consulta", record_path(record), class:"text-primary" %>
+              <div class="d-flex flex-row">
+                <div>
+                  <% if record.booking.pet.photo.attached? %>
+                      <%# cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <%= cl_image_tag record.booking.pet.photo.key, class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                    <% else %>
+                      <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg",  class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                    <% end %>
+                </div>
+                <div class="ml-3">
+                  <p class="h3 pet-title"><%= record.booking.pet.name.capitalize %></p>
+                  <p class="booking-small">
+                  <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
+                  <%= record.booking.pet.species.capitalize %>
+                  <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
+                  <%= record.booking.pet.gender.capitalize %></p>
+                </div>
               </div>
             </div>
             <hr>
-            <div class="d-flex justify-content-between mb-1">
-              <div>
+            <div class="row mb-1">
+              <div class=col-6>
+                <p class="pet-small"><strong>Dueño:</strong> <%= record.booking.pet.user.first_name %> <%= record.booking.pet.user.last_name %></p>
                 <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.date.to_s).strftime("%F") %></p>
-                <p class="pet-small"><strong>Dueño:</strong> <%= record.booking.pet.name %></p>
                 <p class="pet-small"><strong>Teléfono:</strong> <%= record.booking.pet.user.phone_number %></p>
-                <p class="pet-small"><strong>Tipo:</strong> <%= record.booking.pet.species %></p>
-                <p class="pet-small"><strong>Genero:</strong> <%= record.booking.pet.gender %></p>
+              </div>
+              <div class=col-6>
+                <p class="pet-small"><strong>Asistió a consulta por:</strong> <%= record.diagnostic %></p>
+                <%= link_to "Ver diagnostico", record_path(record), class:"text-primary" %>
               </div>
             </div>
             <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
           </div>
         </div>
+        <% else %>
+        <div>
+        <h3 class="text-gray-700">No hay registros del historial médico de mascotas atendidas</h3>
+        <p class="booking-small">Puedes crear entradas de historias médicas al hacer clic en "Crear cita" desde el calendario.</p>
+        </div>
       <% end %>
     <% else %>
+    <%# Vista del Usuario cliente: %>
       <% if current_user == record.booking.pet.user %>
         <div class="list-group my-5 records-cards">
-          <div class="list-group-item list-group-item-action">
+          <div class="list-group-item">
             <div class="d-flex justify-content-between align-items-center">
-              <div>
-                <p class="h3 pet-title"><%= record.booking.pet.name %></p>
-              </div>
-              <div>
-                <%= link_to "Detalle de Consulta", record_path(record), class:"text-primary" %>
+              <div class="d-flex flex-row">
+                <div>
+                  <% if record.booking.pet.photo.attached? %>
+                      <%# cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <%= cl_image_tag record.booking.pet.photo.key, class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                    <% else %>
+                      <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg",  class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                    <% end %>
+                </div>
+                <div class="ml-3">
+                  <p class="h3 pet-title"><%= record.booking.pet.name.capitalize %></p>
+                  <p class="booking-small">
+                  <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
+                  <%= record.booking.pet.species.capitalize %>
+                  <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
+                  <%= record.booking.pet.gender.capitalize %></p>
+                </div>
               </div>
             </div>
             <hr>
-            <div class="d-flex justify-content-between mb-1">
-              <div>
-                <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.date.to_s).strftime("%F") %></p>
+            <div class="row mb-1">
+              <div class=col-6>
                 <p class="pet-small"><strong>Veterinario:</strong> <%= record.booking.consulting_room.name %></p>
+                <p class="pet-small"><strong>Fecha de Consulta:</strong> <%= DateTime.parse(record.booking.date.to_s).strftime("%F") %></p>
                 <p class="pet-small"><strong>Teléfono:</strong> <%= record.booking.consulting_room.user.phone_number %></p>
-                <p class="pet-small"><strong>Tipo:</strong> <%= record.booking.pet.species %></p>
-                <p class="pet-small"><strong>Genero:</strong> <%= record.booking.pet.gender %></p>
+              </div>
+              <div class=col-6>
+                <p class="pet-small"><strong>Asistió a consulta por:</strong> <%= record.diagnostic %></p>
+                <%= link_to "Ver diagnostico", record_path(record), class:"text-primary" %>
               </div>
             </div>
             <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
           </div>
+        </div>
+        <% else %>
+        <div>
+        <h3 class="text-gray-700">Todavía no tienes historial médico de tus mascotas</h3>
+        <p class="booking-small">Asiste a una consulta y pídele al veterinario que llene el registro de tu consulta veterinaria.</p>
         </div>
       <% end %>
     <% end %>
