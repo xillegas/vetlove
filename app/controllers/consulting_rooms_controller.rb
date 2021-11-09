@@ -93,10 +93,12 @@ class ConsultingRoomsController < ApplicationController
     @user = current_user
     @consulting_room = ConsultingRoom.find(params[:id])
   end
-
+  
   def update
     @consulting_room = ConsultingRoom.find(params[:id])
     @user = current_user
+    selected_days = params[:selected_days]
+    @consulting_room.week_days = selected_days.join(", ")
     @consulting_room.update(params_consulting_rooms)
     redirect_to consulting_rooms_path, notice: "Datos del consultorio actualizados exitosamente!"
   end
@@ -120,7 +122,7 @@ class ConsultingRoomsController < ApplicationController
   end
 
   def params_consulting_rooms
-    params.require(:consulting_room).permit(:name, :address, :description, :state, :municipality, :parish, :init_hour_day, :end_hour_day, :week_days, :user_id)
+    params.require(:consulting_room).permit(:name, :address, :description, :init_hour_day, :end_hour_day, :week_days, :user_id)
   end
 
   def authorize_pundit
