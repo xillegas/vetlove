@@ -12,9 +12,12 @@
         <div class="col-md-6 col-sm-12">
           <%= f.input :description, label: "Descripcion del consultorio" %>
         </div>
-        <%# <div class="col-md-12 col-sm-12"> %>
-          <%# <%= f.input :address, label: "Direccion del consultorio", :input_html => { :id => "flat_address" }%>
-        <%# </div> %>
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :specific_address, label: "Direccion del consultorio especifico" %>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :address, :as => :hidden %>
+        </div>
         <div class="col-md-6 col-sm-12">
           <%= f.input :longitude, :as => :hidden, input_html: { id: 'longitud_vet' } %>
         </div>

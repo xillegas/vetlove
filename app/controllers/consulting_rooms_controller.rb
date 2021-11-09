@@ -120,7 +120,7 @@ class ConsultingRoomsController < ApplicationController
   end
 
   def params_consulting_rooms
-    params.require(:consulting_room).permit(:name, :address, :longitude, :latitude, :description, :init_hour_day, :end_hour_day, :week_days, :user_id)
+    params.require(:consulting_room).permit(:name, :specific_address, :address, :longitude, :latitude, :description, :init_hour_day, :end_hour_day, :week_days, :user_id)
   end
 
   def authorize_pundit
