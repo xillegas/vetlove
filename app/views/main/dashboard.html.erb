@@ -23,7 +23,7 @@
       </div>
     </div>
   <% end %>
-  <% 
+  <%
 =begin %>
   <!-- Earnings (Monthly) Card Example -->
   <div class="col-xl-3 col-md-6 mb-4">
@@ -66,7 +66,7 @@
       </div>
     </div>
   </div>
-  <% 
+  <%
 =end %>
   <!-- Pending Requests Card Example -->
   <div class="col-xl-3 col-md-6 mb-4">
@@ -98,7 +98,7 @@
           <br>
           <small><strong>Paciente:</strong> <%= bookie.pet.name %></small>
           <br>
-          <small><strong>Hora:</strong> <%= DateTime.parse(bookie.time.to_s).strftime("%I:%M%p")  %></small>
+          <small><strong>Hora:</strong> <%= DateTime.parse(bookie.date.to_s).strftime("%I:%M%p")  %></small>
           <br>
           <% if bookie.attended? %>
             <small><strong>Estado:</strong> <strong class="text-success">Atendido</strong></small>
@@ -110,8 +110,12 @@
           <% if current_user.is_vet?  %>
             <div class="d-flex justify-content-end">
               <% if bookie.attended? %>
-                <%record = Record.find_by(booking: bookie)%>
-                <small><%= link_to "Ver Cita", record_path(record) %></small>
+                <% if Record.find_by(booking: bookie).nil? %>
+                  <small></small>
+                <% elsif bookie.attended %>
+                  <% record = Record.find_by(booking: bookie)%>
+                  <small><%= link_to "Ver Cita", record_path(record) %></small>
+                <% end %>
               <% else %>
                 <small><%= link_to "Crear Cita", new_booking_record_path(bookie) %></small>
               <% end %>
@@ -126,7 +130,7 @@
     <% end %>
   </div>
 </div>
-<% 
+<%
 =begin %>
 <!-- Content Row -->
 <div class="row">
@@ -306,5 +310,5 @@
     </div>
   </div>
 </div>
-<% 
+<%
 =end %>

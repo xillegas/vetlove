@@ -11,7 +11,7 @@
       <p class="booking-title">Fecha de Consulta:<br>
         <%= DateTime.parse(@booking.date.to_s).strftime("%F") %> </p>
       <p class="booking-title">Hora de Consulta:<br>
-        <%= DateTime.parse(@booking.time.to_s).strftime("%I:%M%p")  %></p>
+        <%= DateTime.parse(@booking.date.to_s).strftime("%I:%M%p")  %></p>
     </div>
     <hr>
     <div class="d-flex justify-content-start mb-1">
@@ -48,8 +48,8 @@
         </div>
         <div class="ml-3">
         <p class="booking-small"><strong>Veterinario:</strong> <%= @booking.consulting_room.user.first_name.capitalize %> <%= @booking.pet.user.last_name.capitalize %></p>
-        <p class="booking-small"><strong>Teléfono: </strong><%= @booking.pet.user.phone_number %></p>
-        <p class="booking-small"><strong>Email: </strong><%= @booking.pet.user.email %></p>
+        <p class="booking-small"><strong>Teléfono: </strong><%= @booking.consulting_room.user.phone_number %></p>
+        <p class="booking-small"><strong>Email: </strong><%= @booking.consulting_room.user.email %></p>
         </div>
       </div>
     </div>

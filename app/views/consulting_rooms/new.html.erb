@@ -12,8 +12,14 @@
         <div class="col-md-6 col-sm-12">
           <%= f.input :description, label: "Descripcion del consultorio" %>
         </div>
-        <div class="col-md-12 col-sm-12">
-          <%= f.input :address, label: "Direccion del consultorio", :input_html => { :id => "flat_address" }%>
+        <%# <div class="col-md-12 col-sm-12"> %>
+          <%# <%= f.input :address, label: "Direccion del consultorio", :input_html => { :id => "flat_address" }%>
+        <%# </div> %>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :longitude, :as => :hidden, input_html: { id: 'longitud_vet' } %>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :latitude, :as => :hidden, input_html: { id: 'latitud_vet' } %>
         </div>
         <div class="col-md-6 col-sm-12">
           <%= f.input :init_hour_day, label: "Hora de apertura" %>
@@ -24,8 +30,6 @@
         <div class="col-md-12 col-sm-12">
           <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
         </div>
-
-
         <div class="col-md-12 col-sm-12">
           <p>Ofrece atencion a</p>
         </div>
@@ -49,9 +53,15 @@
       <div class="col-md-12 col-sm-12 mx-2 volver-btn">
         <%= link_to consulting_rooms_path, class: "volver-btn" do %>
           <i class="fas fa-arrow-left mt-3 mb-3"></i>
-          <span>Volver</span></a>
+          <span>Volver</span>
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <div id="draggableMap" class="map-custom_user" data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+    <pre id="coordinates" class="coordinates"></pre>
   </div>
 </div>

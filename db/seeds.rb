@@ -97,7 +97,6 @@ vet_fernando = User.find_by(email: "fernando@gmail.com")
 ConsultingRoom.create([{ address: "Av. Río de Janeiro, Caracas 1061, Distrito Capital",
                            name: "Consultorio Dr. #{vet_fernando.first_name} #{vet_fernando.last_name}",
                            description: "#{descr_first.sample} #{descr_second.sample} #{descr_offer.sample} #{descr_last.sample}",
-                           state: "Distrito Capital",
                            latitude: rand(10.507955..10.513019),
                            longitude: rand(-66.938838..-66.930598),
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
@@ -110,7 +109,6 @@ vet_alfredo = User.find_by(email: "alfredo@gmail.com")
 ConsultingRoom.create([{ address: "Av. Nueva Granada, C.C. Multiplaza Caracas 1041, Distrito Capital",
                            name: "Consultorio Dr. #{vet_alfredo.first_name} #{vet_alfredo.last_name}",
                            description: "#{descr_first.sample} #{descr_second.sample} #{descr_offer.sample} #{descr_last.sample}",
-                           state: "Distrito Capital",
                            latitude: rand(10.507055..10.523019),
                            longitude: rand(-66.940838..-66.930598),
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
@@ -127,7 +125,6 @@ direcciones.each do |dir|
   ConsultingRoom.create([{ address: dir,
                            name: "Consultorio Veterinario #{cons_name.sample} #{cons_adjetivo.sample}",
                            description: "#{descr_first.sample} #{descr_second.sample} #{descr_offer.sample} #{descr_last.sample}",
-                            state: "Distrito Capital",
                            latitude: rand(10.517055..10.523019),
                            longitude: rand(-66.940838..-66.930598),
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
@@ -142,9 +139,6 @@ vet_mascotafeliz = User.find_by(email: "tumascotafeliz@gmail.com")
   ConsultingRoom.create([{ address: "Carretera El Hatillo, Los Naranos, vía El Seminario. Centro Veterinario Dr. Gosling. Caracas- Venezuela",
                            name: "Consultorio Veterinario Dr. Gosling",
                            description: "Contamos con Tecnología de punta en área de Quirófanos, Laboratorio, Radiología, Imagenología, Hospitalización, Cuidados Intensivos, Peluquería  y Transporte en Ambulancia. Atendido por médicos especializados las 24 horas del día, con Veterinario residente.",
-                           state: "Distrito Capital",
-                           municipality: "",
-                           parish: "",
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miércoles,jueves,viernes,sábado,domingo",
@@ -167,7 +161,6 @@ puts "Insertando Bookings"
 # Manera ruby
 User.all.each_with_index do |user, index|
   Booking.create([{ date: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :morning),
-                    time: Faker::Time.between_dates(from: Date.today + index, to: Date.today + index, period: :afternoon),
                     consulting_room: ConsultingRoom.find(rand(1..3)),
                     attended: false,
                     pet: Pet.find_by(user: user) }])
