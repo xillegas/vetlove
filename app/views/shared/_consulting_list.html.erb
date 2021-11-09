@@ -12,7 +12,15 @@
                   <p class="direction-consulting"><%= room.address %></p>
                 </div>
                 <div class="col-2 align-items-start">
+                
+                <% if room.distance_to(@client_ip).to_f.nan? %>
+                  
+                  <span class="consult-room-distance">0 KM</span>
+                  <% else %>
                   <span class="consult-room-distance"><%= "#{room.distance_to(@client_ip).to_i} km" %></span>
+                  
+                <% end %>
+                
                 </div>
               </div>
             </a>
@@ -36,7 +44,14 @@
             </div>
             <div class="col-sm-12 col-md-5 align-self-end mt-3">
               <div class="d-flex justify-content-end">
-                <%= link_to "Solicitar cita", new_consulting_room_booking_path(room), class: 'btn btn-primary' %>
+                <% if user_signed_in?  %>
+                  <button type="button" class="btn btn-primary modal-btn" data-toggle="modal" data-target="#modal" data-roomId="<%= room.id %>">
+                    Solicitar cita
+                  </button>
+                <% else %>
+                <%= link_to "Solicitar cita", user_session_path , class: "btn btn-primary modal-btn" %>
+
+                <% end %>
               </div>
             </div>
           </div>
@@ -44,4 +59,43 @@
       </div>
     </div>
   <% end %>
+  <%# ------------- modal ------------------ %>
+  <% if user_signed_in? %>
+    <div class="modal fade modal-show" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">VetLove</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [ConsultingRoom.first, Booking.new] do |f|   %>
+              <%= pets = current_user.pets %>
+              <div class="row">
+                <div class="col">
+                  <div class='row datetimerange'>
+                    <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+                  </div>
+                </div>
+                <div class="col">
+                  <%= f.input :time, label: 'Hora' %>
+                </div>
+                <div class="col">
+                  <%= f.association :pet, collection: pets, label: 'Mi mascota' %>
+                  <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
+                </div>
+                <div class="col-1">
+                  <%= link_to "Volver", consulting_rooms_path, class: "btn btn-danger" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
+<!-- Button trigger modal -->
+<!-- Modal -->
