@@ -4,7 +4,7 @@
 </div>
 
 <% if @records.empty? %>
-  <h2>No tienes historial para tu mascota</h2>
+  <h2 class="text-gray-700">No tienes todavía historial médico de mascotas</h2>
 <% else %>
   <% @records.each do |record| %>
     <% if current_user.is_vet %>
@@ -47,6 +47,11 @@
             <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
           </div>
         </div>
+        <% else %>
+        <div>
+        <h3 class="text-gray-700">No hay registros del historial médico de mascotas atendidas</h3>
+        <p class="booking-small">Puedes crear entradas de historias médicas al hacer clic en "Crear cita" desde el calendario.</p>
+        </div>
       <% end %>
     <% else %>
     <%# Vista del Usuario cliente: %>
@@ -87,6 +92,11 @@
             </div>
             <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
           </div>
+        </div>
+        <% else %>
+        <div>
+        <h3 class="text-gray-700">Todavía no tienes historial médico de tus mascotas</h3>
+        <p class="booking-small">Asiste a una consulta y pídele al veterinario que llene el registro de tu consulta veterinaria.</p>
         </div>
       <% end %>
     <% end %>
