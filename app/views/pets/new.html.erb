@@ -12,14 +12,17 @@
         <%= f.input :gender, collection: GENDERS, label: "Genero de tu mascota" %>
         <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, autofocus: true, input_html: {id: "datePets"} %>
         <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
+        <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
+                        label: '📷 ¡Sube una foto de tu mascota!' %>
         <div class="text-center mt-4">
           <%= f.button :submit, class: "btn btn-primary botoncito", value:"Añadir a mis mascotas" %>
         </div>
       <% end %>
       <br>
-      <div class="text-center">
-        <%= link_to "Volver a mis mascotas", pets_path, class: "btn btn-secondary botoncito" %>
-      </div>
+      <%= link_to pets_path do %>
+        <i class="fas fa-arrow-left"></i>
+        <span>Volver</span></a>
+      <% end %>
     </div>
   </div>
 </div>
