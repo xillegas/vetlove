@@ -14,7 +14,7 @@
       <% if user_signed_in? %>
       <div class="botones">
         <li >
-          <%= link_to "Consultorios", consulting_rooms_path %>
+          <%= link_to "Consultorios", consulting_rooms_path, id: "consult-link" %>
         </li>
         <li class="nombre">
           <%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}"%>
@@ -40,7 +40,7 @@
         </li>
       <% else %>
         <li>
-          <%= link_to "Iniciar sesión", new_user_session_path, class: "boton-inicio" %>
+          <%= link_to "Iniciar sesión", new_user_session_path, class: "boton-inicio", id: "consult-link" %>
         </li>
       <% end %>
     </ul>

@@ -1,29 +1,57 @@
-<div class="d-sm-flex align-items-center justify-content-between mb-3">
-  <p class="h2 m-0 text-gray-800">Agregar Consultorio</p>
-</div>
-<p class="text-secondary">Introduzca los datos del consultorio</p>
-<%= simple_form_for [ @consulting_room ] do |f| %>
-  <%= f.input :name, label: "Nombre del consultorio" %>
-  <%= f.input :description, label: "Descripcion del consultorio" %>
-  <%= f.input :address, label: "Direccion del consultorio", :input_html => { :id => "flat_address" }%>
-  <%= f.input :init_hour_day, label: "Hora de apertura" %>
-  <%= f.input :end_hour_day, label: "Hora de cierre" %>
-  <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
-  <p>Ofrece atención a</p>
-  <div class="container my-2">
-    <div class="d-flex flex-wrap">
-      <% species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"] %>
-      <% species.each do |sp| %>
-        <div class="w-25 my-2">
-        <input class="tag-selector" id="item_selected_keywords_<%= sp %>" name="selected_keywords[]"
-          type="checkbox" value="<%= sp %>" /><label for="item_selected_keywords_<%= sp %>"><%= sp %>s</label>
+<div class="row my-5 mx-2">
+  <div class="card card-consulting p-5 col-md-6 col-sm-12">
+    <div class="d-sm-flex align-items-center justify-content-between mb-3">
+      <p class="h2 m-0 text-gray-800">Agregar Consultorio</p>
+    </div>
+    <p class="text-secondary">Introduzca los datos del consultorio</p>
+    <%= simple_form_for [ @consulting_room ] do |f| %>
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :name, label: "Nombre del consultorio" %>
         </div>
-      <% end %>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :description, label: "Descripcion del consultorio" %>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :address, label: "Direccion del consultorio", :input_html => { :id => "flat_address" }%>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :init_hour_day, label: "Hora de apertura" %>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :end_hour_day, label: "Hora de cierre" %>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :week_days, label: "Dias de la semana que trabaja" %>
+        </div>
+
+
+        <div class="col-md-12 col-sm-12">
+          <p>Ofrece atencion a</p>
+        </div>
+        <div class="container my-2">
+          <div class="d-flex flex-wrap col-md-12 col-sm-6">
+            <% species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"] %>
+            <% species.each do |sp| %>
+              <div class="w-25 my-2 col-md-4 col-sm-6">
+                <input class="tag-selector" id="item_selected_keywords_<%= sp %>" name="selected_keywords[]" type="checkbox" value="<%= sp %>">
+                <label for="item_selected_keywords_<%= sp %>"><%= sp %>s</label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 text-center">
+          <%= f.submit "Crear Consultorio", class: "btn btn-primary my-3" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 mx-2 volver-btn">
+        <%= link_to consulting_rooms_path, class: "volver-btn" do %>
+          <i class="fas fa-arrow-left mt-3 mb-3"></i>
+          <span>Volver</span></a>
+        <% end %>
+      </div>
     </div>
   </div>
-  <%= f.submit "Crear Consultorio", class: "btn btn-primary" %>
-<% end %>
-<%= link_to consulting_rooms_path do %>
-  <i class="fas fa-arrow-left mt-3 mb-3"></i>
-  <span>Volver</span></a>
-<% end %>
+</div>
