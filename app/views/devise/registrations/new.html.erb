@@ -34,8 +34,14 @@
                         required: true,
                         input_html: { autocomplete: "new-password" },
                         label: "Confirma tu contraseña" %>
-            <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
+            <div class="d-flex align-items-center justify-content-around my-2">
+              <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
                           label: '📷 Sube una foto' %>
+              <%= f.input :is_vet, 
+                        as: :boolean, 
+                        input_html: { class: "toggle" }, 
+                        label: "Veterinario" %>
+            </div>
             <div class="form-actions text-center mb-3">
               <%= f.button :submit, "Registrate", class: "btn btn-primary"%>
             </div>
