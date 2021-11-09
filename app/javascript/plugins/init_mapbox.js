@@ -4,6 +4,9 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
+  const draggableMapElement = document.getElementById('draggableMap');
+
+  // console.log(mapElement);
   const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
@@ -23,19 +26,27 @@ const initMapbox = () => {
     }
   }
 
+  function centerElement(geometry, mapSelected) {
+    mapSelected.flyTo({
+      center: geometry,
+      speed: 0.5,
+      essential: true
+    });
+  }
+
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mapbox/streets-v11'
     });
 
     window.fitToCard = function (event, latitude, longitude, user_latitude, user_longitude, info_window_user) {
       event.preventDefault();
       if (event.isTrusted) {
-        const marker_consultory = {lat: latitude, lng: longitude};
-        const marker_user = { lat: user_latitude, lng: user_longitude};
-        const markers_for_user_consultory = [marker_consultory,marker_user];
+        const marker_consultory = { lat: latitude, lng: longitude };
+        const marker_user = { lat: user_latitude, lng: user_longitude };
+        const markers_for_user_consultory = [marker_consultory, marker_user];
         const popup = new mapboxgl.Popup().setHTML(info_window_user.info_window);
         hide();
         new mapboxgl.Marker({
@@ -49,7 +60,10 @@ const initMapbox = () => {
         })
           .setLngLat(marker_consultory)
           .addTo(map);
+        console.log(markers_for_user_consultory);
         fitMapToMarkers(map, markers_for_user_consultory);
+        console.log(marker_consultory);
+        centerElement(marker_consultory, map)
       }
       else {
         show();
@@ -64,6 +78,8 @@ const initMapbox = () => {
       accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl
     }));
+    // Agrega el FullScreen
+    map.addControl(new mapboxgl.FullscreenControl());
 
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
@@ -74,8 +90,50 @@ const initMapbox = () => {
         .addTo(map);
     });
     fitMapToMarkers(map, markers);
+
+    // map.on('click', addMarker);
+
+
   } else {
-    void(0);
+    void (0);
+  }
+
+
+  if (draggableMapElement) {
+    mapboxgl.accessToken = draggableMapElement.dataset.mapboxApiKey;
+    const  coordinates = document.getElementById('coordinates');
+    const  longitude = document.getElementById('longitud_vet');
+    const  latitude = document.getElementById('latitud_vet');
+
+    const map = new mapboxgl.Map({
+      container: 'draggableMap',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-66.8762112, 10.4923136],
+      zoom: 8
+    });
+
+    map.addControl(new mapboxgl.FullscreenControl());
+
+    const marker = new mapboxgl.Marker({
+      draggable: true
+    })
+      .setLngLat([-66.8762112, 10.4923136])
+      .addTo(map);
+
+    function onDragEnd() {
+      const lngLat = marker.getLngLat();
+      longitude.value = lngLat.lng
+      latitude.value = lngLat.lat
+      // longitude.style.display = 'none';
+      // latitude.style.display = 'none';
+
+      coordinates.style.display = 'block';
+      coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+    }
+
+    marker.on('dragend', onDragEnd);
+  } else {
+    void (0);
   }
 };
 
