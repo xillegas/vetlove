@@ -20,9 +20,6 @@
                 </div>
               </div>
               <div class="col">
-                <%= f.input :time, label: 'Hora' %>
-              </div>
-              <div class="col">
                 <%= f.association :pet, collection: @my_pets, label: 'Mi mascota' %>
                 <%# f.association :consulting_room %>
                 <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>

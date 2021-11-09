@@ -70,15 +70,12 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for [ConsultingRoom.first, Booking.new] do |f|   %>
-              <%= pets = current_user.pets %>
+              <% pets = current_user.pets %>
               <div class="row">
                 <div class="col">
                   <div class='row datetimerange'>
-                    <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+                    <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Fecha de atención" %>
                   </div>
-                </div>
-                <div class="col">
-                  <%= f.input :time, label: 'Hora' %>
                 </div>
                 <div class="col">
                   <%= f.association :pet, collection: pets, label: 'Mi mascota' %>

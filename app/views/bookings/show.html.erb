@@ -11,7 +11,7 @@
       <p class="booking-title">Fecha de Consulta:<br>
         <%= DateTime.parse(@booking.date.to_s).strftime("%F") %> </p>
       <p class="booking-title">Hora de Consulta:<br>
-        <%= DateTime.parse(@booking.time.to_s).strftime("%I:%M%p")  %></p>
+        <%= DateTime.parse(@booking.date.to_s).strftime("%I:%M%p")  %></p>
     </div>
     <hr>
     <div class="d-flex justify-content-start mb-1">
