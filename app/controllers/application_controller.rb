@@ -16,6 +16,16 @@ class ApplicationController < ActionController::Base
   #     request.remote_ip
   #   end
   # end
+
+  def after_sign_in_path_for(resource)
+    if current_user.is_vet
+      consulting_rooms_vet_path
+    else
+      consulting_rooms_user_path
+    end
+  end
+
+
   def remote_ip
     if Rails.env.production?
       request.remote_ip
@@ -30,10 +40,6 @@ class ApplicationController < ActionController::Base
   #   flash[:alert] = "You are not authorized to perform this action."
   #   redirect_to(root_path)
   # end
-
-  def after_sign_in_path_for(resource)
-    consulting_rooms_path
-  end
 
   protected
 

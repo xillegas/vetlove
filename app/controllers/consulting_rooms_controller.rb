@@ -19,6 +19,7 @@ class ConsultingRoomsController < ApplicationController
   def index_user
     @user = current_user
     @consulting_rooms = ConsultingRoom.all
+    # binding.pry
     @query_rooms = []
     if params[:query].present?
       @query_rooms = ConsultingRoom.search_by_name(params[:query])
@@ -114,16 +115,16 @@ class ConsultingRoomsController < ApplicationController
 
   def set_user_ip
     @client_ip = remote_ip()
+    # binding.pry
     @user_marker = Geocoder::search(@client_ip)
-    # p @user_marker.first.data["ip"]
-    @user_marker.each do |marker|
-      @info_window_user = { user_ip: marker.ip,
-                            lat: marker.latitude,
-                            lng: marker.longitude,
-                            :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker }) }
-    end
-    # return @info_window_user
-      puts @info_window_user
+    # p @user_marker.first.data["ip_address"]
+    @info_window_user =
+    { user_ip: @user_marker.first.data["ip_address"],
+      lat: @user_marker.first.data["latitude"],
+      lng: @user_marker.first.data["longitude"],
+      city: @user_marker.first.data["city"],
+      :info_window => render_to_string(partial: "info_window_user", locals: { marker: @user_marker }) }
+    return @info_window_user
   end
 
   def search(query_rooms)

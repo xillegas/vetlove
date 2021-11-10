@@ -139,6 +139,8 @@ vet_mascotafeliz = User.find_by(email: "tumascotafeliz@gmail.com")
   ConsultingRoom.create([{ specific_address: "Carretera El Hatillo, Los Naranos, vía El Seminario. Centro Veterinario Dr. Gosling. Caracas- Venezuela",
                            name: "Consultorio Veterinario Dr. Gosling",
                            description: "Contamos con Tecnología de punta en área de Quirófanos, Laboratorio, Radiología, Imagenología, Hospitalización, Cuidados Intensivos, Peluquería  y Transporte en Ambulancia. Atendido por médicos especializados las 24 horas del día, con Veterinario residente.",
+                           latitude: rand(10.517055..10.523019),
+                           longitude: rand(-66.940838..-66.930598),
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miércoles,jueves,viernes,sábado,domingo",

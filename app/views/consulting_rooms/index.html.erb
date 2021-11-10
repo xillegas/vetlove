@@ -38,8 +38,10 @@
       </div>
     </div>
     <div class="col-md-6 col-sm-12">
-      <div id="map" class="map-custom" data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div  id="map" class="map-custom"
+            style="width: 100%; height: 75vh;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
   </div>

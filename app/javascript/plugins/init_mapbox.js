@@ -66,10 +66,6 @@ const initMapbox = () => {
     window.fitToCard = function (event, latitude, longitude, infoWindowUser) {
       event.preventDefault();
       if (event.isTrusted) {
-        // console.log(infoWindowUser.user_ip)
-        // console.log(infoWindowUser.lat)
-        // console.log(infoWindowUser.lng)
-        // console.log(infoWindowUser.info_window)
         const markerConsultory = { lat: latitude, lng: longitude };
         const markerUser = { lat: infoWindowUser.lat, lng: infoWindowUser.lng };
         const popup = new mapboxgl.Popup().setHTML(infoWindowUser.info_window);
@@ -81,23 +77,11 @@ const initMapbox = () => {
           .setPopup(popup)
           .addTo(map);
 
-        const markerConsult = JSON.parse(mapElement.dataset.markers);
-        if (markerConsult) {
-          markerConsult.forEach((marker) => {
-            const popupConsultory = new mapboxgl.Popup().setHTML(marker.info_window);
-            new mapboxgl.Marker({
-              color: "#6f42c1"
-            })
-              .setLngLat(markerConsultory)
-              .setPopup(popupConsultory)
-              .addTo(map);
-          })
-        }
-        // new mapboxgl.Marker({
-        //   color: "#6f42c1",
-        // })
-        //   .setLngLat(markerConsultory)
-        //   .addTo(map);
+        new mapboxgl.Marker({
+          color: "#6f42c1",
+        })
+          .setLngLat(markerConsultory)
+          .addTo(map);
         // console.log(markerForUserConsultory);
         // fitMapToMarkers(map, markerForUserConsultory);
         // console.log(markerConsultory);
@@ -127,7 +111,7 @@ const initMapbox = () => {
       });
       fitMapToMarkers(map, markers);
       map.on('load', (event) => {
-        map.resize();
+      map.resize();
       });
     } else {
       void (0);
@@ -136,7 +120,6 @@ const initMapbox = () => {
   } else {
     void (0);
   }
-
 
   if (draggableMapElement) {
     mapboxgl.accessToken = draggableMapElement.dataset.mapboxApiKey;
@@ -148,7 +131,7 @@ const initMapbox = () => {
       container: 'draggableMap',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [-66.8762112, 10.4923136],
-      zoom: 8
+      zoom: 13
     });
 
     map.addControl(new mapboxgl.FullscreenControl());
