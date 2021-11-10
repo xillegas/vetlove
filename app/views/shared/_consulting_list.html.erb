@@ -23,17 +23,27 @@
       <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
         <div class="card-body pt-2">
           <p class="card-description"><%= room.description %></p>
+          <p class="card-description-time"> <strong>Horario: </strong><span><%= room.init_hour_day.to_datetime.strftime("%I:%M%p") %> - <%= room.end_hour_day.to_datetime.strftime("%I:%M%p") %> </span></p>
           <div class="row">
             <div class="col-sm-12 col-md-7 consult-room-info">
+              <h5>Días:</h5>
+              <% week_days = room.week_days.split(",") %>
+              <% week_days.each do |day| %>
+                <span class="badge badge-pill badge-vetlove"><%= day %></span>
+              <% end %>
               <h5>Atendemos:</h5>
               <% especie_mascotas = room.animal.split(" ") %>
               <% especie_mascotas.each do |especie| %>
                 <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
               <% end %>
+              <% 
+=begin %>
               <h5>Aceptamos:</h5>
               <% forma_pago.each do |pagos| %>
                 <span class="badge badge-pill badge-vetlove"><%= pagos %></span>
               <% end %>
+              <% 
+=end %>
             </div>
             <div class="col-sm-12 col-md-5 align-self-end mt-3">
               <div class="d-flex justify-content-end">
