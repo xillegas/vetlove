@@ -30,12 +30,22 @@
                 <small><%= link_to "Ver Cita", record_path(record) %></small>
               <% end %>
             <% else %>
-              <small><%= link_to "Crear Cita", new_booking_record_path(bookie) %></small>
+              <small><%= link_to "Crear Registro", new_booking_record_path(bookie) %></small>
             <% end %>
           </div>
         <% else %>
           <div class="d-flex justify-content-end">
-            <small><%= link_to "Ver más", booking_path(bookie) %></small>
+            <% if bookie.attended? %>
+              <% if Record.find_by(booking: bookie).nil? %>
+                <small></small>
+              <% elsif bookie.attended %>
+                <% record = Record.find_by(booking: bookie)%>
+                <small><%= link_to "Ver Registro", record_path(record) %></small>
+              <% end %>
+            <% else %>
+              <small><%= link_to "Ver más", booking_path(bookie) %></small>
+            <% end %>
+          </div>
           </div>
         <% end %>
       <% end %>
