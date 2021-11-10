@@ -3,12 +3,12 @@
     <div class="card my-5 ml-auto mr-auto p-5 card-pet", style="border-radius: 18px">
 
       <div class="d-sm-flex align-items-center justify-content-between mb-3">
-        <p class="h2 m-0 text-gray-800">Edicion de Mascota</p>
+        <p class="h2 m-0 text-gray-800">Edición de Mascota</p>
       </div>
       <p class="text-secondary">Ingresa los datos a modificar</p>
       <%= simple_form_for [ @pet] do |f| %>
         <%= f.input :name, label: "Nombre de tu mascota" %>
-        <%= f.input :gender, placeholder: @pet.gender, label: "Genero de tu mascota", disabled: true %>
+        <%= f.input :gender, placeholder: @pet.gender, label: "Género de tu mascota", disabled: true %>
         <%= f.input :birthdate, as: :string, label: "Fecha de nacimiento", required: false, input_html: {class: "datepicker"}, disabled: true %>
         <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
         <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
