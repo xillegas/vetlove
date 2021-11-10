@@ -3,60 +3,10 @@
 @import "avatar";
 @import "navbar";
 @import "footer";
+@import "container";
+@import "card";
 
-.consult-room-card {
-  h3 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-    letter-spacing: 0.43px;
-    text-decoration: none;
-  }
-  h5 {
-    font-size: 16px;
-    line-height: 19px;
-  }
-  .consult-room-distance {
-    position: absolute;
-    width: 45px;
-    height: 16px;
-    right: 21px;
-    top: 22px;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.250833px;
 
-    color: #C4C4C4;
-  }
-}
-.badge-vetlove {
-  color: #FFF;
-  background-color: #649DAD;
-}
-
-.button-vetlove-card-pos {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-}
-
-.button-vetlove {
-  color: #FFF;
-  background-color: #649DAD;
-  font-size: 19px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 5px;
-  padding: 5px 8px;
-  &:hover {
-    background-color: #66C6BA;
-    color: white;
-    text-decoration: none;
-  }
-}
 
 .vetlove-booking-form {
   position: relative;
@@ -64,7 +14,7 @@
 }
 
 .vetlove-text-color {
-  color: #649DAD;
+  color: $third-color;
 }
 
 .vetlove-pets {
@@ -74,5 +24,8 @@
   span{
     text-align: center;
     min-width:100px;
+  }
+  p {
+    min-width: 100px;
   }
 }

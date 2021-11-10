@@ -1,0 +1,48 @@
+<div id="mynav" class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-home change-color-devise">
+  <!-- Sidebar - Brand -->
+  <a class="d-flex align-items-center justify-content-center navbar-vetlove-classic-logo decoracion" href="<%= root_path %>">
+    <div class="vetlove-brand-logo">
+      <i class="fas fa-paw fa-sm fa-fw"></i>
+    </div>
+    <div class="vetlove-brand mx-3">VetLove</div>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto navbar-vetlove-classic-ulist">
+      <% if user_signed_in? %>
+      <div class="botones">
+        <li >
+          <%= link_to "Consultorios", consulting_rooms_path, id: "consult-link" %>
+        </li>
+        <li class="nombre">
+          <%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}"%>
+        </li>
+      </div>
+        <li class="nav-item dropdown">
+          <% if current_user.photo.attached? %>
+            <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg", class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+          <div class="dropdown-menu dropdown-menu-right" style="padding-top: 0px; padding-bottom: 0px;" aria-labelledby="navbarDropdown">
+            <%= link_to "Cuenta", dashboard_path, class: "dropdown-item" %>
+            <%= link_to "Perfil", edit_user_registration_path, class: "dropdown-item" %>
+            <% if current_user.is_vet %>
+              <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
+            <% else %>
+              <%= link_to "Mis citas", bookings_path, class: "dropdown-item" %>
+              <%= link_to "Mis mascotas", pets_path, class: "dropdown-item" %>
+            <% end %>
+            <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Iniciar sesión", new_user_session_path, class: "boton-inicio" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

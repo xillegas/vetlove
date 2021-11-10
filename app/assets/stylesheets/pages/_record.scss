@@ -10,3 +10,29 @@
     min-width: 13rem;
     min-height: 13rem;
   }
+
+.records-cards {
+  border-radius: 16px;
+  box-shadow: 5px 8px 5px rgba(46, 46, 46, 0.24);
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.volver{
+  color: $primary-color !important;
+  &.volver:hover{
+    color: $third-color !important;
+  }
+}
+
+.card-record{
+  border-radius: 16px;
+  box-shadow: 5px 8px 5px rgba(46, 46, 46, 0.24);
+  border: 1px solid #f8d0f1;
+}
+
+list-group-item{
+  border: 1px solid #f8d0f1 !important;
+}

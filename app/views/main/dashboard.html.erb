@@ -6,23 +6,24 @@
 <div class="row">
   <%# <div class="row row-cols-4"> %>
   <!-- Earnings (Monthly) Card Example -->
-  <div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-primary shadow h-100 py-2">
-      <div class="card-body">
-        <div class="row no-gutters align-items-center">
-          <div class="col mr-2">
-            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Próxima Consulta</div>
-            <div class="h5 mb-0 font-weight-bold text-gray-800"><%= DateTime.parse(@next_consult.date.to_s).strftime("%F") %></div>
-            
-          </div>
-          <div class="col-auto">
-            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+  <% unless @next_consult.nil? %>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Próxima Consulta</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= DateTime.parse(@next_consult.date.to_s).strftime("%F") %></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <% 
+  <% end %>
+  <%
 =begin %>
   <!-- Earnings (Monthly) Card Example -->
   <div class="col-xl-3 col-md-6 mb-4">
@@ -65,7 +66,7 @@
       </div>
     </div>
   </div>
-  <% 
+  <%
 =end %>
   <!-- Pending Requests Card Example -->
   <div class="col-xl-3 col-md-6 mb-4">
@@ -89,19 +90,35 @@
   <p class="h3 text-gray-800">Próximas consultas</p>
   <div class="col-12">
     <%= calendar(number_of_days: 7) do |date| %>
-      <%= date.to_formatted_s(:short) %>
+      <%= date.day %> de <%= t('date.abbr_month_names')[date.month] %>
       <% @bookings.each do |bookie| %>
-        <% if date == Date.parse(bookie.date.to_s)  %>
+        <% if !bookie.date.nil? && date == Date.parse(bookie.date.to_s)  %>
           <br>
           <small><strong>Lugar:</strong> <%= bookie.consulting_room.name %> </small>
           <br>
           <small><strong>Paciente:</strong> <%= bookie.pet.name %></small>
           <br>
-          <small><strong>Hora:</strong> <%= DateTime.parse(bookie.time.to_s).strftime("%I:%M%p")  %></small>
+          <small><strong>Hora:</strong> <%= DateTime.parse(bookie.date.to_s).strftime("%I:%M%p")  %></small>
           <br>
+          <% if bookie.attended? %>
+            <small><strong>Estado:</strong> <strong class="text-success">Atendido</strong></small>
+            <br>
+          <% else %>
+            <small><strong>Estado:</strong> <strong class="text-danger">Pendiente</strong></small>
+            <br>
+          <% end %>
           <% if current_user.is_vet?  %>
             <div class="d-flex justify-content-end">
-              <small><%= link_to "Ver cita", new_booking_record_path(bookie) %></small>
+              <% if bookie.attended? %>
+                <% if Record.find_by(booking: bookie).nil? %>
+                  <small></small>
+                <% elsif bookie.attended %>
+                  <% record = Record.find_by(booking: bookie)%>
+                  <small><%= link_to "Ver Cita", record_path(record) %></small>
+                <% end %>
+              <% else %>
+                <small><%= link_to "Crear Cita", new_booking_record_path(bookie) %></small>
+              <% end %>
             </div>
           <% else %>
             <div class="d-flex justify-content-end">
@@ -113,7 +130,7 @@
     <% end %>
   </div>
 </div>
-<% 
+<%
 =begin %>
 <!-- Content Row -->
 <div class="row">
@@ -293,5 +310,5 @@
     </div>
   </div>
 </div>
-<% 
+<%
 =end %>

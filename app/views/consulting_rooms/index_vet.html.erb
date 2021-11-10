@@ -1,0 +1,37 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <p class="h2 m-0 text-gray-800">Mis Consultorios</p>
+  <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
+  <h4><%= link_to "Agregar Nuevo Consultorio", new_consulting_room_path, class:"btn btn-primary pt-1 botoncito" %></h4>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <div id="global_vet" class="row card card-border">
+      <ul class="list-group list-group-flush">
+        <% @query_rooms.each do |room| %>
+          <li class="list-group-item consult-room-card">
+            <div class="row">
+              <div class="col-9">
+                <p class="title-consulting"><%= room.name %></p>
+                <p class="direction-consulting"><%= room.specific_address %></p>
+              </div>
+              <div class="col-3 align-self-center text-right">
+                <a class ="a-vet" onClick="searchVet(event, <%= room.latitude %>, <%= room.longitude %>)" href="#"> <i class="fas fa-map-marked-alt fa-lg primary-old-color "></i> </a>
+                <%= link_to edit_consulting_room_path(room) do %>
+                  <i class="fas fa-edit fa-lg text-warning" ></i>
+                <% end %>
+                <%= link_to room, method: :delete, remote: true, data: { confirm: "¿Estas seguro que deseas eliminar?" }, style:"color:red" do %>
+                  <i class="far fa-trash-alt fa-lg"></i>
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <%# <div class="col-1"></div> %>
+  <div id="map" class="col-sm-12 col-md-6  map-custom_vet"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>

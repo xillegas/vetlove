@@ -42,6 +42,8 @@ gem 'geocoder'
 # Buscador
 gem 'pg_search', '~> 2.3.0'
 
+gem 'rails-i18n'
+
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
@@ -62,7 +64,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'htmlbeautifier'
+  gem 'open-uri'
 end
 
 group :test do

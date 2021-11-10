@@ -1,39 +1,35 @@
 <div class="container my-3">
-<h1>Datos de la cita</h1>
-<div class="card consult-room-card p-3 my-3">
-  <h3><%= @consulting_room.name %></h3>
-  <span class="consult-room-distance">a 5 km</span>
-  <h5><%= @consulting_room.address %></h5>
-  <h5><%= @consulting_room.user.phone_number %></h5>
-  <p><%= @consulting_room.description %></p>
-</div>
+  <h1>Datos de la cita</h1>
+  <div class="card consult-room-card p-3 my-3">
+    <h3><%= @consulting_room.name %></h3>
+    <span class="consult-room-distance">a 5 km</span>
+    <h5><%= @consulting_room.address %></h5>
+    <h5><%= @consulting_room.user.phone_number %></h5>
+    <p><%= @consulting_room.description %></p>
+  </div>
   <h2>Selecciona el día y hora de la cita de tu mascota</h2>
-<div class='vetlove-booking-form'>
-  <div class="container">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="card mt-5 mb-5 ml-auto mr-auto pt-5 pb-5 pl-5 pr-5", style="border-radius: 10px">
-        <%= simple_form_for [@consulting_room, @booking] do |f|   %>
-        <div class="row">
-          <div class="col">
-              <div class='row datetimerange'>
-                <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+  <div class='vetlove-booking-form'>
+    <div class="container">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="card mt-5 mb-5 ml-auto mr-auto pt-5 pb-5 pl-5 pr-5", style="border-radius: 10px">
+          <%= simple_form_for [@consulting_room, @booking] do |f|   %>
+            <div class="row">
+              <div class="col">
+                <div class='row datetimerange'>
+                  <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+                </div>
               </div>
-          </div>
-          <div class="col">
-              <%= f.input :time, label: 'Hora' %>
-          </div>
-          <div class="col">
-              <%= f.association :pet, collection: @my_pets, label: 'Mi mascota' %>
-              <%# f.association :consulting_room %>
-              <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
-
-          </div>
-          <div class="col-1">
-            <%= link_to "Volver", consulting_rooms_path, class: "btn btn-danger" %>
-          </div>
-        </div>
+              <div class="col">
+                <%= f.association :pet, collection: @my_pets, label: 'Mi mascota' %>
+                <%# f.association :consulting_room %>
+                <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
+              </div>
+              <div class="col-1">
+                <%= link_to "Volver", consulting_rooms_path, class: "btn btn-danger" %>
+              </div>
+            </div>
           <% end %>
-          </div>
         </div>
       </div>
-</div>
+    </div>
+  </div>

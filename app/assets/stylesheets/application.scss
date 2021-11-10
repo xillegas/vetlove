@@ -8,17 +8,39 @@
 @import "config/fonts";
 @import "variables";
 @import "config/bootstrap_variables";
+@import "config/colors";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "simple_calendar";
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "flatpickr/dist/flatpickr";
 @import "./shared/sb-admin-2";
+@import "pages/consulting";
+@import "pages/login";
+@import "pages/register";
 
 // sb-admin
+@import "startbootstrap-sb-admin-2/scss/error";
+
+/*========== SCROLL BAR ==========*/
+::-webkit-scrollbar {
+    width: .80rem;
+    background-color: $map-distance;
+    border-radius: .5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $map-distance;
+    border-radius: .5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: $muted-color;
+}
