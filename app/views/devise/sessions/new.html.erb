@@ -16,7 +16,7 @@
                         required: false,
                         input_html: { autocomplete: "current-password" },
                         label: "Contraseña" %>
-            <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            <%= f.input :remember_me, label: "Recordarme", as: :boolean if devise_mapping.rememberable? %>
           </div>
           <div class="form-actions text-center mb-3">
             <%= f.button :submit, "Iniciar sesión", class: "btn btn-primary "%>

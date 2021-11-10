@@ -90,7 +90,7 @@
   <p class="h3 text-gray-800">Próximas consultas</p>
   <div class="col-12">
     <%= calendar(number_of_days: 7) do |date| %>
-      <%= date.to_formatted_s(:short) %>
+      <%= date.day %> de <%= t('date.abbr_month_names')[date.month] %>
       <% @bookings.each do |bookie| %>
         <% if !bookie.date.nil? && date == Date.parse(bookie.date.to_s)  %>
           <br>

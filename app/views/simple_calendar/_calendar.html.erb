@@ -1,8 +1,8 @@
 <div class="simple-calendar">
   <div class="calendar-heading mb-1">
-    <%= link_to t('simple_calendar.previous', default: 'Anterior'), calendar.url_for_previous_view, class: 'btn btn-primary py-0' %>
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-    <%= link_to t('simple_calendar.next', default: 'Siguiente'), calendar.url_for_next_view, class: 'btn btn-primary py-0' %>
+    <%= link_to t('simple_calendar.previous', default: 'Anterior'), calendar.url_for_previous_view, class: 'fas fa-chevron-left text-decoration-none'  %>
+    <span class="calendar-title mx-2"><%= t('date.month_names')[start_date.month].capitalize %> <%= start_date.year %></span>
+    <%= link_to t('simple_calendar.next', default: 'Siguiente'), calendar.url_for_next_view, class: 'fas fa-chevron-right text-decoration-none' %>
   </div>
 
   <table class="table table-striped">
