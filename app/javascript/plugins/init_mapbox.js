@@ -31,7 +31,7 @@ const initMapbox = () => {
       center: geometry,
       speed: 0.5,
       essential: true,
-      zoom: 10
+      zoom: 13
     });
   }
 
@@ -41,7 +41,7 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [-66.8762112, 10.4923136],
-      zoom: 10
+      zoom: 13
     });
 
     window.searchVet = function (event, latitude, longitude) {
@@ -72,7 +72,6 @@ const initMapbox = () => {
         // console.log(infoWindowUser.info_window)
         const markerConsultory = { lat: latitude, lng: longitude };
         const markerUser = { lat: infoWindowUser.lat, lng: infoWindowUser.lng };
-        const markerForUserConsultory = [markerConsultory, markerUser];
         const popup = new mapboxgl.Popup().setHTML(infoWindowUser.info_window);
         hide();
         new mapboxgl.Marker({
@@ -100,15 +99,12 @@ const initMapbox = () => {
         //   .setLngLat(markerConsultory)
         //   .addTo(map);
         // console.log(markerForUserConsultory);
-        fitMapToMarkers(map, markerForUserConsultory);
+        // fitMapToMarkers(map, markerForUserConsultory);
         // console.log(markerConsultory);
         centerElement(markerConsultory, map)
       }
       else {
-        show();
-        const markerConsultory = { lat: latitude, lng: longitude };
-        const markerForUserConsultory = [markerConsultory, markerUser];
-        fitMapToMarkers(map, markerForUserConsultory);
+        void(0);
       };
     };
 

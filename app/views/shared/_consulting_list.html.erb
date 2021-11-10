@@ -45,7 +45,6 @@
                   </button>
                 <% else %>
                 <%= link_to "Solicitar cita", user_session_path , class: "btn btn-primary modal-btn" %>
-
                 <% end %>
               </div>
             </div>
@@ -68,18 +67,22 @@
           <div class="modal-body">
             <%= simple_form_for [ConsultingRoom.first, Booking.new] do |f|   %>
               <% pets = current_user.pets %>
-              <div class="row">
-                <div class="col">
-                  <div class='row datetimerange'>
-                    <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Fecha de atención" %>
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <div class='row datetimerange'>
+                      <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Fecha de atención" %>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <%= f.association :pet, collection: pets, label: 'Mi mascota' %>
                   </div>
                 </div>
-                <div class="col">
-                  <%= f.association :pet, collection: pets, label: 'Mi mascota' %>
-                  <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
-                </div>
-                <div class="col-1">
-                  <%= link_to "Volver", consulting_rooms_path, class: "btn btn-danger" %>
+                <div class="row">
+                  <div class="col-4"></div>
+                  <div class="col-8">
+                    <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
+                  </div>
                 </div>
               </div>
             <% end %>
