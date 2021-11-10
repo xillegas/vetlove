@@ -16,6 +16,7 @@ const initFlatpickr = () => {
   });
   $("#dateBookings").flatpickr({
     altInput: true,
+    enableTime: true,
     enable: [
       {
         from: "today",
