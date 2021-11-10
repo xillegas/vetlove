@@ -7,7 +7,7 @@
 
 .reg-container{
   margin: 35px 31px;
-  height: 103vh;
+  height: 120vh;
 }
 .reg-div{
   padding-left: 0px;
@@ -80,7 +80,7 @@
   }
   .reg-container{
     margin: 35px 31px;
-    height: 103vh;
+    height: 95vh;
   }
 }
 
@@ -90,7 +90,7 @@
   }
   .reg-container{
     margin: 35px 31px;
-    height: 90vh;
+    height: 120vh;
   }
 }
 
@@ -101,15 +101,5 @@
   .reg-container{
     margin: 35px 31px;
     height: 90vh;
-  }
-}
-
-@media (min-width: 376px)  {
-  .card-register {
-    border-radius: 10px;
-  }
-  .reg-container{
-    margin: 30px 30px;
-    height: 103vh;
   }
 }
