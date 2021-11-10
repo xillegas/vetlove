@@ -15,10 +15,12 @@
                         label: '📷 ¡Sube una foto de tu mascota!' %>
         <%= f.submit "Editar Mascota", class: "btn btn-primary my-3 botoncito" %>
       <% end %>
-      <%= link_to pets_path do %>
-        <i class="fas fa-arrow-left"></i>
-        <span>Volver</span></a>
-      <% end %>
+      <div class="volver">
+        <%= link_to pets_path do %>
+          <i class="fas fa-arrow-left"></i>
+          <span>Volver</span></a>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

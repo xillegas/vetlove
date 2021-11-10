@@ -2,7 +2,7 @@
   <p class="h1 mb-0 text-gray-800">Reserva</p>
 </div>
 <div class="list-group my-4">
-  <div class="list-group-item list-group-item-action bordes">
+  <div class="list-group-item list-group-item-action">
     <div class="d-flex justify-content-between align-items-center">
       <div>
         <h3><%= @booking.consulting_room.name %></h3>
@@ -56,7 +56,9 @@
     <p class="note-booking">Nota: Los datos proporcionados por este medio son para uso informativo</p>
   </div>
 </div>
-<%= link_to bookings_path do %>
-  <i class="fas fa-arrow-left"></i>
-  <span>Volver</span></a>
-<% end %>
+<div class="volver">
+  <%= link_to bookings_path do %>
+    <i class="fas fa-arrow-left"></i>
+    <span>Volver</span></a>
+  <% end %>
+</div>
