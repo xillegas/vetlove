@@ -1,0 +1,63 @@
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <p class="h2 mb-0 text-gray-800">Historial</p>
+  <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
+</div>
+<div class="list-group my-4 records-cards">
+  <div class="list-group-item list-group-item-action">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex flex-row">
+          <div>
+            <% if @record.booking.pet.photo.attached? %>
+                <%# cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <%= cl_image_tag @record.booking.pet.photo.key, class: "rounded-circle", height: 100, width: 100, crop: :fill %>
+              <% else %>
+                <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg",  class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+              <% end %>
+          </div>
+          <div class="ml-3">
+            <p class="h3 pet-title"><%= @record.booking.pet.name.capitalize %></p>
+            <p class="booking-small">
+            <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
+            <%= @record.booking.pet.species.capitalize %><br>
+            <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
+            <%= @record.booking.pet.gender.capitalize %><br>
+            <span class="vetlove-text-color"><i class="far fa-calendar-alt"></i></span>
+                <% pet_birth = Date.parse(@record.booking.pet.birthdate) %>
+                <% hoy = Date.today %>
+                <% years = (hoy- pet_birth) / 365 %>
+                <%= years.to_i %>
+                <% if years.to_i == 1 %>
+                  año
+                <% else %>
+                  años
+                <% end %>
+                de edad
+          </div>
+        </div>
+      <div>
+        <p class="h5 pet-title">Fecha de Consulta<br>
+          <%= DateTime.parse(@record.booking.date.to_s).strftime("%F") %> </p>
+      </div>
+    </div>
+    <hr>
+    <div class="row mb-1">
+      <div class="col-6">
+        <p class="pet-small"><strong>Centro de salud:</strong> <%= @record.booking.consulting_room.name %></p>
+        <p class="pet-small"><strong>Sintomas:</strong> <%= @record.symptoms %></p>
+        <p class="pet-small"><strong>Diagnostico:</strong> <%= @record.diagnostic %></p>
+        <p class="pet-small"><strong>Tratamiento:</strong> <%= @record.treatment %></p>
+      </div>
+      <div class="col-6">
+        <p class="pet-small"><strong>Dueño:</strong> <%= @record.booking.pet.user.first_name %> <%= @record.booking.pet.user.last_name %></p>
+        <p class="pet-small"><strong>Teléfono:</strong> <%= @record.booking.pet.user.phone_number %> </p>
+      </div>
+    </div>
+    <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
+  </div>
+</div>
+<div class="volver">
+  <%= link_to records_path do %>
+    <i class="fas fa-arrow-left mb-3"></i>
+    <span>Volver</span></a>
+  <% end %>
+</div>

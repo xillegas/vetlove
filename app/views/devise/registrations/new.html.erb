@@ -1,25 +1,55 @@
-<h2>Sign up</h2>
+<%= render 'shared/navbar_devise' %>
+<div class="container mb-3" style="padding-top: 100px;">
+  <div class="row reg-container">
+    <div class="col-lg-6 col-md-6 d-sm-none d-none d-md-block d-lg-block reg-form-img">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 reg-div">
+      <div class="card card-register">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+        <h2 class="h2 m-0 text-gray-800">Registro de nuevo usuario</h2>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true,
+                        label: "Nombre",
+                        input_html: { autocomplete: "name" } %>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true,
+                        label: "Apellido",
+                        input_html: { autocomplete: "name" } %>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} mínimo de caracteres" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" },
+                        label: "Ingresa tu contraseña" %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" },
+                        label: "Confirma tu contraseña" %>
+            <div class="d-flex align-items-center justify-content-around my-2">
+              <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
+                          label: '📷 Sube una foto' %>
+              <%= f.input :is_vet, 
+                        as: :boolean, 
+                        input_html: { class: "toggle" }, 
+                        label: "Veterinario" %>
+            </div>
+            <div class="form-actions text-center mb-3">
+              <%= f.button :submit, "Registrate", class: "btn btn-primary"%>
+            </div>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

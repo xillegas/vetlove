@@ -1,10 +1,22 @@
-// Define variables for your color scheme
+// Primeros colores
+// danger-color #F4607C;
+// alert-color #FF8E64;
 
-// For example:
-$red: #FD1015;
-$blue: #167FFB;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+.texto-danger {
+  color: $danger-color;
+  &:hover {
+    color: #C14793;
+  }
+}
+
+.texto-alert {
+  color: $alert-color;
+}
+
+.texto-primario {
+  color: $primary-color;
+}
+
+.texto-terciario {
+  color: $third-color;
+}

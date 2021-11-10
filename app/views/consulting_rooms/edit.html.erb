@@ -1,0 +1,71 @@
+<div class="row mx-2">
+  <div class="card card-consulting p-4 col-md-6 col-sm-12">
+    <div class="my-2">
+      <h2 class="h2 m-0 text-gray-800">Editar consultorio</h2>
+    </div>
+    <%= simple_form_for [ @consulting_room ] do |f| %>
+      <div class="row">
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :name, label: "Nombre del consultorio", required: true %>
+        </div>
+        <div class="col-md-12 col-sm-12">
+          <%= f.input :description, label: "Descripcion del consultorio", :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: true %>
+        </div>
+        <div class="col-md-12">
+          <p class="mb-2">Dirección del Consultorio <small class="text-info">(Arrastre el marcador del mapa)</small>  </p>
+          <%= f.input :specific_address, label: false, :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: true %>
+        </div>
+        <%= f.input :address, label: false, :as => :hidden %>
+        <%= f.input :longitude, :as => :hidden, input_html: { id: 'longitud_vet' } %>
+        <%= f.input :latitude, :as => :hidden, input_html: { id: 'latitud_vet' } %>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :init_hour_day, label: "Hora de apertura" %>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <%= f.input :end_hour_day, label: "Hora de cierre" %>
+        </div>
+        <div class="col-12">
+          <p class="my-2">Dias de la semana que trabaja</p>
+          <div class="d-flex flex-wrap">
+            <% week_days = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabados", "Domingos"] %>
+            <% week_days.each do |day| %>
+              <div class="col-lg-1 col-md-2 col-sm-3 col-xsm-4 mr-5">
+                <input class="tag-selector" id="item_selected_days_<%= day %>" name="selected_days[]" type="checkbox" value="<%= day %>">
+                <label for="item_selected_days_<%= day %>"><%= day %></label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="container">
+          <p class="my-2">Ofrece atencion a:</p>
+          <div class="d-flex flex-wrap">
+            <% species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"] %>
+            <% species.each do |sp| %>
+              <div class="col-lg-1 col-md-2 col-sm-3 col-xsm-4 mr-5">
+                <input class="tag-selector" id="item_selected_keywords_<%= sp %>" name="selected_keywords[]" type="checkbox" value="<%= sp %>">
+                <label for="item_selected_keywords_<%= sp %>"><%= sp %>s</label>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 text-center pt-3">
+          <%= f.submit "Editar Consultorio", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 mx-2 volver-btn">
+        <%= link_to consulting_rooms_path, class: "volver-btn" do %>
+          <i class="fas fa-arrow-left py-3"></i>
+          <span>Volver</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <%# <p class="h5 text-center text-danger"></p> %>
+    <div id="draggableMap" class="map_draggableMap_edit" data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+</div>

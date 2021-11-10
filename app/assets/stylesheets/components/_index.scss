@@ -2,3 +2,30 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "footer";
+@import "container";
+@import "card";
+
+
+
+.vetlove-booking-form {
+  position: relative;
+  width: 800px;
+}
+
+.vetlove-text-color {
+  color: $third-color;
+}
+
+.vetlove-pets {
+  h3 {
+    min-width:100px;
+  }
+  span{
+    text-align: center;
+    min-width:100px;
+  }
+  p {
+    min-width: 100px;
+  }
+}

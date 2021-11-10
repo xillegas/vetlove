@@ -1,0 +1,47 @@
+footer{
+    background-color:$primary-color;
+    width: 100%;
+}
+
+.text-footer {
+  color: white;
+}
+
+.text-link {
+  color: white;
+}
+
+.link-social {
+  font-size: 20px;
+  color: white;
+}
+
+.link-social:hover{
+    color: #1db8c3ad;
+}
+
+.division {
+  text-align: center;
+}
+
+.footer-vetlove {
+  min-width: 100vh;
+}
+
+.division-cen {
+  text-align: center;
+}
+
+.division-izq {
+  text-align: left;
+  padding: 0 45px;
+}
+
+.division-der {
+  text-align: right;
+  padding: 0 45px;
+}
+
+.division-der a:hover {
+  color: white;
+}

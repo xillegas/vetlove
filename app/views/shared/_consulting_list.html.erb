@@ -1,0 +1,94 @@
+<% forma_pago = ['efectivo', 'punto de venta', 'zelle', 'paypal'] %>
+<div class="accordion w-100" id="accordionExample">
+  <% @query_rooms.each_with_index do |room, index| %>
+    <div class="card card-consulting">
+      <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>, <%= @info_window_user.to_json %>)">
+        <%# {:user_ip=>"200.75.115.167", :lat=>10.3445, :lng=>-67.0433, :info_window=>"<h2>Tu Ubicacion</h2>\n<p>Los Teques , VE</p>\n"} %>
+        <h2 class="mb-0">
+          <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
+            <div class="d-flex justify-content-between ">
+              <div class="col-10">
+                <p class="title-consulting"><%= room.name %></p>
+                <p class="direction-consulting"><%= room.address %></p>
+              </div>
+              <div class="col-2 align-items-start">
+                <% unless @info_window_user.nil? || @info_window_user[:user_ip].nil? %>
+                  <span class="consult-room-distance"><%= "a #{room.distance_to(@info_window_user[:user_ip]).to_f.floor} KM" %></span>
+                <% end %>
+              </div>
+            </div>
+          </a>
+        </h2>
+      </div>
+      <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
+        <div class="card-body pt-2">
+          <p class="card-description"><%= room.description %></p>
+          <div class="row">
+            <div class="col-sm-12 col-md-7 consult-room-info">
+              <h5>Atendemos:</h5>
+              <% especie_mascotas = room.animal.split(" ") %>
+              <% especie_mascotas.each do |especie| %>
+                <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
+              <% end %>
+              <h5>Aceptamos:</h5>
+              <% forma_pago.each do |pagos| %>
+                <span class="badge badge-pill badge-vetlove"><%= pagos %></span>
+              <% end %>
+            </div>
+            <div class="col-sm-12 col-md-5 align-self-end mt-3">
+              <div class="d-flex justify-content-end">
+                <% if user_signed_in?  %>
+                  <button type="button" class="btn btn-primary modal-btn" data-toggle="modal" data-target="#modal" data-roomId="<%= room.id %>">
+                    Solicitar cita
+                  </button>
+                <% else %>
+                  <%= link_to "Solicitar cita", user_session_path , class: "btn btn-primary modal-btn" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%# ------------- modal ------------------ %>
+  <% if user_signed_in? %>
+    <div class="modal fade modal-show" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">VetLove</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for [ConsultingRoom.first, Booking.new] do |f|   %>
+              <% pets = current_user.pets %>
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <div class='row datetimerange'>
+                      <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Fecha de atención" %>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <%= f.association :pet, collection: pets, label: 'Mi mascota' %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4"></div>
+                  <div class="col-8">
+                    <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<!-- Button trigger modal -->
+<!-- Modal -->

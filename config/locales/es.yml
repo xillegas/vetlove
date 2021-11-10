@@ -1,0 +1,20 @@
+es:
+  simple_calendar:
+    previous: ""
+    next: ""
+    week: Semana
+    month: mes
+    abbr_month_names:
+    -
+    - ene
+    - feb
+    - mar
+    - abr
+    - may
+    - jun
+    - jul
+    - ago
+    - sep
+    - oct
+    - nov
+    - dic

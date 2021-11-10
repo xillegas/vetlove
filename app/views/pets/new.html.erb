@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="card my-5 ml-auto mr-auto p-5 card-pet", style="border-radius: 18px">
+
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <p class="h2 mb-0 text-gray-800 text">Agregar Mascota</p>
+        <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
+      </div>
+
+      <%= simple_form_for @pet do |f| %>
+        <%= f.input :name, label: "Nombre de tu mascota" %>
+        <%= f.input :gender, collection: GENDERS, label: "Género de tu mascota" %>
+        <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, autofocus: true, input_html: {id: "datePets"} %>
+        <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
+        <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
+                        label: '📷 ¡Sube una foto de tu mascota!' %>
+        <div class="text-center mt-4">
+          <%= f.button :submit, class: "btn btn-primary botoncito", value:"Añadir a mis mascotas" %>
+        </div>
+      <% end %>
+      <br>
+      <div class="volver">
+        <%= link_to pets_path do %>
+          <i class="fas fa-arrow-left"></i>
+          <span>Volver</span></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

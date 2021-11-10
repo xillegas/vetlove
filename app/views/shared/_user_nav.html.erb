@@ -1,0 +1,24 @@
+<li class="nav-item dropdown no-arrow">
+  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></span>
+    <%= image_tag "https://cdn-icons-png.flaticon.com/512/64/64431.png", class:"img-profile rounded-circle" %>
+  </a>
+  <!-- Dropdown - User Information -->
+  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+    <%= link_to root_path, class: "dropdown-item text-gray-700" do %>
+      <i class="fas fa-home fa-sm fa-fw mr-2"></i>
+      Home
+    <% end %>
+    <% unless current_user.is_vet? %>
+      <%= link_to consulting_rooms_path, class: "dropdown-item text-gray-700" do %>
+        <i class="fas fa-search-location fa-sm fa-fw mr-2"></i>
+        Consultorios
+      <% end %>
+    <% end %>
+    <div class="dropdown-divider"></div>
+    <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+      Cerrar sesión
+    <% end %>
+  </div>
+</li>
