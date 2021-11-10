@@ -46,8 +46,8 @@
 }
 
 .card-pet{
-  box-shadow: 5px 8px 5px rgba(46, 46, 46, 0.24);
-  border: 1px solid #e2c2e9 !important;
+  box-shadow: 5px 8px 5px rgba(46, 46, 46, 0.411);
+  border: 1px solid #f8d0f1 !important;
 }
 
 .botoncito{
@@ -119,4 +119,15 @@
 #snippet_category_css:checked + label {
   background-color: #62DDF5;
   border-color: #62DDF5;
+}
+
+.volver{
+  color: $primary-color;
+  &.volver:hover{
+    color: $third-color;
+  }
+}
+
+.list-group-item{
+  border: 1px solid #f8d0f1 !important;
 }
