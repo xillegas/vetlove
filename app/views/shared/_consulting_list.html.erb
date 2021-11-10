@@ -32,17 +32,17 @@
                 <span class="badge badge-pill badge-vetlove"><%= day %></span>
               <% end %>
               <h5>Atendemos:</h5>
-              <% especie_mascotas = room.animal.split(" ") %>
+              <% especie_mascotas = room.animal.split(", ") %>
               <% especie_mascotas.each do |especie| %>
                 <span class="badge badge-pill badge-vetlove"><%= especie %>s</span>
               <% end %>
-              <% 
+              <%
 =begin %>
               <h5>Aceptamos:</h5>
               <% forma_pago.each do |pagos| %>
                 <span class="badge badge-pill badge-vetlove"><%= pagos %></span>
               <% end %>
-              <% 
+              <%
 =end %>
             </div>
             <div class="col-sm-12 col-md-5 align-self-end mt-3">
