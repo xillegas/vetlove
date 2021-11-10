@@ -16,11 +16,16 @@ class ApplicationController < ActionController::Base
   #     request.remote_ip
   #   end
   # end
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || welcome_path
+  end
+
   def remote_ip
     if Rails.env.production?
       request.remote_ip
     else
-      Net::HTTP.get(URI.parse('http://checkip.amazonaws.com/')).squish
+      URI.open('http://whatismyip.akamai.com').read
     end
   end
 

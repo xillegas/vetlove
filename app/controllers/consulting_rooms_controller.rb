@@ -122,8 +122,8 @@ class ConsultingRoomsController < ApplicationController
                             lng: marker.longitude,
                             :info_window => render_to_string(partial: "info_window_user", locals: { marker: marker }) }
     end
-    return @info_window_user
-      # puts @info_window_user[:user_ip]
+    # return @info_window_user
+      puts @info_window_user
   end
 
   def search(query_rooms)
