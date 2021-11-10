@@ -27,3 +27,15 @@
 .bordright-gray {
   border-right: 1px solid #e5e5e5 !important;
 }
+
+.bordes{
+  border-radius: 12px !important;
+  border: 1px solid #f8d0f1;
+}
+
+.volver{
+  color: $primary-color;
+  &.volver:hover{
+    color: $third-color;
+  }
+}
