@@ -9,7 +9,7 @@
 
       <%= simple_form_for @pet do |f| %>
         <%= f.input :name, label: "Nombre de tu mascota" %>
-        <%= f.input :gender, collection: GENDERS, label: "Genero de tu mascota" %>
+        <%= f.input :gender, collection: GENDERS, label: "Género de tu mascota" %>
         <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, autofocus: true, input_html: {id: "datePets"} %>
         <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
         <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
