@@ -13,7 +13,7 @@
               </div>
               <div class="col-2 align-items-start">
                 <% unless @info_window_user.nil? || @info_window_user[:user_ip].nil? %>
-                  <span class="consult-room-distance"><%= "a #{Geocoder::Calculations.distance_between([room.latitude, room.longitude], [@info_window_user[:lat], @info_window_user[:lng]]).to_f.floor} KM" %></span>
+                  <span class="consult-room-distance"><%= "a #{Geocoder::Calculations.distance_between([room.latitude, room.longitude], [@info_window_user[:lat], @info_window_user[:lng]]).floor} KM" %></span>
                 <% end %>
               </div>
             </div>

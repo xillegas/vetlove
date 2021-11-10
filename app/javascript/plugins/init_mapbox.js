@@ -111,7 +111,7 @@ const initMapbox = () => {
       });
       fitMapToMarkers(map, markers);
       map.on('load', (event) => {
-        map.resize();
+      map.resize();
       });
     } else {
       void (0);

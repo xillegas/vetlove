@@ -122,6 +122,7 @@ class ConsultingRoomsController < ApplicationController
     { user_ip: @user_marker.first.data["ip_address"],
       lat: @user_marker.first.data["latitude"],
       lng: @user_marker.first.data["longitude"],
+      city: @user_marker.first.data["city"],
       :info_window => render_to_string(partial: "info_window_user", locals: { marker: @user_marker }) }
     return @info_window_user
   end
