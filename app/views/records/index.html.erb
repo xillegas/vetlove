@@ -2,7 +2,6 @@
   <p class="h2 mb-0 text-gray-800">Historial</p>
   <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
 </div>
-
 <% if @records.empty? %>
   <h2 class="text-gray-700">No tienes todavía historial médico de mascotas</h2>
 <% else %>
@@ -16,19 +15,19 @@
               <div class="d-flex flex-row">
                 <div>
                   <% if record.booking.pet.photo.attached? %>
-                      <%# cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <%= cl_image_tag record.booking.pet.photo.key, class: "rounded-circle", height: 60, width: 60, crop: :fill %>
-                    <% else %>
-                      <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg",  class: "rounded-circle", height: 60, width: 60, crop: :fill %>
-                    <% end %>
+                    <%# cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <%= cl_image_tag record.booking.pet.photo.key, class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                  <% else %>
+                    <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg",  class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                  <% end %>
                 </div>
                 <div class="ml-3">
                   <p class="h3 pet-title"><%= record.booking.pet.name.capitalize %></p>
                   <p class="booking-small">
-                  <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
-                  <%= record.booking.pet.species.capitalize %>
-                  <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
-                  <%= record.booking.pet.gender.capitalize %></p>
+                    <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
+                    <%= record.booking.pet.species.capitalize %>
+                    <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
+                    <%= record.booking.pet.gender.capitalize %></p>
                 </div>
               </div>
             </div>
@@ -47,9 +46,11 @@
             <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
           </div>
         </div>
+      <% else %>
+        <p class="text-muted">Aún no has posees historial!</p>
       <% end %>
     <% else %>
-    <%# Vista del Usuario cliente: %>
+      <%# Vista del Usuario cliente: %>
       <% if current_user == record.booking.pet.user %>
         <div class="list-group my-5 records-cards">
           <div class="list-group-item">
@@ -57,19 +58,19 @@
               <div class="d-flex flex-row">
                 <div>
                   <% if record.booking.pet.photo.attached? %>
-                      <%# cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <%= cl_image_tag record.booking.pet.photo.key, class: "rounded-circle", height: 60, width: 60, crop: :fill %>
-                    <% else %>
-                      <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg",  class: "rounded-circle", height: 60, width: 60, crop: :fill %>
-                    <% end %>
+                    <%# cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle navbar-vetlove-user", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <%= cl_image_tag record.booking.pet.photo.key, class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                  <% else %>
+                    <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg",  class: "rounded-circle", height: 60, width: 60, crop: :fill %>
+                  <% end %>
                 </div>
                 <div class="ml-3">
                   <p class="h3 pet-title"><%= record.booking.pet.name.capitalize %></p>
                   <p class="booking-small">
-                  <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
-                  <%= record.booking.pet.species.capitalize %>
-                  <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
-                  <%= record.booking.pet.gender.capitalize %></p>
+                    <span class='vetlove-text-color'><i class="fas fa-paw"></i></span>
+                    <%= record.booking.pet.species.capitalize %>
+                    <span class='vetlove-text-color'><i class="fas fa-venus-mars"></i></span>
+                    <%= record.booking.pet.gender.capitalize %></p>
                 </div>
               </div>
             </div>
@@ -88,11 +89,12 @@
             <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
           </div>
         </div>
+      <% else %>
+        <p class="text-muted">Aún no has posees historial!</p>
       <% end %>
     <% end %>
   <% end %>
 <% end %>
-
 <!--
         <div>
         <h3 class="text-gray-700">No hay registros del historial médico de mascotas atendidas</h3>
