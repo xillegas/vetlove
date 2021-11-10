@@ -25,7 +25,7 @@
 }
 
 .bordright-gray {
-  border-right: 1px solid #e5e5e5 !important;
+  border-right: 1px solid #eec6ec !important;
 }
 
 .bordes{
@@ -38,4 +38,10 @@
   &.volver:hover{
     color: $third-color;
   }
+  //box-shadow: 4px 6px 7px #626262a6;
+}
+.list-group-item{
+  box-shadow: 5px 8px 5px rgba(46, 46, 46, 0.24);
+  border: 1px solid #e2c2e9 !important;
+  border-radius: 12px !important;
 }

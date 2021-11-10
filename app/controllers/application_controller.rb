@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.production?
       request.remote_ip
     else
-      Net::HTTP.get(URI.parse('http://checkip.amazonaws.com/')).squish
+      URI.open('http://whatismyip.akamai.com').read
     end
   end
 

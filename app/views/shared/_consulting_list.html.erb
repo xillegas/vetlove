@@ -2,26 +2,24 @@
 <div class="accordion w-100" id="accordionExample">
   <% @query_rooms.each_with_index do |room, index| %>
     <div class="card card-consulting">
-        <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>, <%= @info_window_user.to_json %>)">
+      <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>, <%= @info_window_user.to_json %>)">
         <%# {:user_ip=>"200.75.115.167", :lat=>10.3445, :lng=>-67.0433, :info_window=>"<h2>Tu Ubicacion</h2>\n<p>Los Teques , VE</p>\n"} %>
-          <h2 class="mb-0">
-            <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
-              <div class="d-flex justify-content-between ">
-                <div class="col-10">
-                  <p class="title-consulting"><%= room.name %></p>
-                  <p class="direction-consulting"><%= room.address %></p>
-                </div>
-                <div class="col-2 align-items-start">
-                  <% if @info_window_user[:user_ip].nil? %>
-                    <span class="consult-room-distance">0 KM</span>
-                  <% else %>
-                    <span class="consult-room-distance"><%= "a #{room.distance_to(@info_window_user[:user_ip]).to_f.floor} KM" %></span>
-                  <% end %>
-                </div>
+        <h2 class="mb-0">
+          <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
+            <div class="d-flex justify-content-between ">
+              <div class="col-10">
+                <p class="title-consulting"><%= room.name %></p>
+                <p class="direction-consulting"><%= room.address %></p>
               </div>
-            </a>
-          </h2>
-        </div>
+              <div class="col-2 align-items-start">
+                <% unless @info_window_user.nil? || @info_window_user[:user_ip].nil? %>
+                  <span class="consult-room-distance"><%= "a #{room.distance_to(@info_window_user[:user_ip]).to_f.floor} KM" %></span>
+                <% end %>
+              </div>
+            </div>
+          </a>
+        </h2>
+      </div>
       <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
         <div class="card-body pt-2">
           <p class="card-description"><%= room.description %></p>
@@ -44,7 +42,7 @@
                     Solicitar cita
                   </button>
                 <% else %>
-                <%= link_to "Solicitar cita", user_session_path , class: "btn btn-primary modal-btn" %>
+                  <%= link_to "Solicitar cita", user_session_path , class: "btn btn-primary modal-btn" %>
                 <% end %>
               </div>
             </div>
