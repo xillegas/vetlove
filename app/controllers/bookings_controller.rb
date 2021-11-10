@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
     @booking.consulting_room = @consulting_room
     #authorize @booking
     if @booking.save
-      redirect_to booking_path(@booking), alert: 'Booking creado exitosamente.'
+      redirect_to bookings_path, alert: 'Booking creado exitosamente.'
     else
       redirect_to consulting_rooms_path, alert: 'Wrong parmeters'
     end

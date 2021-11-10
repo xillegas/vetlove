@@ -1,7 +1,11 @@
 <li class="nav-item dropdown no-arrow">
   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></span>
-    <%= image_tag "https://cdn-icons-png.flaticon.com/512/64/64431.png", class:"img-profile rounded-circle" %>
+    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></span>    
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: "img-profile rounded-circle" %>
+    <% else %>
+      <%= image_tag "https://i.pinimg.com/136x136/21/a4/a0/21a4a0e07bd24643aca0fcaa7af75105.jpg", class: "img-profile rounded-circle" %>
+    <% end %>
   </a>
   <!-- Dropdown - User Information -->
   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

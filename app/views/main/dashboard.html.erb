@@ -108,21 +108,32 @@
             <br>
           <% end %>
           <% if current_user.is_vet?  %>
-            <div class="d-flex justify-content-end">
+            <div class="row">
               <% if bookie.attended? %>
                 <% if Record.find_by(booking: bookie).nil? %>
                   <small></small>
                 <% elsif bookie.attended %>
                   <% record = Record.find_by(booking: bookie)%>
-                  <small><%= link_to "Ver Cita", record_path(record) %></small>
+                  <div class="col-12 text-right">
+                    <small><%= link_to "Ver Historia", record_path(record) %></small>
+                  </div>
                 <% end %>
               <% else %>
-                <small><%= link_to "Crear Cita", new_booking_record_path(bookie) %></small>
+                <div class="col-12 text-right">
+                  <small>
+                    <%= link_to "Ver Cita", booking_path(bookie) %>
+                  </small>
+                </div>
+                <div class="col-12 text-right">
+                  <small>
+                    <%= link_to "Crear Cita", new_booking_record_path(bookie) %>
+                  </small>
+                </div>
               <% end %>
             </div>
           <% else %>
-            <div class="d-flex justify-content-end">
-              <small><%= link_to "Ver más", booking_path(bookie) %></small>
+            <div class="col-12 text-right">
+              <small><%= link_to "Ver Cita", booking_path(bookie) %></small>
             </div>
           <% end %>
         <% end %>
