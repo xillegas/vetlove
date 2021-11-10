@@ -2,8 +2,9 @@
   <p class="h2 mb-0 text-gray-800">Historial</p>
   <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
 </div>
-<% if @records.empty? %>
-  <h2 class="text-gray-700">No tienes todavía historial médico de mascotas</h2>
+<% if @records.empty? || @user_record.length < 1 %>
+  <p class="h4 text-gray-700">No hay registros del historial médico de mascotas atendidas</p>
+  <p class="booking-small">Puedes crear entradas de historias médicas al hacer clic en "Crear registro" en una cita del calendario.</p>
 <% else %>
   <% @records.each do |record| %>
     <% if current_user.is_vet %>
@@ -45,11 +46,6 @@
             </div>
             <p class="note-pet">Nota: Los datos proporcionados por este medio son para uso informativo</p>
           </div>
-        </div>
-      <% else %>
-        <div>
-        <h3 class="text-gray-700">No hay registros del historial médico de mascotas atendidas</h3>
-        <p class="booking-small">Puedes crear entradas de historias médicas al hacer clic en "Crear registro" en una cita del calendario.</p>
         </div>
       <% end %>
     <% else %>
@@ -94,8 +90,8 @@
         </div>
       <% else %>
         <div>
-        <h3 class="text-gray-700">Todavía no tienes historial médico de tus mascotas</h3>
-        <p class="booking-small">Asiste a una consulta y pídele al veterinario que llene el registro de tu consulta veterinaria.</p>
+          <h3 class="text-gray-700">Todavía no tienes historial médico de tus mascotas</h3>
+          <p class="booking-small">Asiste a una consulta y pídele al veterinario que llene el registro de tu consulta veterinaria.</p>
         </div>
       <% end %>
     <% end %>

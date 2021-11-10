@@ -10,7 +10,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def show?
-    !user.is_vet
+    true
   end
 
   def create?
