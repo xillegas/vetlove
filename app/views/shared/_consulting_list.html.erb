@@ -2,8 +2,8 @@
 <div class="accordion w-100" id="accordionExample">
   <% @query_rooms.each_with_index do |room, index| %>
     <div class="card card-consulting">
-      <% @user_marker.each do |user_marker| %>
-        <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>, <%= user_marker.latitude %>, <%= user_marker.longitude %>, <%= @info_window_user.to_json %>)">
+        <div class="card-header consult-room-card p-1" id="heading <%= index %> " onClick="fitToCard(event, <%= room.latitude %>, <%= room.longitude %>, <%= @info_window_user.to_json %>)">
+        <%# {:user_ip=>"200.75.115.167", :lat=>10.3445, :lng=>-67.0433, :info_window=>"<h2>Tu Ubicacion</h2>\n<p>Los Teques , VE</p>\n"} %>
           <h2 class="mb-0">
             <a class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse<%= index %>" aria-expanded="false" aria-controls="collapse<%= index %>">
               <div class="d-flex justify-content-between ">
@@ -12,19 +12,16 @@
                   <p class="direction-consulting"><%= room.address %></p>
                 </div>
                 <div class="col-2 align-items-start">
-
-                <% if room.distance_to(@client_ip).nil? %>
-                  <span class="consult-room-distance">0 KM</span>
-                <% else %>
-                  <span class="consult-room-distance"><%= "a #{room.distance_to(@client_ip).to_f.floor} KM" %></span>
-                <% end %>
-
+                  <% if @info_window_user[:user_ip].nil? %>
+                    <span class="consult-room-distance">0 KM</span>
+                  <% else %>
+                    <span class="consult-room-distance"><%= "a #{room.distance_to(@info_window_user[:user_ip]).to_f.floor} KM" %></span>
+                  <% end %>
                 </div>
               </div>
             </a>
           </h2>
         </div>
-      <% end %>
       <div id="collapse<%= index %>" class="collapse" aria-labelledby="heading<%= index %>" data-parent="#accordionExample">
         <div class="card-body pt-2">
           <p class="card-description"><%= room.description %></p>
@@ -48,7 +45,6 @@
                   </button>
                 <% else %>
                 <%= link_to "Solicitar cita", user_session_path , class: "btn btn-primary modal-btn" %>
-
                 <% end %>
               </div>
             </div>
@@ -71,18 +67,22 @@
           <div class="modal-body">
             <%= simple_form_for [ConsultingRoom.first, Booking.new] do |f|   %>
               <% pets = current_user.pets %>
-              <div class="row">
-                <div class="col">
-                  <div class='row datetimerange'>
-                    <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Fecha de atención" %>
+              <div class="container">
+                <div class="row">
+                  <div class="col-6">
+                    <div class='row datetimerange'>
+                      <%= f.input :date, as: :string, input_html: {class: "datepicker"}, label: "Fecha de atención" %>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <%= f.association :pet, collection: pets, label: 'Mi mascota' %>
                   </div>
                 </div>
-                <div class="col">
-                  <%= f.association :pet, collection: pets, label: 'Mi mascota' %>
-                  <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
-                </div>
-                <div class="col-1">
-                  <%= link_to "Volver", consulting_rooms_path, class: "btn btn-danger" %>
+                <div class="row">
+                  <div class="col-4"></div>
+                  <div class="col-8">
+                    <%= f.submit "Confirmar cita",  class: "btn button-vetlove" %>
+                  </div>
                 </div>
               </div>
             <% end %>

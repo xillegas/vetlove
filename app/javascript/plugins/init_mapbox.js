@@ -31,7 +31,7 @@ const initMapbox = () => {
       center: geometry,
       speed: 0.5,
       essential: true,
-      zoom: 10
+      zoom: 13
     });
   }
 
@@ -41,7 +41,7 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: [-66.8762112, 10.4923136],
-      zoom: 10
+      zoom: 13
     });
 
     window.searchVet = function (event, latitude, longitude) {
@@ -63,35 +63,48 @@ const initMapbox = () => {
       };
     };
 
-    window.fitToCard = function (event, latitude, longitude, user_latitude, user_longitude, info_window_user) {
+    window.fitToCard = function (event, latitude, longitude, infoWindowUser) {
       event.preventDefault();
       if (event.isTrusted) {
-        const marker_consultory = { lat: latitude, lng: longitude };
-        const marker_user = { lat: user_latitude, lng: user_longitude };
-        const markers_for_user_consultory = [marker_consultory, marker_user];
-        const popup = new mapboxgl.Popup().setHTML(info_window_user.info_window);
+        // console.log(infoWindowUser.user_ip)
+        // console.log(infoWindowUser.lat)
+        // console.log(infoWindowUser.lng)
+        // console.log(infoWindowUser.info_window)
+        const markerConsultory = { lat: latitude, lng: longitude };
+        const markerUser = { lat: infoWindowUser.lat, lng: infoWindowUser.lng };
+        const popup = new mapboxgl.Popup().setHTML(infoWindowUser.info_window);
         hide();
         new mapboxgl.Marker({
-          color: "#6f42c1",
+          color: "#ac3235",
         })
-          .setLngLat(marker_user)
+          .setLngLat(markerUser)
           .setPopup(popup)
           .addTo(map);
-        new mapboxgl.Marker({
-          color: "#6f42c1",
-        })
-          .setLngLat(marker_consultory)
-          .addTo(map);
-        // console.log(markers_for_user_consultory);
-        fitMapToMarkers(map, markers_for_user_consultory);
-        // console.log(marker_consultory);
-        centerElement(marker_consultory, map)
+
+        const markerConsult = JSON.parse(mapElement.dataset.markers);
+        if (markerConsult) {
+          markerConsult.forEach((marker) => {
+            const popupConsultory = new mapboxgl.Popup().setHTML(marker.info_window);
+            new mapboxgl.Marker({
+              color: "#6f42c1"
+            })
+              .setLngLat(markerConsultory)
+              .setPopup(popupConsultory)
+              .addTo(map);
+          })
+        }
+        // new mapboxgl.Marker({
+        //   color: "#6f42c1",
+        // })
+        //   .setLngLat(markerConsultory)
+        //   .addTo(map);
+        // console.log(markerForUserConsultory);
+        // fitMapToMarkers(map, markerForUserConsultory);
+        // console.log(markerConsultory);
+        centerElement(markerConsultory, map)
       }
       else {
-        show();
-        const marker_consultory = { lat: latitude, lng: longitude };
-        const markers_for_user_consultory = [marker_consultory, marker_user];
-        fitMapToMarkers(map, markers_for_user_consultory);
+        void(0);
       };
     };
 
