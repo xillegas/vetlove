@@ -7,12 +7,21 @@ const initFlatpickr = () => {
   });
   $("#datePets").flatpickr({
     altInput: true,
-    disable: [
+    enable: [
       {
-        from: "2021-11-04",
-        to: "2025-05-01"
+        from: "2000-01-01",
+        to: "today"
       }
     ]
+  });
+  $("#dateBookings").flatpickr({
+    altInput: true,
+    enableTime: true,
+    enable: [
+      {
+        from: "today",
+        to: new Date().fp_incr(180)
+      }]
   })
 }
 
