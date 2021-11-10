@@ -18,8 +18,13 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || welcome_path
+    if current_user.is_vet
+      consulting_rooms_vet_path
+    else
+      consulting_rooms_user_path
+    end
   end
+
 
   def remote_ip
     if Rails.env.production?
