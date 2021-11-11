@@ -8,10 +8,10 @@
       </div>
 
       <%= simple_form_for @pet do |f| %>
-        <%= f.input :name, label: "Nombre de tu mascota" %>
-        <%= f.input :gender, collection: GENDERS, label: "Género de tu mascota" %>
-        <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, autofocus: true, input_html: {id: "datePets"} %>
-        <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota" %>
+        <%= f.input :name, label: "Nombre de tu mascota", placeholder: 'I.e. Tobby' %>
+        <%= f.input :gender, collection: GENDERS, label: "Género de tu mascota", :prompt => "Selecciona un genero"%>
+        <%= f.input :birthdate, label: "Fecha de nacimiento", as: :string, required: false, autofocus: true, input_html: {id: "datePets"}, placeholder: 'Selecciona la fecha de nacimiento' %>
+        <%= f.input :species, collection: SPECIES, label: "Especie de tu mascota", :prompt => "Selecciona la especie" %>
         <%= f.input :photo, input_html: { class: 'd-none' }, label_html: { class: 'btn btn-secondary'},
                         label: '📷 ¡Sube una foto de tu mascota!' %>
         <div class="text-center mt-4">

@@ -70,8 +70,11 @@ class ConsultingRoomsController < ApplicationController
     @consulting_room.week_days = selected_days.join(", ")
     @consulting_room.latitude = DEFAULT_LON_LAT[1] unless params_consulting_rooms[:latitude].present?
     @consulting_room.longitude = DEFAULT_LON_LAT[0] unless params_consulting_rooms[:longitude].present?
-    @consulting_room.save
-    redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
+    if @consulting_room.save
+      redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
+    else
+      render :new, layout: "main"
+    end
   end
 
   def edit
