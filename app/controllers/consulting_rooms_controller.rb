@@ -118,12 +118,26 @@ class ConsultingRoomsController < ApplicationController
     # binding.pry
     @user_marker = Geocoder::search(@client_ip)
     # p @user_marker.first.data["ip_address"]
-    @info_window_user =
-    { user_ip: @user_marker.first.data["ip_address"],
-      lat: @user_marker.first.data["latitude"],
-      lng: @user_marker.first.data["longitude"],
-      city: @user_marker.first.data["city"],
-      :info_window => render_to_string(partial: "info_window_user", locals: { marker: @user_marker }) }
+    if @user_marker.length > 0
+      @info_window_user =
+        {
+          user_ip: @user_marker.first.data["ip_address"],
+          lat: @user_marker.first.data["latitude"],
+          lng: @user_marker.first.data["longitude"],
+          city: @user_marker.first.data["city"],
+          :info_window => render_to_string(partial: "info_window_user", locals: { marker: @user_marker }),
+        }
+    else
+      # Rellenar
+      @info_window_user =
+      {
+        user_ip: ENV["DEFAULT_IP"],
+        lat: 10.4923136,
+        lng: -66.8762112,
+        city: "Chacao, Avenida Francisco de Miranda, Caracas 1060, Distrito Capital",
+        info_window: "info_window"
+      }
+    end
     return @info_window_user
   end
 
@@ -132,8 +146,7 @@ class ConsultingRoomsController < ApplicationController
     query_rooms.each do |consulting_room|
       @markers << { lat: consulting_room.latitude,
                     lng: consulting_room.longitude,
-                    info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room })
-                  }
+                    info_window: render_to_string(partial: "info_window", locals: { consulting_room: consulting_room }) }
     end
   end
 
