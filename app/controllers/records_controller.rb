@@ -16,8 +16,8 @@ class RecordsController < ApplicationController
         end
       else
         if record.booking.pet.user == current_user
-          @user_record << record          
-        end 
+          @user_record << record
+        end
       end
     end
   end
@@ -42,7 +42,7 @@ class RecordsController < ApplicationController
     if @record.save
       redirect_to records_path, notice: 'Record creado exitosamente.'
     else
-      render :new, alert: 'Wrong parmeters'
+      render :new, layout: "main"
     end
   end
 

@@ -21,6 +21,7 @@
 @import "components/index";
 @import "pages/index";
 @import "flatpickr/dist/flatpickr";
+@import "flatpickr/dist/themes/material_green";
 @import "./shared/sb-admin-2";
 @import "pages/consulting";
 @import "pages/login";
@@ -28,6 +29,7 @@
 
 // sb-admin
 @import "startbootstrap-sb-admin-2/scss/error";
+
 
 /*========== SCROLL BAR ==========*/
 ::-webkit-scrollbar {

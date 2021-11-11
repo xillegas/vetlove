@@ -74,8 +74,11 @@ class ConsultingRoomsController < ApplicationController
     end
     @consulting_room.animal = selected_keywords.join(", ")
     @consulting_room.week_days = selected_days.join(", ")
-    @consulting_room.save
-    redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
+    if @consulting_room.save
+      redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
+    else
+      render :new, layout: "main"
+    end
   end
 
   def edit

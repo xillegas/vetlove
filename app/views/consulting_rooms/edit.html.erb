@@ -6,14 +6,14 @@
     <%= simple_form_for [ @consulting_room ] do |f| %>
       <div class="row">
         <div class="col-md-12 col-sm-12">
-          <%= f.input :name, label: "Nombre del consultorio", required: true %>
+          <%= f.input :name, label: "Nombre del consultorio", required: true, placeholder: 'I.e. Consultorio Patitas Felices' %>
         </div>
         <div class="col-md-12 col-sm-12">
-          <%= f.input :description, label: "Descripcion del consultorio", :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: true %>
+          <%= f.input :description, label: "Descripcion del consultorio", :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: true  %>
         </div>
         <div class="col-md-12">
           <p class="mb-2">Dirección del Consultorio <small class="text-info">(Arrastre el marcador del mapa)</small>  </p>
-          <%= f.input :specific_address, label: false, :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: true %>
+          <%= f.input :specific_address, label: false, :as => :text, :input_html => { :rows => 3 , :style => 'width: 100%'}, required: true, placeholder: 'I.e. Edif. Mascotas Felices, Local S/N' %>
         </div>
         <%= f.input :address, label: false, :as => :hidden %>
         <%= f.input :longitude, :as => :hidden, input_html: { id: 'longitud_vet' } %>
