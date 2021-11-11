@@ -1,6 +1,6 @@
 class Record < ApplicationRecord
   belongs_to :booking
-
+  validates :symptoms, :diagnostic, :treatment, presence: true
   after_create_commit :update_booking_record
 
   private

@@ -19,7 +19,8 @@ class PetsController < ApplicationController
     if @pet.save
       redirect_to pets_path, notice: "Mascota creado exitosamente."
     else
-      redirect_to pet_path(@pet), alert: "Wrong parmeters"
+      # redirect_to pet_path(@pet), alert: "Wrong parmeters"
+      render :new, layout: "main"
     end
   end
 
@@ -30,7 +31,7 @@ class PetsController < ApplicationController
     if @pet.update(pet_params)
       redirect_to pets_path, notice: "Pet was successfully updated."
     else
-      render :edit
+      render :edit, layout: "main"
     end
   end
 
