@@ -39,15 +39,33 @@
               </div>
               <div class="col-12 text-right">
                 <small>
-                  <%= link_to "Crear Cita", new_booking_record_path(bookie) %>
+                  <%= link_to "Crear Registro", new_booking_record_path(bookie) %>
                 </small>
               </div>
             <% end %>
           </div>
-        <% else %>
-          <div class="col-12 text-right">
-            <small><%= link_to "Ver Cita", booking_path(bookie) %></small>
-          </div>
+        <% else %> <%# En caso de ser usuario cliente: %>
+            <% if bookie.attended? %>
+              <% if Record.find_by(booking: bookie).nil? %>
+                <small></small>
+              <% elsif bookie.attended %>
+              <div class="col-12 text-right">
+                <small>
+                  <%= link_to "Ver Cita", booking_path(bookie) %>
+                </small>
+              </div>
+                <% record = Record.find_by(booking: bookie)%>
+                <div class="col-12 text-right">
+                  <small><%= link_to "Ver diagnostico", record_path(record) %></small>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="col-12 text-right">
+                <small>
+                  <%= link_to "Ver Cita", booking_path(bookie) %>
+                </small>
+              </div>
+            <% end %>
         <% end %>
       <% end %>
     <% end %>

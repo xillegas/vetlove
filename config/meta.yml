@@ -1,0 +1,5 @@
+meta_product_name: "VetLove"
+meta_title: "VetLove"
+meta_description: "Una aplicación que te permitirá encontrar veterinarios cerca de su ubicación, saber sus días y horarios de atención, al igual que solicitar la cita que más se adapte a tus necesidades"
+meta_image: "background.jpg" # should exist in `app/assets/images/`
+twitter_account: "@vet_Love"   # required for Twitter Cards

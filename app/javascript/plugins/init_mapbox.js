@@ -68,13 +68,12 @@ const initMapbox = () => {
       if (event.isTrusted) {
         const markerConsultory = { lat: latitude, lng: longitude };
         const markerUser = { lat: infoWindowUser.lat, lng: infoWindowUser.lng };
-        const popup = new mapboxgl.Popup().setHTML(infoWindowUser.info_window);
+        // const popup = new mapboxgl.Popup().setHTML(infoWindowUser.info_window);
         hide();
         new mapboxgl.Marker({
           color: "#ac3235",
         })
           .setLngLat(markerUser)
-          .setPopup(popup)
           .addTo(map);
 
         new mapboxgl.Marker({
@@ -95,18 +94,20 @@ const initMapbox = () => {
 
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
+      mapboxgl: mapboxgl,
+      placeholder: "Busca tu localidad",
     }));
+    document.querySelector('.mapboxgl-ctrl-geocoder--input').placeholder = "Busca tu consultorio";
+    document.querySelector('.mapboxgl-ctrl-attrib.mapboxgl-compact').style.display = "none"
     // Agrega el FullScreen
     map.addControl(new mapboxgl.FullscreenControl());
 
     const markers = JSON.parse(mapElement.dataset.markers);
     if (markers) {
       markers.forEach((marker) => {
-        const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+        // const popup = new mapboxgl.Popup().setHTML(marker.info_window);
         new mapboxgl.Marker()
           .setLngLat([marker.lng, marker.lat])
-          .setPopup(popup)
           .addTo(map);
       });
       fitMapToMarkers(map, markers);
