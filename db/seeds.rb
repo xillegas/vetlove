@@ -42,22 +42,22 @@ User.create([{ email: "genesis@gmail.com", first_name: "Genesis", last_name: "Pe
   birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: true }])
 puts "Usuario: genesis@gmail.com, Contraseña: 123456, Tipo: Veterinario"
 
-User.create([{ email: "jesus@gmail.com", first_name: "Jesus", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+User.create([{ email: "jesus@gmail.com", first_name: "Jesus", last_name: "Mendez", password: "123456", password_confirmation: "123456",
   phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
   birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: jesus@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
-User.create([{ email: "javier@gmail.com", first_name: "Javier", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+User.create([{ email: "javier@gmail.com", first_name: "Javier", last_name: "Amundaray", password: "123456", password_confirmation: "123456",
   phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
   birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: javier@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
-User.create([{ email: "juan@gmail.com", first_name: "Juan", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+User.create([{ email: "juan@gmail.com", first_name: "Juan", last_name: "Patrizio", password: "123456", password_confirmation: "123456",
   phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
   birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: juan@gmail.com, Contraseña: 123456, Tipo: Cliente"
 
-User.create([{ email: "maria@gmail.com", first_name: "Maria", last_name: "Lopez", password: "123456", password_confirmation: "123456",
+User.create([{ email: "maria@gmail.com", first_name: "Maria", last_name: "Goreiro", password: "123456", password_confirmation: "123456",
   phone_number: "+58#{tlf_area.sample}#{Faker::PhoneNumber.subscriber_number(length: 7)}",
   birthdate: Faker::Date.between(from: "1980-09-23", to: "2002-09-25"), is_vet: false }])
 puts "Usuario: maria@gmail.com, Contraseña: 123456, Tipo: Cliente"
@@ -70,9 +70,9 @@ pet_species = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara
 
 descr_first = ["En nuestro consultorio", "Nosotros", "Somos centro médico veterinario,", "Nosotros en nuestro centro veterinario", "Estamos cerca de ti y", "Consultiorio veterinario,", "Salud para tu mascota,","Somos salud para tus mascotas,", "Con más de 30 años de actividad,", "Con más de 20 años de actividad,", "Con 20 años en el servicio de salud a las mascotas,", "Somos uno de los consultorios más reconocidos,", "Somos profesionales en la salud,"]
 
-descr_second = ["contamos con gran variedad de servicios de atención a tu mascota.", "brindamos la salud para los peludos de la casa.", "brindamos atención personalizada.", "contamos con lo más avanzado en salud veterinaria.", "tenemos los más avanzados equipos.", "hacemos felices a los peludos.", "los peludos reciben amor y cariño.", "ofrecemos citas a buen precio,"]
+descr_second = ["contamos con gran variedad de servicios de atención a tu mascota.", "brindamos la salud para los peludos de la casa.", "brindamos atención personalizada.", "contamos con lo más avanzado en salud veterinaria.", "tenemos los más avanzados equipos.", "tenemos tecnlogía de punta." "hacemos felices a los peludos.", "los peludos reciben amor y cariño.", "ofrecemos citas a buen precio,"]
 
-descr_offer = ["Nos especializamos en perros y gatos.", "Ofrecemos servicios de esterilización a gatos.", "Hacemos esterilización a perros.", "Tenemos venta de medicinas y artículos para tu mascota.", "Abrimos en horario corrido.", "Tenemos atención via telefónica.", "Hacemos descuentos a animales de la comunidad.", "Especialistas en perros.", "Somos especialistas en gatos.", "Dedicados a animales de apoyo.", "Atención a domicilo.", "Además atendemos caballos de carrera.", "Operación de la vista a perros.", "Jornadas de vacunación."]
+descr_offer = ["Nos especializamos en perros y gatos.", "Ofrecemos servicios de esterilización a gatos.", "Hacemos esterilización a perros.", "Tenemos venta de medicinas y artículos para tu mascota.", "Abrimos en horario corrido.", "Tenemos atención via telefónica.", "Hacemos descuentos a animales de la comunidad.", "Especialistas en perros.", "Somos especialistas en gatos.", "Dedicados a animales de apoyo.", "Atención a domicilo.", "Además atendemos caballos de carrera.", "Operación de la vista a perros.", "Jornadas de vacunación." "Contamos con laboratorio.", "Servicio de radiología.", "Servicio de radiología e imagenología.", "Hospitalización y Cuidados Intensivos.", "Contamos con peluquería canina."]
 
 descr_last = ["La salud de tu mascota es nuestra prioridad.", "Estamos para tu mascota.", "Pensamos en tu mascota.", "A tu mascota la queremos.", "Tu mascota será feliz.", "", "Cerca de ti.", "Somos amigos de los peludos.", "Siempre cerca de tu mascota.", "Somos felicidad y amor a tu mascota."]
 # municipios = ["Baruta", "El Hatillo", "Libertador", "Chacao", "Sucre"]
@@ -94,7 +94,7 @@ puts ""
 puts "Insertando ConsultingRoom"
 vet_genesis = User.find_by(email: "genesis@gmail.com")
 vet_fernando = User.find_by(email: "fernando@gmail.com")
-ConsultingRoom.create([{ specific_address: "Av. Río de Janeiro, Caracas 1061, Distrito Capital",
+ConsultingRoom.create([{ specific_address: "Edif. Saman, Piso 3, Nro. 4. Av. Río de Janeiro, Caracas 1061, Distrito Capital",
                            name: "Consultorio Dr. #{vet_fernando.first_name} #{vet_fernando.last_name}",
                            description: "#{descr_first.sample} #{descr_second.sample} #{descr_offer.sample} #{descr_last.sample}",
                            latitude: rand(10.507955..10.513019),
@@ -102,7 +102,7 @@ ConsultingRoom.create([{ specific_address: "Av. Río de Janeiro, Caracas 1061, D
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",
-                           animal: "Perro Gato #{pet_species[2..].sample(2).join(" ")}", #Esto es lo nuevo.
+                           animal: "Perro, Gato, #{pet_species[2..].sample(2).join(", ")}", #Esto es lo nuevo.
                            user: vet_fernando }])
 
 vet_alfredo = User.find_by(email: "alfredo@gmail.com")
@@ -114,39 +114,89 @@ ConsultingRoom.create([{ specific_address: "Av. Nueva Granada, C.C. Multiplaza C
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",
-                           animal: "Perro Gato #{pet_species[2..].sample(2).join(" ")}", #Esto es lo nuevo.
+                           animal: "Perro, Gato, #{pet_species[2..].sample(2).join(", ")}", #Esto es lo nuevo.
                            user: vet_alfredo }])
-
+puts "Progreso:"
+puts "1%------50%-----100%"
+print "|"
 # Necesito más consultorios para probar la busqueda
 # Entonces Genesis atiende en varios consultorios con nombres aleatorios
-cons_name = ['Patas', 'Patitas', 'Garras', 'Huellas', 'Narices Frias', 'Garritas', 'Mascotas']
-cons_adjetivo = ['Felices', 'Contentas', "Amor", 'Sanas', 'Salud', 'Amorosas', 'Saludables', 'Vivas', 'Perez', 'Happy', 'Peludas']
-direcciones.each do |dir|
-  ConsultingRoom.create([{ specific_address: dir,
+cons_name = ['Patas', 'Patitas', 'Garras', 'Huellas', 'Narices Frias', 'Garritas', 'Mascotas', 'Manchas']
+cons_adjetivo = ['Felices', 'Contentas', "Amor", 'Sanas', 'Salud', 'Amorosas', 'Saludables', 'Vivas', 'Perez', 'Happy', 'Peludas', 'Plus', 'Center', 'Animalandia']
+# Caracas
+40.times do
+  my_lat = rand(10.460001..10.510001)
+  my_lon = rand(-66.925001..-66.83228)
+  cons_adjetivo.pop
+  ubicacion = Geocoder.search("#{my_lat},#{my_lon}")
+  cons_adjetivo << ubicacion.first.suburb
+  ConsultingRoom.create([{ specific_address: ubicacion.first.display_name,
                            name: "Consultorio Veterinario #{cons_name.sample} #{cons_adjetivo.sample}",
                            description: "#{descr_first.sample} #{descr_second.sample} #{descr_offer.sample} #{descr_last.sample}",
-                           latitude: rand(10.517055..10.523019),
-                           longitude: rand(-66.940838..-66.930598),
+                           latitude: my_lat,
+                           longitude: my_lon,
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miercoles,jueves,viernes",
-                           animal: "Perro Gato #{pet_species[2..].sample(2).join(" ")}",
+                           animal: "Perro, Gato, #{pet_species[2..].sample(2).join(", ")}",
                            user: vet_genesis}])
 end
+print "|||||||||||"
+#Valencia
+10.times do
+  my_lat = rand(10.157801..10.177753)
+  my_lon = rand(-67.971379..-67.965176)
+  cons_adjetivo.pop
+  ubicacion = Geocoder.search("#{my_lat},#{my_lon}")
+  cons_adjetivo << ubicacion.first.suburb
+  ConsultingRoom.create([{ specific_address: ubicacion.first.display_name,
+                           name: "Consultorio Veterinario #{cons_name.sample} #{cons_adjetivo.sample}",
+                           description: "#{descr_first.sample} #{descr_second.sample} #{descr_offer.sample} #{descr_last.sample}",
+                           latitude: my_lat,
+                           longitude: my_lon,
+                           init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
+                           end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
+                           week_days: "lunes,martes,miercoles,jueves,viernes",
+                           animal: "Perro, Gato, #{pet_species[2..].sample(2).join(", ")}",
+                           user: vet_alfredo}])
+end
+
+print "||||"
+#Maracay
+10.times do
+  my_lat = rand(10.244654..10.259519)
+  my_lon = rand(-67.627729..-67.584436)
+  cons_adjetivo.pop
+  ubicacion = Geocoder.search("#{my_lat},#{my_lon}")
+  cons_adjetivo << ubicacion.first.suburb
+  ConsultingRoom.create([{ specific_address: ubicacion.first.display_name,
+                           name: "Consultorio Veterinario #{cons_name.sample} #{cons_adjetivo.sample}",
+                           description: "#{descr_first.sample} #{descr_second.sample} #{descr_offer.sample} #{descr_last.sample}",
+                           latitude: my_lat,
+                           longitude: my_lon,
+                           init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
+                           end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
+                           week_days: "lunes,martes,miercoles,jueves,viernes",
+                           animal: "Perro, Gato, #{pet_species[2..].sample(2).join(", ")}",
+                           user: vet_alfredo}])
+end
+print "|||"
 
 # Consultorio real!
 vet_mascotafeliz = User.find_by(email: "tumascotafeliz@gmail.com")
-  ConsultingRoom.create([{ specific_address: "Carretera El Hatillo, Los Naranos, vía El Seminario. Centro Veterinario Dr. Gosling. Caracas- Venezuela",
+  ConsultingRoom.create([{ specific_address: "Carretera El Hatillo, Los Naranjos, vía El Seminario. Centro Veterinario Dr. Gosling. Caracas- Venezuela",
                            name: "Consultorio Veterinario Dr. Gosling",
                            description: "Contamos con Tecnología de punta en área de Quirófanos, Laboratorio, Radiología, Imagenología, Hospitalización, Cuidados Intensivos, Peluquería  y Transporte en Ambulancia. Atendido por médicos especializados las 24 horas del día, con Veterinario residente.",
-                           latitude: rand(10.517055..10.523019),
-                           longitude: rand(-66.940838..-66.930598),
+                           latitude: 10.4300325,
+                           longitude: -66.8310396,
                            init_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :morning),
                            end_hour_day: Faker::Time.between_dates(from: Date.today, to: Date.today, period: :evening),
                            week_days: "lunes,martes,miércoles,jueves,viernes,sábado,domingo",
-                           animal: "Perro Gato Capibara",
+                           animal: "Perro, Gato, Capibara",
                            user: vet_mascotafeliz}])
-
+print "|"
+puts ""
+puts "Consultorios creados exitosamente."
 puts ""
 puts "Insertando Pets"
 pet_gender = ['Macho', 'Hembra']

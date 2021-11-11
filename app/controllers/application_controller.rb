@@ -24,13 +24,16 @@ class ApplicationController < ActionController::Base
       consulting_rooms_user_path
     end
   end
-
+  
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 
   def remote_ip
     if Rails.env.production?
       request.remote_ip
     else
-      URI.open('http://whatismyip.akamai.com').read
+      return ENV["DEFAULT_IP"]
     end
   end
 
