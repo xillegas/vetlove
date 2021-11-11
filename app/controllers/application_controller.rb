@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.production?
       request.remote_ip
     else
-      URI.open('http://whatismyip.akamai.com').read
+      return ENV["DEFAULT_IP"]
     end
   end
 
