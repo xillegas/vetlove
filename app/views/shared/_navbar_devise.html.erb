@@ -13,9 +13,9 @@
     <ul class="navbar-nav mr-auto navbar-vetlove-classic-ulist">
       <% if user_signed_in? %>
       <div class="botones">
-        <li >
+        <%# <li >
           <%= link_to "Consultorios", consulting_rooms_path, id: "consult-link" %>
-        </li>
+        <%# </li> %>
         <li class="nombre">
           <%= "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}"%>
         </li>
