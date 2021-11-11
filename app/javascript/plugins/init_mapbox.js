@@ -94,8 +94,11 @@ const initMapbox = () => {
 
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
+      mapboxgl: mapboxgl,
+      placeholder: "Busca tu localidad",
     }));
+    document.querySelector('.mapboxgl-ctrl-geocoder--input').placeholder = "Busca tu consultorio";
+    document.querySelector('.mapboxgl-ctrl-attrib.mapboxgl-compact').style.display = "none"
     // Agrega el FullScreen
     map.addControl(new mapboxgl.FullscreenControl());
 
