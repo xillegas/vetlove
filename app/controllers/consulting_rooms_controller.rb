@@ -4,12 +4,12 @@ class ConsultingRoomsController < ApplicationController
   before_action :set_user_ip, only: [:index_user, :index_vet, :index]
   layout "main", only: %i[new index_vet index_user edit]
   DEFAULT_DAYS = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes"]
-  DEFAULT_LON_LAT = ["-66.8762112", "10.4923136"]
+  DEFAULT_LON_LAT = [-66.8762112, 10.4923136]
   DEFAULT_ANIMAL = ["Perro", "Gato", "Tortuga", "Conejo", "Hamster", "Ave", "Capibara", "Serpiente", "Cerdo", "Caballo"]
 
   def index_vet
     @user = current_user
-    @consulting_rooms = ConsultingRoom.all
+    @consulting_rooms = ConsultingRoom.all.order(id: :desc)
     @query_rooms = []
     @consulting_rooms.each do |room|
       @query_rooms << room if room.user == @user
@@ -22,10 +22,10 @@ class ConsultingRoomsController < ApplicationController
     # binding.pry
     @query_rooms = []
     if params[:query].present?
-      @query_rooms = ConsultingRoom.search_by_name(params[:query])
+      @query_rooms = ConsultingRoom.search_by_name(params[:query]).order(id: :desc)
       search(@query_rooms)
     else
-      @query_rooms = ConsultingRoom.take(7)
+      @query_rooms = ConsultingRoom.order(id: :desc).take(50)
       search(@query_rooms)
     end
   end
@@ -43,10 +43,10 @@ class ConsultingRoomsController < ApplicationController
       end
     else
       if params[:query].present?
-        @query_rooms = ConsultingRoom.search_by_name(params[:query])
+        @query_rooms = ConsultingRoom.search_by_name(params[:query]).order(id: :desc)
         search(@query_rooms)
       else
-        @query_rooms = ConsultingRoom.take(6)
+        @query_rooms = ConsultingRoom.order(id: :desc).take(50)
         search(@query_rooms)
       end
     end
@@ -66,14 +66,10 @@ class ConsultingRoomsController < ApplicationController
     selected_days = selected_days.nil? ? DEFAULT_DAYS : selected_days
     @user = current_user
     @consulting_room.user = @user
-    if params_consulting_rooms["latitude"] == ""
-      params_consulting_rooms["latitude"] = DEFAULT_LON_LAT[1]
-    end
-    if params_consulting_rooms["longitude"] == ""
-      params_consulting_rooms["longitude"] = DEFAULT_LON_LAT[0]
-    end
     @consulting_room.animal = selected_keywords.join(", ")
     @consulting_room.week_days = selected_days.join(", ")
+    @consulting_room.latitude = DEFAULT_LON_LAT[1] unless params_consulting_rooms[:latitude].present?
+    @consulting_room.longitude = DEFAULT_LON_LAT[0] unless params_consulting_rooms[:longitude].present?
     @consulting_room.save
     redirect_to consulting_rooms_path, notice: "Consultorio creado exitosamente!"
   end
@@ -90,15 +86,6 @@ class ConsultingRoomsController < ApplicationController
     selected_keywords = params[:selected_keywords]
     selected_keywords = selected_keywords.nil? ? DEFAULT_ANIMAL : selected_keywords
     selected_days = selected_days.nil? ? DEFAULT_DAYS : selected_days
-    p params_consulting_rooms["latitude"]
-    if params_consulting_rooms["latitude"] == ""
-      params_consulting_rooms["latitude"] = DEFAULT_LON_LAT[1]
-    end
-    if params_consulting_rooms["longitude"] == ""
-      params_consulting_rooms["longitude"] = DEFAULT_LON_LAT[0]
-    end
-    p "1"
-    p params_consulting_rooms["latitude"]
     @consulting_room.animal = selected_keywords.join(", ")
     @consulting_room.week_days = selected_days.join(", ")
     @consulting_room.update(params_consulting_rooms)
